@@ -16,23 +16,23 @@ const i18n = defineMessages({
   },
   thinking: {
     id: 'loadingGoose.thinking',
-    defaultMessage: 'goose is thinking…',
+    defaultMessage: 'daisy is thinking…',
   },
   streaming: {
     id: 'loadingGoose.streaming',
-    defaultMessage: 'goose is working on it…',
+    defaultMessage: 'daisy is working on it…',
   },
   waiting: {
     id: 'loadingGoose.waiting',
-    defaultMessage: 'goose is waiting…',
+    defaultMessage: 'daisy is waiting…',
   },
   compacting: {
     id: 'loadingGoose.compacting',
-    defaultMessage: 'goose is compacting the conversation...',
+    defaultMessage: 'daisy is compacting the conversation...',
   },
   idle: {
     id: 'loadingGoose.idle',
-    defaultMessage: 'goose is working on it…',
+    defaultMessage: 'daisy is working on it…',
   },
   restartingAgent: {
     id: 'loadingGoose.restartingAgent',

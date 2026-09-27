@@ -1785,10 +1785,10 @@
     "defaultMessage": "Live voice"
   },
   "loadingGoose.compacting": {
-    "defaultMessage": "goose is compacting the conversation..."
+    "defaultMessage": "daisy is compacting the conversation..."
   },
   "loadingGoose.idle": {
-    "defaultMessage": "goose is working on it…"
+    "defaultMessage": "daisy is working on it…"
   },
   "loadingGoose.loadingConversation": {
     "defaultMessage": "loading conversation..."
@@ -1797,13 +1797,13 @@
     "defaultMessage": "restarting session..."
   },
   "loadingGoose.streaming": {
-    "defaultMessage": "goose is working on it…"
+    "defaultMessage": "daisy is working on it…"
   },
   "loadingGoose.thinking": {
-    "defaultMessage": "goose is thinking…"
+    "defaultMessage": "daisy is thinking…"
   },
   "loadingGoose.waiting": {
-    "defaultMessage": "goose is waiting…"
+    "defaultMessage": "daisy is waiting…"
   },
   "localInferenceSettings.deleteConfirm": {
     "defaultMessage": "Delete this model? You can re-download it later."

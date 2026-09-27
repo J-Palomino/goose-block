@@ -34,7 +34,7 @@ type ColorTokenKey = Exclude<McpUiStyleVariableKey, BaseTokenKey>;
 // ---------------------------------------------------------------------------
 const baseTokens: Pick<ThemeTokens, BaseTokenKey> = {
   // Typography — families
-  '--font-sans': "'Cash Sans', sans-serif",
+  '--font-sans': "system-ui, -apple-system, 'Segoe UI', sans-serif",
   '--font-mono': 'monospace',
 
   // Typography — weights
@@ -295,37 +295,7 @@ export const themes: Record<ThemeId, ThemeDefinition> = {
 // Helpers
 // ---------------------------------------------------------------------------
 
-// @font-face rules passed to MCP apps so sandboxed iframes can load host fonts.
-const HOST_FONT_CSS = `
-@font-face {
-  font-family: 'Cash Sans';
-  src: url(https://cash-f.squarecdn.com/static/fonts/cashsans/woff2/CashSans-Light.woff2) format('woff2'),
-       url(https://cash-f.squarecdn.com/static/fonts/cashsans/woff/CashSans-Light.woff) format('woff');
-  font-weight: 300;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Cash Sans';
-  src: url(https://cash-f.squarecdn.com/static/fonts/cashsans/woff2/CashSans-Regular.woff2) format('woff2'),
-       url(https://cash-f.squarecdn.com/static/fonts/cashsans/woff/CashSans-Regular.woff) format('woff');
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Cash Sans';
-  src: url(https://cash-f.squarecdn.com/static/fonts/cashsans/woff2/CashSans-Medium.woff2) format('woff2'),
-       url(https://cash-f.squarecdn.com/static/fonts/cashsans/woff/CashSans-Medium.woff) format('woff');
-  font-weight: 500;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Cash Sans';
-  src: url(https://cash-f.squarecdn.com/static/fonts/cashsans/woff2/CashSans-Bold.woff2) format('woff2'),
-       url(https://cash-f.squarecdn.com/static/fonts/cashsans/woff/CashSans-Bold.woff) format('woff');
-  font-weight: 700;
-  font-style: normal;
-}
-`.trim();
+const HOST_FONT_CSS = '';
 
 /**
  * Build the McpUiHostStyles object for MCP apps.
