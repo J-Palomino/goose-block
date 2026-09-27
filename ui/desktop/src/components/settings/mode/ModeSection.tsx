@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import { all_goose_modes, ModeSelectionItem } from './ModeSelectionItem';
+import { all_daisy_modes, ModeSelectionItem } from './ModeSelectionItem';
 import { useConfig } from '../../ConfigContext';
 import { ConversationLimitsDropdown } from './ConversationLimitsDropdown';
 
@@ -10,17 +10,17 @@ export const ModeSection = () => {
 
   const handleModeChange = async (newMode: string) => {
     try {
-      await upsert('GOOSE_MODE', newMode, false);
+      await upsert('DAISY_MODE', newMode, false);
       setCurrentMode(newMode);
     } catch (error) {
-      console.error('Error updating goose mode:', error);
-      throw new Error(`Failed to store new goose mode: ${newMode}`);
+      console.error('Error updating daisy mode:', error);
+      throw new Error(`Failed to store new daisy mode: ${newMode}`);
     }
   };
 
   const fetchCurrentMode = useCallback(async () => {
     try {
-      const mode = (await read('GOOSE_MODE', false)) as string;
+      const mode = (await read('DAISY_MODE', false)) as string;
       if (mode) {
         setCurrentMode(mode);
       }
@@ -31,7 +31,7 @@ export const ModeSection = () => {
 
   const fetchMaxTurns = useCallback(async () => {
     try {
-      const turns = (await read('GOOSE_MAX_TURNS', false)) as number;
+      const turns = (await read('DAISY_MAX_TURNS', false)) as number;
       if (turns) {
         setMaxTurns(turns);
       }
@@ -42,7 +42,7 @@ export const ModeSection = () => {
 
   const handleMaxTurnsChange = async (value: number) => {
     try {
-      await upsert('GOOSE_MAX_TURNS', value, false);
+      await upsert('DAISY_MAX_TURNS', value, false);
       setMaxTurns(value);
     } catch (error) {
       console.error('Error updating max turns:', error);
@@ -57,7 +57,7 @@ export const ModeSection = () => {
   return (
     <div className="space-y-1">
       {/* Mode Selection */}
-      {all_goose_modes.map((mode) => (
+      {all_daisy_modes.map((mode) => (
         <ModeSelectionItem
           key={mode.key}
           mode={mode}

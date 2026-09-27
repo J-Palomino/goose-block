@@ -7,7 +7,7 @@ import UpdateSection from './UpdateSection';
 import { COST_TRACKING_ENABLED, UPDATES_ENABLED } from '../../../updates';
 import { getApiUrl } from '../../../config';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../ui/card';
-import ThemeSelector from '../../GooseSidebar/ThemeSelector';
+import ThemeSelector from '../../DaisySidebar/ThemeSelector';
 import BlockLogoBlack from './icons/block-lockup_black.png';
 import BlockLogoWhite from './icons/block-lockup_white.png';
 
@@ -29,8 +29,8 @@ export default function AppSettingsSection({ scrollToSection }: AppSettingsSecti
   const [isDarkMode, setIsDarkMode] = useState(false);
   const updateSectionRef = useRef<HTMLDivElement>(null);
 
-  // Check if GOOSE_VERSION is set to determine if Updates section should be shown
-  const shouldShowUpdates = !window.appConfig.get('GOOSE_VERSION');
+  // Check if DAISY_VERSION is set to determine if Updates section should be shown
+  const shouldShowUpdates = !window.appConfig.get('DAISY_VERSION');
 
   // Check if running on macOS
   useEffect(() => {
@@ -214,7 +214,7 @@ export default function AppSettingsSection({ scrollToSection }: AppSettingsSecti
       <Card className="rounded-lg">
         <CardHeader className="pb-0">
           <CardTitle className="">Appearance</CardTitle>
-          <CardDescription>Configure how goose appears on your system</CardDescription>
+          <CardDescription>Configure how daisy appears on your system</CardDescription>
         </CardHeader>
         <CardContent className="pt-4 space-y-4 px-4">
           <div className="flex items-center justify-between">
@@ -253,7 +253,7 @@ export default function AppSettingsSection({ scrollToSection }: AppSettingsSecti
             <div>
               <h3 className="text-text-default text-xs">Menu bar icon</h3>
               <p className="text-xs text-text-muted max-w-md mt-[2px]">
-                Show goose in the menu bar
+                Show daisy in the menu bar
               </p>
             </div>
             <div className="flex items-center">
@@ -269,7 +269,7 @@ export default function AppSettingsSection({ scrollToSection }: AppSettingsSecti
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="text-text-default text-xs">Dock icon</h3>
-                <p className="text-xs text-text-muted max-w-md mt-[2px]">Show goose in the dock</p>
+                <p className="text-xs text-text-muted max-w-md mt-[2px]">Show daisy in the dock</p>
               </div>
               <div className="flex items-center">
                 <Switch
@@ -287,7 +287,7 @@ export default function AppSettingsSection({ scrollToSection }: AppSettingsSecti
             <div>
               <h3 className="text-text-default text-xs">Prevent Sleep</h3>
               <p className="text-xs text-text-muted max-w-md mt-[2px]">
-                Keep your computer awake while Goose is running a task (screen can still lock)
+                Keep your computer awake while Daisy is running a task (screen can still lock)
               </p>
             </div>
             <div className="flex items-center">
@@ -387,7 +387,7 @@ export default function AppSettingsSection({ scrollToSection }: AppSettingsSecti
       <Card className="rounded-lg">
         <CardHeader className="pb-0">
           <CardTitle className="mb-1">Theme</CardTitle>
-          <CardDescription>Customize the look and feel of goose</CardDescription>
+          <CardDescription>Customize the look and feel of daisy</CardDescription>
         </CardHeader>
         <CardContent className="pt-4 px-4">
           <ThemeSelector className="w-auto" hideTitle horizontal />
@@ -398,7 +398,7 @@ export default function AppSettingsSection({ scrollToSection }: AppSettingsSecti
         <CardHeader className="pb-0">
           <CardTitle className="mb-1">Help & feedback</CardTitle>
           <CardDescription>
-            Help us improve goose by reporting issues or requesting new features
+            Help us improve daisy by reporting issues or requesting new features
           </CardDescription>
         </CardHeader>
         <CardContent className="pt-4 px-4">
@@ -406,7 +406,7 @@ export default function AppSettingsSection({ scrollToSection }: AppSettingsSecti
             <Button
               onClick={() => {
                 window.open(
-                  'https://github.com/block/goose/issues/new?template=bug_report.md',
+                  'https://github.com/block/daisy/issues/new?template=bug_report.md',
                   '_blank'
                 );
               }}
@@ -418,7 +418,7 @@ export default function AppSettingsSection({ scrollToSection }: AppSettingsSecti
             <Button
               onClick={() => {
                 window.open(
-                  'https://github.com/block/goose/issues/new?template=feature_request.md',
+                  'https://github.com/block/daisy/issues/new?template=feature_request.md',
                   '_blank'
                 );
               }}
@@ -431,7 +431,7 @@ export default function AppSettingsSection({ scrollToSection }: AppSettingsSecti
         </CardContent>
       </Card>
 
-      {/* Version Section - only show if GOOSE_VERSION is set */}
+      {/* Version Section - only show if DAISY_VERSION is set */}
       {!shouldShowUpdates && (
         <Card className="rounded-lg">
           <CardHeader className="pb-0">
@@ -445,21 +445,21 @@ export default function AppSettingsSection({ scrollToSection }: AppSettingsSecti
                 className="h-8 w-auto"
               />
               <span className="text-2xl font-mono text-black dark:text-white">
-                {String(window.appConfig.get('GOOSE_VERSION') || 'Development')}
+                {String(window.appConfig.get('DAISY_VERSION') || 'Development')}
               </span>
             </div>
           </CardContent>
         </Card>
       )}
 
-      {/* Update Section - only show if GOOSE_VERSION is NOT set */}
+      {/* Update Section - only show if DAISY_VERSION is NOT set */}
       {UPDATES_ENABLED && shouldShowUpdates && (
         <div ref={updateSectionRef}>
           <Card className="rounded-lg">
             <CardHeader className="pb-0">
               <CardTitle className="mb-1">Updates</CardTitle>
               <CardDescription>
-                Check for and install updates to keep goose running at its best
+                Check for and install updates to keep daisy running at its best
               </CardDescription>
             </CardHeader>
             <CardContent className="px-4">
@@ -490,7 +490,7 @@ export default function AppSettingsSection({ scrollToSection }: AppSettingsSecti
                 <ol className="list-decimal pl-5 space-y-2">
                   <li>Open System Preferences</li>
                   <li>Click on Notifications</li>
-                  <li>Find and select goose in the application list</li>
+                  <li>Find and select daisy in the application list</li>
                   <li>Enable notifications and adjust settings as desired</li>
                 </ol>
               </div>
@@ -500,7 +500,7 @@ export default function AppSettingsSection({ scrollToSection }: AppSettingsSecti
                 <ol className="list-decimal pl-5 space-y-2">
                   <li>Open Settings</li>
                   <li>Go to System &gt; Notifications</li>
-                  <li>Find and select goose in the application list</li>
+                  <li>Find and select daisy in the application list</li>
                   <li>Toggle notifications on and adjust settings as desired</li>
                 </ol>
               </div>

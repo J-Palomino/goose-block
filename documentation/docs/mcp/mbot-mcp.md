@@ -1,12 +1,12 @@
 ---
 title: mbot Extension
-description: Control a MakeBlock mbot2 rover through MQTT and MCP as a Goose Extension
+description: Control a MakeBlock mbot2 rover through MQTT and MCP as a Daisy Extension
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import YouTubeShortEmbed from '@site/src/components/YouTubeShortEmbed';
-import GooseDesktopInstaller from '@site/src/components/GooseDesktopInstaller';
+import DaisyDesktopInstaller from '@site/src/components/DaisyDesktopInstaller';
 
 <YouTubeShortEmbed videoUrl="https://www.youtube.com/embed/QKg2Q6YCzdw" />
 
@@ -14,10 +14,10 @@ This tutorial will get you started with [deemkeen's MQTT MCP server](https://git
 
 :::tip TLDR
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-  [Launch the installer](goose://extension?cmd=/path/to/java&arg=-jar&arg=/path/to/mbotmcp-0.0.1-SNAPSHOT.jar&name=mbot2&description=mbot2&env=MQTT_SERVER_URI%3Dtcp://1.2.3.4:1883&env=MQTT_USERNAME%3Dyour_username&env=MQTT_PASSWORD%3Dyour_password)
+  <TabItem value="ui" label="Daisy Desktop" default>
+  [Launch the installer](daisy://extension?cmd=/path/to/java&arg=-jar&arg=/path/to/mbotmcp-0.0.1-SNAPSHOT.jar&name=mbot2&description=mbot2&env=MQTT_SERVER_URI%3Dtcp://1.2.3.4:1883&env=MQTT_USERNAME%3Dyour_username&env=MQTT_PASSWORD%3Dyour_password)
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
   **Command**
   ```sh
   /path/to/java -jar /path/to/mbotmcp-0.0.1-SNAPSHOT.jar
@@ -35,8 +35,8 @@ This tutorial will get you started with [deemkeen's MQTT MCP server](https://git
 ## Configuration
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-  <GooseDesktopInstaller
+  <TabItem value="ui" label="Daisy Desktop" default>
+  <DaisyDesktopInstaller
     extensionId="mbot2"
     extensionName="mbot2"
     description="mbot2"
@@ -49,15 +49,15 @@ This tutorial will get you started with [deemkeen's MQTT MCP server](https://git
     ]}
   />
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
   1. Run the `configure` command:
   ```sh
-  goose configure
+  daisy configure
   ```
 
   1. Choose to add a `Command-line Extension`
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -74,7 +74,7 @@ This tutorial will get you started with [deemkeen's MQTT MCP server](https://git
 
   2. Give your extension a name
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -91,7 +91,7 @@ This tutorial will get you started with [deemkeen's MQTT MCP server](https://git
 
   3. Enter the command
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -109,9 +109,9 @@ This tutorial will get you started with [deemkeen's MQTT MCP server](https://git
     └ 
   ```  
 
-  4. Enter the number of seconds Goose should wait for actions to complete before timing out. Default is 300s
+  4. Enter the number of seconds Daisy should wait for actions to complete before timing out. Default is 300s
    ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -135,7 +135,7 @@ This tutorial will get you started with [deemkeen's MQTT MCP server](https://git
 
   5. Choose to add a description. If you select "Yes" here, you will be prompted to enter a description for the extension.
    ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -162,7 +162,7 @@ This tutorial will get you started with [deemkeen's MQTT MCP server](https://git
 
   6. Add environment variables for MQTT
    ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -233,7 +233,7 @@ The available commands allow you to drive the mbot2 rover around, including:
 
 The default distance to travel is 70cm (about 27 inches), and the turn angles are set to 90 degrees. You can change these values in the [Python code on the mbot2](https://github.com/deemkeen/mbotmcp/blob/main/assets/mbot-mqtt.py). The mbot2 has a lot of other capabilities with the proximity sensors, lights, and color detection sensor on the bottom of the unit that you can add to the Python code, and will need to update [the Java code](https://github.com/deemkeen/mbotmcp/blob/main/src/main/java/de/emkeen/mbotmcp/service/BotService.java) to include those commands via MCP.
 
-#### Goose Interaction
+#### Daisy Interaction
 
 ```
 ( O)> Let my mbot2 explore the area

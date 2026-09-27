@@ -1,23 +1,23 @@
 ---
 title: Puppeteer Extension
-description: Add Puppeteer MCP Server as a Goose Extension
+description: Add Puppeteer MCP Server as a Daisy Extension
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import YouTubeShortEmbed from '@site/src/components/YouTubeShortEmbed';
-import GooseDesktopInstaller from '@site/src/components/GooseDesktopInstaller';
+import DaisyDesktopInstaller from '@site/src/components/DaisyDesktopInstaller';
 
 <YouTubeShortEmbed videoUrl="https://youtube.com/embed/rms0wVGnlXA" />
 
-This tutorial covers how to add the [Puppeteer MCP Server](https://github.com/modelcontextprotocol/servers/tree/HEAD/src/puppeteer) as a Goose extension, enabling Goose to interact with websites - navigating pages, filling forms, clicking buttons, taking screenshots, and executing JavaScript in a real browser environment.
+This tutorial covers how to add the [Puppeteer MCP Server](https://github.com/modelcontextprotocol/servers/tree/HEAD/src/puppeteer) as a Daisy extension, enabling Daisy to interact with websites - navigating pages, filling forms, clicking buttons, taking screenshots, and executing JavaScript in a real browser environment.
 
 :::tip TLDR
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-  [Launch the installer](goose://extension?cmd=npx&arg=-y&arg=%40modelcontextprotocol%2Fserver-puppeteer&id=puppeteer&name=Puppeteer&description=Headless%20browser%20automation)
+  <TabItem value="ui" label="Daisy Desktop" default>
+  [Launch the installer](daisy://extension?cmd=npx&arg=-y&arg=%40modelcontextprotocol%2Fserver-puppeteer&id=puppeteer&name=Puppeteer&description=Headless%20browser%20automation)
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
   **Command**
   ```sh
   npx -y @modelcontextprotocol/server-puppeteer
@@ -34,8 +34,8 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 :::
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-  <GooseDesktopInstaller
+  <TabItem value="ui" label="Daisy Desktop" default>
+  <DaisyDesktopInstaller
     extensionId="puppeteer"
     extensionName="Puppeteer"
     description="Headless browser automation"
@@ -43,15 +43,15 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
     args={["-y", "@modelcontextprotocol/server-puppeteer"]}
   />
 </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
   1. Run the `configure` command:
   ```sh
-  goose configure
+  daisy configure
   ```
 
   2. Choose to add a `Command-line Extension`
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -68,7 +68,7 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 
   3. Give your extension a name
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -85,7 +85,7 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 
   4. Enter the command
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -103,9 +103,9 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
     └ 
   ```  
 
-  5. Enter the number of seconds Goose should wait for actions to complete before timing out. Default is 300s
+  5. Enter the number of seconds Daisy should wait for actions to complete before timing out. Default is 300s
    ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -128,7 +128,7 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 
   6. Choose to add a description. If you select "Yes" here, you will be prompted to enter a description for the extension.
    ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -155,7 +155,7 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
   7. Choose No when asked to add environment variables
 
    ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -188,25 +188,25 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 
 
 ## Example Usage
-In this example, I’ll show you how to use Goose with the Puppeteer Extension to perform an accessibility audit on a website. By automating browser interactions, Goose can navigate the site, test keyboard navigation, check color contrast, analyze ARIA attributes, and generate a detailed report with recommendations and code fixes.
+In this example, I’ll show you how to use Daisy with the Puppeteer Extension to perform an accessibility audit on a website. By automating browser interactions, Daisy can navigate the site, test keyboard navigation, check color contrast, analyze ARIA attributes, and generate a detailed report with recommendations and code fixes.
 
 This allows you to quickly identify and resolve accessibility issues without manually inspecting each page.
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-   1. Open a new session in Goose Desktop
+  <TabItem value="ui" label="Daisy Desktop" default>
+   1. Open a new session in Daisy Desktop
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
-  1. Open a terminal and start a new Goose session:
+  <TabItem value="cli" label="Daisy CLI">
+  1. Open a terminal and start a new Daisy session:
 
   ```sh
-  goose session
+  daisy session
   ```
 
   </TabItem>
 </Tabs>
 
-### Goose Prompt
+### Daisy Prompt
 ```
 Can you check if my website is accessible? Please conduct a full accessibility audit, focusing on the following:
 
@@ -226,7 +226,7 @@ Here is the website to test: https://broken-workshop.dequelabs.com/. I want to e
 
 ```
 
-### Goose Output
+### Daisy Output
 
 :::note Desktop
 I'll help you conduct a comprehensive accessibility audit of the website. I'll use a combination of automated and manual testing approaches to evaluate different accessibility aspects.
@@ -410,7 +410,7 @@ This audit reveals several critical accessibility issues that should be addresse
 
 ### Further Automation with GitHub Extension
 
-You can take this accessibility audit a step further by combining the [GitHub Extension](/docs/mcp/github-mcp) with the Puppeteer Extension. With this setup, Goose doesn’t just find issues and apply fixes, it can also handle the entire Git workflow for you. The GitHub Extension allows Goose to commit changes, create a pull request, and even generate a PR description, so all you have to do is review and merge.
+You can take this accessibility audit a step further by combining the [GitHub Extension](/docs/mcp/github-mcp) with the Puppeteer Extension. With this setup, Daisy doesn’t just find issues and apply fixes, it can also handle the entire Git workflow for you. The GitHub Extension allows Daisy to commit changes, create a pull request, and even generate a PR description, so all you have to do is review and merge.
 
 1. Enable the GitHub extension by following the steps in the **[GitHub Extension Tutorial](/docs/mcp/github-mcp#configuration)**.
 
@@ -419,18 +419,18 @@ You can take this accessibility audit a step further by combining the [GitHub Ex
 Ensure your GitHub Personal Access Token has the necessary permissions for repository access and pull request creation when using this combined approach. 
 :::
 
-2. Ask Goose to:
+2. Ask Daisy to:
 
    - Create a new branch
    - Commit the accessibility improvements
    - Open a pull request
 
-### Goose prompt:
+### Daisy prompt:
 
 ```
 Can you create a new branch called 'accessibility-improvements', apply the accessibility fixes you suggested, and open a pull request with these changes?
 ```
-Goose will then:
+Daisy will then:
    - ✅ Create a branch: `accessibility-improvements`
    - ✅ Apply the recommended accessibility fixes
    - ✅ Commit the changes with a descriptive message

@@ -26,14 +26,14 @@ function UpcomingEventsSection() {
     <section className="w-full flex flex-col items-center gap-8 my-8">
       <div className="text-center">
         <Heading as="h1">Upcoming Events</Heading>
-        <p>Join us for livestreams, workshops, and discussions about goose and open source projects.</p>
+        <p>Join us for livestreams, workshops, and discussions about daisy and open source projects.</p>
       </div>
       
       {/* Embedded Calendar */}
       <iframe
         src="https://calget.com/c/t7jszrie"
         className="w-full h-[600px] border-0 rounded-lg"
-        title="Goose Community Calendar"
+        title="Daisy Community Calendar"
       />
       
       {/* Call to Action */}
@@ -113,7 +113,7 @@ function CommunityAllStarsSection() {
       <div className="text-center">
         <Heading as="h3">🏆 Monthly Leaderboard</Heading>
         <p className="text-sm text-textStandard">
-          Rankings of all goose contributors getting loose this month!
+          Rankings of all daisy contributors getting loose this month!
         </p>
       </div>
       
@@ -199,10 +199,10 @@ function CommunityAllStarsSection() {
           </div>
           <div className="text-sm">
             Want to be a Community All Star? Just start contributing on{' '}
-            <Link href="https://github.com/block/goose">GitHub</Link>, helping others on{' '}
+            <Link href="https://github.com/block/daisy">GitHub</Link>, helping others on{' '}
             <Link href="https://discord.gg/block-opensource">Discord</Link>, or share your 
-            goose projects with the community! You can check out the{' '}
-            <Link href="https://github.com/block/goose/blob/main/CONTRIBUTING.md">contributing guide</Link>{' '}
+            daisy projects with the community! You can check out the{' '}
+            <Link href="https://github.com/block/daisy/blob/main/CONTRIBUTING.md">contributing guide</Link>{' '}
             for more tips.
           </div>
         </div>
@@ -260,7 +260,7 @@ export default function Community(): ReactNode {
   return (
     <Layout 
       title="Community" 
-      description="Join the Goose community - connect with developers, contribute to the project, and help shape the future of AI-powered development tools."
+      description="Join the Daisy community - connect with developers, contribute to the project, and help shape the future of AI-powered development tools."
     >
       <main className="container">
         <UpcomingEventsSection />

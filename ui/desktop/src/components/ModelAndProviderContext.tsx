@@ -63,8 +63,8 @@ export const ModelAndProviderProvider: React.FC<ModelAndProviderProviderProps> =
         }
 
         phase = 'config';
-        await upsert('GOOSE_PROVIDER', providerName, false);
-        await upsert('GOOSE_MODEL', modelName, false);
+        await upsert('DAISY_PROVIDER', providerName, false);
+        await upsert('DAISY_MODEL', modelName, false);
 
         setCurrentProvider(providerName);
         setCurrentModel(modelName);
@@ -86,12 +86,12 @@ export const ModelAndProviderProvider: React.FC<ModelAndProviderProviderProps> =
   );
 
   const getFallbackModelAndProvider = useCallback(async () => {
-    const provider = window.appConfig.get('GOOSE_DEFAULT_PROVIDER') as string;
-    const model = window.appConfig.get('GOOSE_DEFAULT_MODEL') as string;
+    const provider = window.appConfig.get('DAISY_DEFAULT_PROVIDER') as string;
+    const model = window.appConfig.get('DAISY_DEFAULT_MODEL') as string;
     if (provider && model) {
       try {
-        await upsert('GOOSE_MODEL', model, false);
-        await upsert('GOOSE_PROVIDER', provider, false);
+        await upsert('DAISY_MODEL', model, false);
+        await upsert('DAISY_PROVIDER', provider, false);
       } catch (error) {
         console.error('[getFallbackModelAndProvider] Failed to write to config', error);
       }
@@ -105,11 +105,11 @@ export const ModelAndProviderProvider: React.FC<ModelAndProviderProviderProps> =
 
     // read from config
     try {
-      model = (await read('GOOSE_MODEL', false)) as string;
-      provider = (await read('GOOSE_PROVIDER', false)) as string;
+      model = (await read('DAISY_MODEL', false)) as string;
+      provider = (await read('DAISY_PROVIDER', false)) as string;
     } catch {
-      console.error(`Failed to read GOOSE_MODEL or GOOSE_PROVIDER from config`);
-      throw new Error('Failed to read GOOSE_MODEL or GOOSE_PROVIDER from config');
+      console.error(`Failed to read DAISY_MODEL or DAISY_PROVIDER from config`);
+      throw new Error('Failed to read DAISY_MODEL or DAISY_PROVIDER from config');
     }
     if (!model || !provider) {
       console.log('[getCurrentModelAndProvider] Checking app environment as fallback');
@@ -120,25 +120,25 @@ export const ModelAndProviderProvider: React.FC<ModelAndProviderProviderProps> =
 
   const getCurrentModelAndProviderForDisplay = useCallback(async () => {
     const modelProvider = await getCurrentModelAndProvider();
-    const gooseModel = modelProvider.model;
-    const gooseProvider = modelProvider.provider;
+    const daisyModel = modelProvider.model;
+    const daisyProvider = modelProvider.provider;
 
     // lookup display name
     let metadata: ProviderMetadata;
 
     try {
-      metadata = await getProviderMetadata(String(gooseProvider), getProviders);
+      metadata = await getProviderMetadata(String(daisyProvider), getProviders);
     } catch {
-      return { model: gooseModel, provider: gooseProvider };
+      return { model: daisyModel, provider: daisyProvider };
     }
     const providerDisplayName = metadata.display_name;
 
-    return { model: gooseModel, provider: providerDisplayName };
+    return { model: daisyModel, provider: providerDisplayName };
   }, [getCurrentModelAndProvider, getProviders]);
 
   const getCurrentModelDisplayName = useCallback(async () => {
     try {
-      const currentModelName = (await read('GOOSE_MODEL', false)) as string;
+      const currentModelName = (await read('DAISY_MODEL', false)) as string;
       return getModelDisplayName(currentModelName);
     } catch {
       return 'Select Model';
@@ -147,7 +147,7 @@ export const ModelAndProviderProvider: React.FC<ModelAndProviderProviderProps> =
 
   const getCurrentProviderDisplayName = useCallback(async () => {
     try {
-      const currentModelName = (await read('GOOSE_MODEL', false)) as string;
+      const currentModelName = (await read('DAISY_MODEL', false)) as string;
       const providerDisplayName = getProviderDisplayName(currentModelName);
       if (providerDisplayName) {
         return providerDisplayName;

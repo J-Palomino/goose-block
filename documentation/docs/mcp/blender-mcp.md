@@ -1,23 +1,23 @@
 ---
 title: Blender Extension
-description: Add Blender MCP Server as a Goose Extension
+description: Add Blender MCP Server as a Daisy Extension
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import YouTubeShortEmbed from '@site/src/components/YouTubeShortEmbed';
-import GooseDesktopInstaller from '@site/src/components/GooseDesktopInstaller';
+import DaisyDesktopInstaller from '@site/src/components/DaisyDesktopInstaller';
 
 <YouTubeShortEmbed videoUrl="https://www.youtube.com/embed/izoQatKtJ2I" />
 
-This tutorial covers how to add the [Blender MCP Server](https://github.com/ahujasid/blender-mcp) as a Goose extension to create 3D scenes, control Blender with natural language, generate models, apply materials, and more.
+This tutorial covers how to add the [Blender MCP Server](https://github.com/ahujasid/blender-mcp) as a Daisy extension to create 3D scenes, control Blender with natural language, generate models, apply materials, and more.
 
 :::tip TLDR
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-  [Launch the installer](goose://extension?cmd=uvx&arg=blender-mcp&id=blender&name=Blender&description=Blender%203D%20scene%20creation%20integration)
+  <TabItem value="ui" label="Daisy Desktop" default>
+  [Launch the installer](daisy://extension?cmd=uvx&arg=blender-mcp&id=blender&name=Blender&description=Blender%203D%20scene%20creation%20integration)
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
   **Command**
   ```sh
   uvx blender-mcp
@@ -51,8 +51,8 @@ Note that you'll need [uv](https://docs.astral.sh/uv/#installation) installed on
 ### Add Blender MCP Server
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-  <GooseDesktopInstaller
+  <TabItem value="ui" label="Daisy Desktop" default>
+  <DaisyDesktopInstaller
     extensionId="blender"
     extensionName="Blender"
     description="Blender 3D scene creation integration"
@@ -60,15 +60,15 @@ Note that you'll need [uv](https://docs.astral.sh/uv/#installation) installed on
     args={["blender-mcp"]}
   />
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
   1. Run the `configure` command:
   ```sh
-  goose configure
+  daisy configure
   ```
 
   2. Choose to add a `Command-line Extension`
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -85,7 +85,7 @@ Note that you'll need [uv](https://docs.astral.sh/uv/#installation) installed on
 
   3. Give your extension a name
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -102,7 +102,7 @@ Note that you'll need [uv](https://docs.astral.sh/uv/#installation) installed on
 
   4. Enter the command
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -120,9 +120,9 @@ Note that you'll need [uv](https://docs.astral.sh/uv/#installation) installed on
     └ 
   ```  
 
-  5. Enter the number of seconds Goose should wait for actions to complete before timing out. Default is 300s
+  5. Enter the number of seconds Daisy should wait for actions to complete before timing out. Default is 300s
     ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -146,7 +146,7 @@ Note that you'll need [uv](https://docs.astral.sh/uv/#installation) installed on
 
   6. Choose to add a description. If you select "Yes" here, you will be prompted to enter a description for the extension.
     ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -174,7 +174,7 @@ Note that you'll need [uv](https://docs.astral.sh/uv/#installation) installed on
   7. Choose No when asked to add environment variables
 
    ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -207,16 +207,16 @@ Note that you'll need [uv](https://docs.astral.sh/uv/#installation) installed on
 
 ## Example Usage
 
-In this example, I’ll show you how to use Goose with the Blender Extension to build an entire 3D campfire scene from scratch. By automating Blender controls through natural language, Goose can create objects like logs and fireballs, apply realistic materials, add lighting effects, generate particles for sparks, create subtle smoke, and even animate the fire to gently pulse over time.
+In this example, I’ll show you how to use Daisy with the Blender Extension to build an entire 3D campfire scene from scratch. By automating Blender controls through natural language, Daisy can create objects like logs and fireballs, apply realistic materials, add lighting effects, generate particles for sparks, create subtle smoke, and even animate the fire to gently pulse over time.
 
-In this example, I’ll show you how to use Goose with the Blender Extension to build a full 3D campfire scene, including logs, fireballs, lighting, and subtle fire animation, just by describing what you want.
+In this example, I’ll show you how to use Daisy with the Blender Extension to build a full 3D campfire scene, including logs, fireballs, lighting, and subtle fire animation, just by describing what you want.
 
-### Goose Prompt
+### Daisy Prompt
 
 > Build a cozy campfire scene. Add a ground plane, place a few logs in a circle, and add a glowing fireball in the middle. Set the lighting to a warm tone like a sunset, and angle the camera for a dramatic shot. Give the logs a rough wood texture and make the fireball emit light.
 
 
-### Goose Output
+### Daisy Output
 
 :::note CLI
 

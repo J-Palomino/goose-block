@@ -20,7 +20,7 @@ interface PairProps {
   chat: ChatType;
   setChat: (chat: ChatType) => void;
   setView: (view: View, viewOptions?: ViewOptions) => void;
-  setIsGoosehintsModalOpen: (isOpen: boolean) => void;
+  setIsDaisyhintsModalOpen: (isOpen: boolean) => void;
   setFatalError: (value: ((prevState: string | null) => string | null) | string | null) => void;
   setAgentWaitingMessage: (msg: string | null) => void;
   agentState: AgentState;
@@ -31,7 +31,7 @@ export default function Pair({
   chat,
   setChat,
   setView,
-  setIsGoosehintsModalOpen,
+  setIsDaisyhintsModalOpen,
   setFatalError,
   setAgentWaitingMessage,
   agentState,
@@ -125,7 +125,7 @@ export default function Pair({
       autoSubmit={shouldAutoSubmit}
       setChat={setChat}
       setView={setView}
-      setIsGoosehintsModalOpen={setIsGoosehintsModalOpen}
+      setIsDaisyhintsModalOpen={setIsDaisyhintsModalOpen}
       onMessageSubmit={handleMessageSubmit}
       customChatInputProps={customChatInputProps}
       contentClassName={cn('pr-1 pb-10', (isMobile || sidebarState === 'collapsed') && 'pt-11')} // Use dynamic content class with mobile margin and sidebar state

@@ -1,19 +1,19 @@
 ---
-title: goose grant program
+title: daisy grant program
 description: $100K grants for open source devs building the future of agentic AI.
 ---
 
 import Link from "@docusaurus/Link";
 import { Button } from "@site/src/components/ui/button";
 
-![](/img/goose-grant-program.png)
+![](/img/daisy-grant-program.png)
 
-# goose grant program
+# daisy grant program
 
-We’ve created a grant program to accelerate goose in the open source community. If you believe in a future where agentic AI is open and accessible to all, we invite you to help us shape that future.
+We’ve created a grant program to accelerate daisy in the open source community. If you believe in a future where agentic AI is open and accessible to all, we invite you to help us shape that future.
 
 <Link to="https://forms.gle/psHBhj8xFY8q1nHP7" target="_blank" rel="noopener noreferrer">
-    ##  → apply for a goose grant
+    ##  → apply for a daisy grant
 </Link>
 
 <br/>
@@ -22,14 +22,14 @@ We’ve created a grant program to accelerate goose in the open source community
   </Link>
 <br/>
 
-We're looking for clear, compelling, and ambitious ideas that align with goose’s values: openness, modularity, and user empowerment.
+We're looking for clear, compelling, and ambitious ideas that align with daisy’s values: openness, modularity, and user empowerment.
 
 We'd love to see proposals that explore novel ways of interacting with AI agents. Here are just a few examples:
 
-- **New interaction paradigms:** interact with goose through sketches (white boarding!), camera, voice interactions that pay attention to emotions or other multi-modal interactions
+- **New interaction paradigms:** interact with daisy through sketches (white boarding!), camera, voice interactions that pay attention to emotions or other multi-modal interactions
 - **Self-flying:** increase autonomy by adding a long-running background mode, experimenting with new intermediate states, deep planning, and tools to support such operation
-- **Self improving agents:** efforts like absolute zero, the godel Darwin machine and alphaevolve show how agents can improve themselves. Help goose rewrite its system prompt, its MCP servers and maybe its own code
-- **Automate everything:** give goose tools to interact with the real world for home automation, robots or 3D printing.
+- **Self improving agents:** efforts like absolute zero, the godel Darwin machine and alphaevolve show how agents can improve themselves. Help daisy rewrite its system prompt, its MCP servers and maybe its own code
+- **Automate everything:** give daisy tools to interact with the real world for home automation, robots or 3D printing.
 
 Above all, we want to fund work that aligns with these values and demonstrates an open-source-first mindset.
 
@@ -63,13 +63,13 @@ We will support as many strong, mission-aligned projects as our resources allow.
 
 Potentially, yes. We may extend or renew grants based on progress, impact, and alignment. Renewals are not guaranteed and will be evaluated on a case-by-case basis.
 
-**Does a grant lead to a job at goose or Block?**
+**Does a grant lead to a job at daisy or Block?**
 
-No. Grants are not employment and do not imply future hiring. However, collaboration with goose or Block teams may emerge naturally from impactful work.
+No. Grants are not employment and do not imply future hiring. However, collaboration with daisy or Block teams may emerge naturally from impactful work.
 
 **How does work get reviewed?**
 
-Each grant project will define clear deliverables and milestones. Progress will be reviewed quarterly by the goose team and selected external reviewers.
+Each grant project will define clear deliverables and milestones. Progress will be reviewed quarterly by the daisy team and selected external reviewers.
 
 **How are payouts structured?**
 
@@ -98,17 +98,17 @@ Anyone. We welcome individuals, working on their own or in small teams, as long 
   </Link>
 <br/>
 
-If you have additional questions, feel free to reach out in [Discord](https://discord.com/channels/1287729918100246654/1397943505216868444) in the #goose-grants forum.
+If you have additional questions, feel free to reach out in [Discord](https://discord.com/channels/1287729918100246654/1397943505216868444) in the #daisy-grants forum.
 
 <head>
-  <meta property="og:title" content="goose grant program" />
+  <meta property="og:title" content="daisy grant program" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="https://block.github.io/goose/grants" />
+  <meta property="og:url" content="https://block.github.io/daisy/grants" />
   <meta property="og:description" content="$100K grants for open source devs building the future of agentic AI." />
-  <meta property="og:image" content="https://block.github.io/goose/assets/images/goose-grant-program-3ede164a454d9f29e779108c63773416.png" />
+  <meta property="og:image" content="https://block.github.io/daisy/assets/images/daisy-grant-program-3ede164a454d9f29e779108c63773416.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta property="twitter:domain" content="block.github.io/goose" />
-  <meta name="twitter:title" content="goose grant program" />
+  <meta property="twitter:domain" content="block.github.io/daisy" />
+  <meta name="twitter:title" content="daisy grant program" />
   <meta name="twitter:description" content="$100K grants for open source devs building the future of agentic AI." />
-  <meta name="twitter:image" content="https://block.github.io/goose/assets/images/goose-grant-program-3ede164a454d9f29e779108c63773416.png" />
+  <meta name="twitter:image" content="https://block.github.io/daisy/assets/images/daisy-grant-program-3ede164a454d9f29e779108c63773416.png" />
 </head>

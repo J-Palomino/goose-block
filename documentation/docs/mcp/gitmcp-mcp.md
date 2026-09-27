@@ -1,25 +1,25 @@
 ---
 title: GitMCP Extension
-description: Add Git MCP Server as a Goose Extension
+description: Add Git MCP Server as a Daisy Extension
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import YouTubeShortEmbed from '@site/src/components/YouTubeShortEmbed';
 import CLIExtensionInstructions from '@site/src/components/CLIExtensionInstructions';
-import GooseDesktopInstaller from '@site/src/components/GooseDesktopInstaller';
+import DaisyDesktopInstaller from '@site/src/components/DaisyDesktopInstaller';
 
 
 <YouTubeShortEmbed videoUrl="https://www.youtube.com/embed/6aV8pinnUS8" /> 
 
-This tutorial covers how to add the [Git MCP Server](https://github.com/idosal/git-mcp) as a Goose extension to give LLMs live access to GitHub repos, enabling smart documentation search, code exploration, and accurate project insights.
+This tutorial covers how to add the [Git MCP Server](https://github.com/idosal/git-mcp) as a Daisy extension to give LLMs live access to GitHub repos, enabling smart documentation search, code exploration, and accurate project insights.
 
 :::tip TLDR
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-  [Launch the installer](goose://extension?cmd=npx&arg=mcp-remote&arg=https%3A%2F%2Fgitmcp.io%2Fdocs&id=gitmcp&name=GitMCP&description=Remote%20MCP%20server%20from%20gitmcp.io)
+  <TabItem value="ui" label="Daisy Desktop" default>
+  [Launch the installer](daisy://extension?cmd=npx&arg=mcp-remote&arg=https%3A%2F%2Fgitmcp.io%2Fdocs&id=gitmcp&name=GitMCP&description=Remote%20MCP%20server%20from%20gitmcp.io)
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
   **Command**
   ```sh
   npx -y mcp-remote https://gitmcp.io/docs
@@ -32,8 +32,8 @@ This tutorial covers how to add the [Git MCP Server](https://github.com/idosal/g
 ## Configuration
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-    <GooseDesktopInstaller
+  <TabItem value="ui" label="Daisy Desktop" default>
+    <DaisyDesktopInstaller
         extensionId="Git-mcp"
         extensionName="Git mcp"
         description="Git MCP server for up-to-date docs and project insights"
@@ -44,7 +44,7 @@ This tutorial covers how to add the [Git MCP Server](https://github.com/idosal/g
         note="Note that you'll need Node.js installed on your system to run this command, as it uses npx."
     />
  </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
       <CLIExtensionInstructions
         name="Git MCP"
         command="npx -y mcp-remote https://gitmcp.io/docs"
@@ -55,24 +55,24 @@ This tutorial covers how to add the [Git MCP Server](https://github.com/idosal/g
 
 ## Example Usage
 
-In this example, Goose uses GitMCP to pull real-time documentation from the `openai/whisper` GitHub repository, explore how the speech-to-text model works, and surface accurate setup instructions and command-line usage—all directly from the source.
+In this example, Daisy uses GitMCP to pull real-time documentation from the `openai/whisper` GitHub repository, explore how the speech-to-text model works, and surface accurate setup instructions and command-line usage—all directly from the source.
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-   1. Open a new session in Goose Desktop
+  <TabItem value="ui" label="Daisy Desktop" default>
+   1. Open a new session in Daisy Desktop
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
 
-  1. Open a terminal and start a new Goose session:
+  1. Open a terminal and start a new Daisy session:
 
   ```sh
-  goose session
+  daisy session
   ```
 
   </TabItem>
 </Tabs>
 
-### Goose Prompt
+### Daisy Prompt
 ```
   Can you help me understand how the OpenAI Whisper speech-to-text model works?
 
@@ -86,7 +86,7 @@ In this example, Goose uses GitMCP to pull real-time documentation from the `ope
 
   Give me the response in a Markdown guide format.
 ```
-### Goose Output
+### Daisy Output
 
 :::note Desktop
 

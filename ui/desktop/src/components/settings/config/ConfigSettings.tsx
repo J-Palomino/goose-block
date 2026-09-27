@@ -109,7 +109,7 @@ export default function ConfigSettings() {
     setIsModalOpen(open);
   };
 
-  const currentProvider = typedConfig.GOOSE_PROVIDER || '';
+  const currentProvider = typedConfig.DAISY_PROVIDER || '';
 
   const configEntries: [string, ConfigValue][] = useMemo(() => {
     const currentProviderPrefixes = providerPrefixes[currentProvider] || [];
@@ -143,7 +143,7 @@ export default function ConfigSettings() {
           Configuration
         </CardTitle>
         <CardDescription>
-          Edit your goose configuration settings
+          Edit your daisy configuration settings
           {currentProvider && ` (current settings for ${currentProvider})`}
         </CardDescription>
       </CardHeader>
@@ -162,7 +162,7 @@ export default function ConfigSettings() {
                 Configuration Editor
               </DialogTitle>
               <DialogDescription>
-                Edit your goose configuration settings
+                Edit your daisy configuration settings
                 {currentProvider && ` (current settings for ${currentProvider})`}
               </DialogDescription>
             </DialogHeader>

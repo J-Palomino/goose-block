@@ -590,7 +590,7 @@ const SessionListView: React.FC<SessionListViewProps> = React.memo(
                   <h1 className="text-4xl font-light">Chat history</h1>
                 </div>
                 <p className="text-sm text-text-muted mb-4">
-                  View and search your past conversations with Goose.
+                  View and search your past conversations with Daisy.
                 </p>
               </div>
             </div>

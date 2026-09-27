@@ -23,7 +23,7 @@ import path from 'node:path';
 import os from 'node:os';
 import { spawn } from 'child_process';
 import 'dotenv/config';
-import { startGoosed } from './goosed';
+import { startDaisyd } from './daisyd';
 import { expandTilde, getBinaryPath } from './utils/pathUtils';
 import { loadShellEnv } from './utils/loadEnv';
 import log from './utils/logger';
@@ -74,28 +74,28 @@ function shouldSetupUpdater(): boolean {
 }
 
 // Define temp directory for pasted images
-const gooseTempDir = path.join(app.getPath('temp'), 'goose-pasted-images');
+const daisyTempDir = path.join(app.getPath('temp'), 'daisy-pasted-images');
 
 // Function to ensure the temporary directory exists
 async function ensureTempDirExists(): Promise<string> {
   try {
     // Check if the path already exists
     try {
-      const stats = await fs.stat(gooseTempDir);
+      const stats = await fs.stat(daisyTempDir);
 
       // If it exists but is not a directory, remove it and recreate
       if (!stats.isDirectory()) {
-        await fs.unlink(gooseTempDir);
-        await fs.mkdir(gooseTempDir, { recursive: true });
+        await fs.unlink(daisyTempDir);
+        await fs.mkdir(daisyTempDir, { recursive: true });
       }
 
       // Startup cleanup: remove old files and any symlinks
-      const files = await fs.readdir(gooseTempDir);
+      const files = await fs.readdir(daisyTempDir);
       const now = Date.now();
       const MAX_AGE = 24 * 60 * 60 * 1000; // 24 hours in milliseconds
 
       for (const file of files) {
-        const filePath = path.join(gooseTempDir, file);
+        const filePath = path.join(daisyTempDir, file);
         try {
           const fileStats = await fs.lstat(filePath);
 
@@ -131,21 +131,21 @@ async function ensureTempDirExists(): Promise<string> {
     } catch (error) {
       if (error && typeof error === 'object' && 'code' in error && error.code === 'ENOENT') {
         // Directory doesn't exist, create it
-        await fs.mkdir(gooseTempDir, { recursive: true });
+        await fs.mkdir(daisyTempDir, { recursive: true });
       } else {
         throw error;
       }
     }
 
     // Set proper permissions on the directory (0755 = rwxr-xr-x)
-    await fs.chmod(gooseTempDir, 0o755);
+    await fs.chmod(daisyTempDir, 0o755);
 
-    console.log('[Main] Temporary directory for pasted images ensured:', gooseTempDir);
+    console.log('[Main] Temporary directory for pasted images ensured:', daisyTempDir);
   } catch (error) {
-    console.error('[Main] Failed to create temp directory:', gooseTempDir, error);
+    console.error('[Main] Failed to create temp directory:', daisyTempDir, error);
     throw error; // Propagate error
   }
-  return gooseTempDir;
+  return daisyTempDir;
 }
 
 if (started) app.quit();
@@ -154,13 +154,13 @@ if (started) app.quit();
 // In production, register normally
 if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
   // Development mode - force registration
-  console.log('[Main] Development mode: Forcing protocol registration for goose://');
-  app.setAsDefaultProtocolClient('goose');
+  console.log('[Main] Development mode: Forcing protocol registration for daisy://');
+  app.setAsDefaultProtocolClient('daisy');
 
   if (process.platform === 'darwin') {
     try {
       // Reset the default handler to ensure dev version takes precedence
-      spawn('open', ['-a', process.execPath, '--args', '--reset-protocol-handler', 'goose'], {
+      spawn('open', ['-a', process.execPath, '--args', '--reset-protocol-handler', 'daisy'], {
         detached: true,
         stdio: 'ignore',
       });
@@ -170,7 +170,7 @@ if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
   }
 } else {
   // Production mode - normal registration
-  app.setAsDefaultProtocolClient('goose');
+  app.setAsDefaultProtocolClient('daisy');
 }
 
 // Only apply single instance lock on Windows where it's needed for deep links
@@ -182,7 +182,7 @@ if (process.platform === 'win32') {
     app.quit();
   } else {
     app.on('second-instance', (_event, commandLine) => {
-      const protocolUrl = commandLine.find((arg) => arg.startsWith('goose://'));
+      const protocolUrl = commandLine.find((arg) => arg.startsWith('daisy://'));
       if (protocolUrl) {
         const parsedUrl = new URL(protocolUrl);
         // If it's a bot/recipe URL, handle it directly by creating a new window
@@ -226,7 +226,7 @@ if (process.platform === 'win32') {
   }
 
   // Handle protocol URLs on Windows startup
-  const protocolUrl = process.argv.find((arg) => arg.startsWith('goose://'));
+  const protocolUrl = process.argv.find((arg) => arg.startsWith('daisy://'));
   if (protocolUrl) {
     app.whenReady().then(() => {
       handleProtocolUrl(protocolUrl);
@@ -365,7 +365,7 @@ app.on('open-url', async (_event, url) => {
 app.on('will-finish-launching', () => {
   if (process.platform === 'darwin') {
     app.setAboutPanelOptions({
-      applicationName: 'Goose',
+      applicationName: 'Daisy',
       applicationVersion: app.getVersion(),
     });
   }
@@ -420,7 +420,7 @@ async function handleFileOpen(filePath: string) {
 
     // Show user-friendly error notification
     new Notification({
-      title: 'Goose',
+      title: 'Daisy',
       body: `Could not open directory: ${path.basename(filePath)}`,
     }).show();
   }
@@ -448,52 +448,52 @@ const parseArgs = () => {
   return { dirPath };
 };
 
-const getGooseProvider = () => {
+const getDaisyProvider = () => {
   loadShellEnv(app.isPackaged);
   //{env-macro-start}//
-  //needed when goose is bundled for a specific provider
+  //needed when daisy is bundled for a specific provider
   //{env-macro-end}//
   return [
-    process.env.GOOSE_DEFAULT_PROVIDER,
-    process.env.GOOSE_DEFAULT_MODEL,
-    process.env.GOOSE_PREDEFINED_MODELS,
+    process.env.DAISY_DEFAULT_PROVIDER,
+    process.env.DAISY_DEFAULT_MODEL,
+    process.env.DAISY_PREDEFINED_MODELS,
   ];
 };
 
 const getSharingUrl = () => {
   // checks app env for sharing url
   loadShellEnv(app.isPackaged); // will try to take it from the zshrc file
-  // if GOOSE_BASE_URL_SHARE is found, we will set process.env.GOOSE_BASE_URL_SHARE, otherwise we return what it is set
+  // if DAISY_BASE_URL_SHARE is found, we will set process.env.DAISY_BASE_URL_SHARE, otherwise we return what it is set
   // to in the env at bundle time
-  return process.env.GOOSE_BASE_URL_SHARE;
+  return process.env.DAISY_BASE_URL_SHARE;
 };
 
 const getVersion = () => {
   // checks app env for sharing url
   loadShellEnv(app.isPackaged); // will try to take it from the zshrc file
   // to in the env at bundle time
-  return process.env.GOOSE_VERSION;
+  return process.env.DAISY_VERSION;
 };
 
-const [provider, model, predefinedModels] = getGooseProvider();
+const [provider, model, predefinedModels] = getDaisyProvider();
 
 const sharingUrl = getSharingUrl();
 
-const gooseVersion = getVersion();
+const daisyVersion = getVersion();
 
-const SERVER_SECRET = process.env.GOOSE_EXTERNAL_BACKEND
+const SERVER_SECRET = process.env.DAISY_EXTERNAL_BACKEND
   ? 'test'
   : crypto.randomBytes(32).toString('hex');
 
 let appConfig = {
-  GOOSE_DEFAULT_PROVIDER: provider,
-  GOOSE_DEFAULT_MODEL: model,
-  GOOSE_PREDEFINED_MODELS: predefinedModels,
-  GOOSE_API_HOST: 'http://127.0.0.1',
-  GOOSE_PORT: 0,
-  GOOSE_WORKING_DIR: '',
-  // If GOOSE_ALLOWLIST_WARNING env var is not set, defaults to false (strict blocking mode)
-  GOOSE_ALLOWLIST_WARNING: process.env.GOOSE_ALLOWLIST_WARNING === 'true',
+  DAISY_DEFAULT_PROVIDER: provider,
+  DAISY_DEFAULT_MODEL: model,
+  DAISY_PREDEFINED_MODELS: predefinedModels,
+  DAISY_API_HOST: 'http://127.0.0.1',
+  DAISY_PORT: 0,
+  DAISY_WORKING_DIR: '',
+  // If DAISY_ALLOWLIST_WARNING env var is not set, defaults to false (strict blocking mode)
+  DAISY_ALLOWLIST_WARNING: process.env.DAISY_ALLOWLIST_WARNING === 'true',
 };
 
 // Track windows by ID
@@ -517,7 +517,7 @@ const createChat = async (
   // Initialize variables for process and configuration
   let port = 0;
   let working_dir = '';
-  let goosedProcess: import('child_process').ChildProcess | null = null;
+  let daisydProcess: import('child_process').ChildProcess | null = null;
 
   if (viewType === 'recipeEditor') {
     // For recipeEditor, get the port from existing windows' config
@@ -529,16 +529,16 @@ const createChat = async (
           `window.electron.getConfig()`
         );
         if (config) {
-          port = config.GOOSE_PORT;
-          working_dir = config.GOOSE_WORKING_DIR;
+          port = config.DAISY_PORT;
+          working_dir = config.DAISY_WORKING_DIR;
         }
       } catch (e) {
         console.error('Failed to get config from localStorage:', e);
       }
     }
     if (port === 0) {
-      console.error('No existing Goose process found for recipeEditor');
-      throw new Error('Cannot create recipeEditor window: No existing Goose process found');
+      console.error('No existing Daisy process found for recipeEditor');
+      throw new Error('Cannot create recipeEditor window: No existing Daisy process found');
     }
   } else {
     // Apply current environment settings before creating chat
@@ -548,12 +548,12 @@ const createChat = async (
     const settings = loadSettings();
     updateSchedulingEngineEnvironment(settings.schedulingEngine);
 
-    // Start new Goosed process for regular windows
+    // Start new Daisyd process for regular windows
     // Pass through scheduling engine environment variables
     const envVars = {
-      GOOSE_SCHEDULER_TYPE: process.env.GOOSE_SCHEDULER_TYPE,
+      DAISY_SCHEDULER_TYPE: process.env.DAISY_SCHEDULER_TYPE,
     };
-    const [newPort, newWorkingDir, newGoosedProcess] = await startGoosed(
+    const [newPort, newWorkingDir, newDaisydProcess] = await startDaisyd(
       app,
       SERVER_SECRET,
       dir,
@@ -561,7 +561,7 @@ const createChat = async (
     );
     port = newPort;
     working_dir = newWorkingDir;
-    goosedProcess = newGoosedProcess;
+    daisydProcess = newDaisydProcess;
   }
 
   // Create window config with loading state for recipe deeplinks
@@ -600,15 +600,15 @@ const createChat = async (
       additionalArguments: [
         JSON.stringify({
           ...appConfig,
-          GOOSE_PORT: port,
-          GOOSE_WORKING_DIR: working_dir,
+          DAISY_PORT: port,
+          DAISY_WORKING_DIR: working_dir,
           REQUEST_DIR: dir,
-          GOOSE_BASE_URL_SHARE: sharingUrl,
-          GOOSE_VERSION: gooseVersion,
+          DAISY_BASE_URL_SHARE: sharingUrl,
+          DAISY_VERSION: daisyVersion,
           recipe: recipe,
         }),
       ],
-      partition: 'persist:goose', // Add this line to ensure persistence
+      partition: 'persist:daisy', // Add this line to ensure persistence
     },
   });
 
@@ -619,7 +619,7 @@ const createChat = async (
   //
   // NOTE: We could use webContents.session.availableSpellCheckerLanguages to include
   // all languages in the list of spell checked words, but it diminishes the times you
-  // get red squigglies back for mispelled english words. Given the rest of Goose only
+  // get red squigglies back for mispelled english words. Given the rest of Daisy only
   // renders in english right now, this feels like the correct set of language codes
   // for the moment.
   //
@@ -704,7 +704,7 @@ const createChat = async (
     }
   }
 
-  // Goose's react app uses HashRouter, so the path + search params follow a #/
+  // Daisy's react app uses HashRouter, so the path + search params follow a #/
   url.hash = `${appPath}?${searchParams.toString()}`;
   let formattedUrl = formatUrl(url);
   console.log('Opening URL: ', formattedUrl);
@@ -793,8 +793,8 @@ const createChat = async (
       windowPowerSaveBlockers.delete(windowId);
     }
 
-    if (goosedProcess && typeof goosedProcess === 'object' && 'kill' in goosedProcess) {
-      goosedProcess.kill();
+    if (daisydProcess && typeof daisydProcess === 'object' && 'kill' in daisydProcess) {
+      daisydProcess.kill();
     }
   });
   return mainWindow;
@@ -891,7 +891,7 @@ const openDirectoryDialog = async (): Promise<OpenDialogReturnValue> => {
   if (currentWindow) {
     try {
       const currentWorkingDir = await currentWindow.webContents.executeJavaScript(
-        `window.appConfig ? window.appConfig.get('GOOSE_WORKING_DIR') : null`
+        `window.appConfig ? window.appConfig.get('DAISY_WORKING_DIR') : null`
       );
 
       if (currentWorkingDir && typeof currentWorkingDir === 'string') {
@@ -1361,7 +1361,7 @@ ipcMain.handle('get-temp-image', async (_event, filePath: string) => {
 
   // Ensure the path is within the designated temp directory
   const resolvedPath = path.resolve(filePath);
-  const resolvedTempDir = path.resolve(gooseTempDir);
+  const resolvedTempDir = path.resolve(daisyTempDir);
 
   if (!resolvedPath.startsWith(resolvedTempDir + path.sep)) {
     console.warn(`[Main] Attempted to access file outside designated temp directory: ${filePath}`);
@@ -1381,7 +1381,7 @@ ipcMain.handle('get-temp-image', async (_event, filePath: string) => {
     let actualPath = filePath;
 
     try {
-      realTempDir = await fs.realpath(gooseTempDir);
+      realTempDir = await fs.realpath(daisyTempDir);
       const realPath = await fs.realpath(filePath);
 
       // Double-check that the real path is still within our real temp directory
@@ -1433,7 +1433,7 @@ ipcMain.on('delete-temp-file', async (_event, filePath: string) => {
 
   // Ensure the path is within the designated temp directory
   const resolvedPath = path.resolve(filePath);
-  const resolvedTempDir = path.resolve(gooseTempDir);
+  const resolvedTempDir = path.resolve(daisyTempDir);
 
   if (!resolvedPath.startsWith(resolvedTempDir + path.sep)) {
     console.warn(`[Main] Attempted to delete file outside designated temp directory: ${filePath}`);
@@ -1452,7 +1452,7 @@ ipcMain.on('delete-temp-file', async (_event, filePath: string) => {
     let actualPath = filePath;
 
     try {
-      const realTempDir = await fs.realpath(gooseTempDir);
+      const realTempDir = await fs.realpath(daisyTempDir);
       const realPath = await fs.realpath(filePath);
 
       // Double-check that the real path is still within our real temp directory
@@ -1772,7 +1772,7 @@ async function appMain() {
   const menu = Menu.getApplicationMenu();
 
   // App menu
-  const appMenu = menu?.items.find((item) => item.label === 'Goose');
+  const appMenu = menu?.items.find((item) => item.label === 'Daisy');
   if (appMenu?.submenu) {
     // add Settings to app menu after About
     appMenu.submenu.insert(1, new MenuItem({ type: 'separator' }));
@@ -1857,7 +1857,7 @@ async function appMain() {
       })
     );
 
-    // Open goose to specific dir and set that as its working space
+    // Open daisy to specific dir and set that as its working space
     fileMenu.submenu.insert(
       1,
       new MenuItem({
@@ -1886,7 +1886,7 @@ async function appMain() {
     // Add menu item to tell the user about the keyboard shortcut
     fileMenu.submenu.append(
       new MenuItem({
-        label: 'Focus Goose Window',
+        label: 'Focus Daisy Window',
         accelerator: 'CmdOrCtrl+Alt+Shift+G',
         click() {
           focusWindow();
@@ -1917,23 +1917,23 @@ async function appMain() {
         helpMenu.submenu.append(new MenuItem({ type: 'separator' }));
       }
 
-      // Create the About Goose menu item with a submenu
-      const aboutGooseMenuItem = new MenuItem({
-        label: 'About Goose',
+      // Create the About Daisy menu item with a submenu
+      const aboutDaisyMenuItem = new MenuItem({
+        label: 'About Daisy',
         submenu: Menu.buildFromTemplate([]), // Start with an empty submenu for About
       });
 
-      // Add the Version menu item (display only) to the About Goose submenu
-      if (aboutGooseMenuItem.submenu) {
-        aboutGooseMenuItem.submenu.append(
+      // Add the Version menu item (display only) to the About Daisy submenu
+      if (aboutDaisyMenuItem.submenu) {
+        aboutDaisyMenuItem.submenu.append(
           new MenuItem({
-            label: `Version ${gooseVersion || app.getVersion()}`,
+            label: `Version ${daisyVersion || app.getVersion()}`,
             enabled: false,
           })
         );
       }
 
-      helpMenu.submenu.append(aboutGooseMenuItem);
+      helpMenu.submenu.append(aboutDaisyMenuItem);
     }
   }
 
@@ -2073,7 +2073,7 @@ async function appMain() {
 
       const response = await fetch(url, {
         headers: {
-          'User-Agent': 'Mozilla/5.0 (compatible; Goose/1.0)',
+          'User-Agent': 'Mozilla/5.0 (compatible; Daisy/1.0)',
         },
       });
 
@@ -2151,17 +2151,17 @@ app.whenReady().then(async () => {
   try {
     await appMain();
   } catch (error) {
-    dialog.showErrorBox('Goose Error', `Failed to create main window: ${error}`);
+    dialog.showErrorBox('Daisy Error', `Failed to create main window: ${error}`);
     app.quit();
   }
 });
 
 async function getAllowList(): Promise<string[]> {
-  if (!process.env.GOOSE_ALLOWLIST) {
+  if (!process.env.DAISY_ALLOWLIST) {
     return [];
   }
 
-  const response = await fetch(process.env.GOOSE_ALLOWLIST);
+  const response = await fetch(process.env.DAISY_ALLOWLIST);
 
   if (!response.ok) {
     throw new Error(
@@ -2206,14 +2206,14 @@ app.on('will-quit', async () => {
   globalShortcut.unregisterAll();
 
   try {
-    await fs.access(gooseTempDir); // Check if directory exists to avoid error on fs.rm if it doesn't
+    await fs.access(daisyTempDir); // Check if directory exists to avoid error on fs.rm if it doesn't
 
     // First, check for any symlinks in the directory and refuse to delete them
     let hasSymlinks = false;
     try {
-      const files = await fs.readdir(gooseTempDir);
+      const files = await fs.readdir(daisyTempDir);
       for (const file of files) {
-        const filePath = path.join(gooseTempDir, file);
+        const filePath = path.join(daisyTempDir, file);
         const stats = await fs.lstat(filePath);
         if (stats.isSymbolicLink()) {
           console.warn(`[Main] Found symlink in temp directory: ${filePath}. Skipping deletion.`);
@@ -2230,7 +2230,7 @@ app.on('will-quit', async () => {
 
       // If no symlinks were found, it's safe to remove the directory
       if (!hasSymlinks) {
-        await fs.rm(gooseTempDir, { recursive: true, force: true });
+        await fs.rm(daisyTempDir, { recursive: true, force: true });
         console.log('[Main] Pasted images temp directory cleaned up successfully.');
       } else {
         console.log(

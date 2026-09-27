@@ -28,7 +28,7 @@ interface UpdateCheckResult {
 
 export class GitHubUpdater {
   private readonly owner = 'block';
-  private readonly repo = 'goose';
+  private readonly repo = 'daisy';
   private readonly apiUrl = `https://api.github.com/repos/${this.owner}/${this.repo}/releases/latest`;
 
   async checkForUpdates(): Promise<UpdateCheckResult> {
@@ -40,7 +40,7 @@ export class GitHubUpdater {
       const response = await fetch(this.apiUrl, {
         headers: {
           Accept: 'application/vnd.github.v3+json',
-          'User-Agent': `Goose-Desktop/${app.getVersion()}`,
+          'User-Agent': `Daisy-Desktop/${app.getVersion()}`,
         },
       });
 
@@ -91,16 +91,16 @@ export class GitHubUpdater {
       if (platform === 'darwin') {
         // macOS
         if (arch === 'arm64') {
-          assetName = 'Goose.zip';
+          assetName = 'Daisy.zip';
         } else {
-          assetName = 'Goose_intel_mac.zip';
+          assetName = 'Daisy_intel_mac.zip';
         }
       } else if (platform === 'win32') {
         // Windows - for future support
-        assetName = 'Goose-win32-x64.zip';
+        assetName = 'Daisy-win32-x64.zip';
       } else {
         // Linux - for future support
-        assetName = `Goose-linux-${arch}.zip`;
+        assetName = `Daisy-linux-${arch}.zip`;
       }
 
       log.info(`GitHubUpdater: Looking for asset named: ${assetName}`);
@@ -185,7 +185,7 @@ export class GitHubUpdater {
 
       // Save to Downloads directory
       const downloadsDir = path.join(os.homedir(), 'Downloads');
-      const fileName = `Goose-${latestVersion}.zip`;
+      const fileName = `Daisy-${latestVersion}.zip`;
       const downloadPath = path.join(downloadsDir, fileName);
 
       await fs.writeFile(downloadPath, buffer);

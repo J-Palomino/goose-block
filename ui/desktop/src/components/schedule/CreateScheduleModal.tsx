@@ -59,7 +59,7 @@ interface CleanRecipe {
   prompt?: string;
   activities?: string[];
   extensions?: CleanExtension[];
-  goosehints?: string;
+  daisyhints?: string;
   context?: string[];
   profile?: string;
   author?: {
@@ -112,7 +112,7 @@ type ExecutionMode = 'background' | 'foreground';
 async function parseDeepLink(deepLink: string): Promise<Recipe | null> {
   try {
     const url = new URL(deepLink);
-    if (url.protocol !== 'goose:' || (url.hostname !== 'bot' && url.hostname !== 'recipe')) {
+    if (url.protocol !== 'daisy:' || (url.hostname !== 'bot' && url.hostname !== 'recipe')) {
       return null;
     }
 
@@ -237,8 +237,8 @@ function recipeToYaml(recipe: Recipe, executionMode: ExecutionMode): string {
     });
   }
 
-  if (recipe.goosehints) {
-    cleanRecipe.goosehints = recipe.goosehints;
+  if (recipe.daisyhints) {
+    cleanRecipe.daisyhints = recipe.daisyhints;
   }
 
   if (recipe.context && recipe.context.length > 0) {
@@ -314,13 +314,13 @@ export const CreateScheduleModal: React.FC<CreateScheduleModalProps> = ({
           } else {
             setParsedRecipe(null);
             setInternalValidationError(
-              'Invalid deep link format. Please use a goose://bot or goose://recipe link.'
+              'Invalid deep link format. Please use a daisy://bot or daisy://recipe link.'
             );
           }
         } catch {
           setParsedRecipe(null);
           setInternalValidationError(
-            'Failed to parse deep link. Please ensure using a goose://bot or goose://recipe link and try again.'
+            'Failed to parse deep link. Please ensure using a daisy://bot or daisy://recipe link and try again.'
           );
         }
       } else {
@@ -508,7 +508,7 @@ export const CreateScheduleModal: React.FC<CreateScheduleModalProps> = ({
         const yamlContent = recipeToYaml(parsedRecipe, executionMode);
         console.log('Generated YAML content:', yamlContent); // Debug log
         const tempFileName = `schedule-${scheduleId}-${Date.now()}.yaml`;
-        const tempDir = window.electron.getConfig().GOOSE_WORKING_DIR || '.';
+        const tempDir = window.electron.getConfig().DAISY_WORKING_DIR || '.';
         const tempFilePath = `${tempDir}/${tempFileName}`;
 
         // Write the YAML file
@@ -667,7 +667,7 @@ export const CreateScheduleModal: React.FC<CreateScheduleModalProps> = ({
                     type="text"
                     value={deepLinkInput}
                     onChange={(e) => handleDeepLinkChange(e.target.value)}
-                    placeholder="Paste goose://bot or goose://recipe link here..."
+                    placeholder="Paste daisy://bot or daisy://recipe link here..."
                     className="rounded-full"
                   />
                   {parsedRecipe && (
@@ -724,7 +724,7 @@ export const CreateScheduleModal: React.FC<CreateScheduleModalProps> = ({
                   </p>
                 ) : (
                   <p>
-                    <strong>Foreground:</strong> Opens in a desktop window when the Goose app is
+                    <strong>Foreground:</strong> Opens in a desktop window when the Daisy app is
                     running. Falls back to background if the app is not available.
                   </p>
                 )}

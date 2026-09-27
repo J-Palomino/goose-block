@@ -1,24 +1,24 @@
 ---
 title: Container Use Extension
-description: Use Container-Use MCP as a Goose Extension
+description: Use Container-Use MCP as a Daisy Extension
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import GooseDesktopInstaller from '@site/src/components/GooseDesktopInstaller';
+import DaisyDesktopInstaller from '@site/src/components/DaisyDesktopInstaller';
 import CLIExtensionInstructions from '@site/src/components/CLIExtensionInstructions';
 import YouTubeShortEmbed from '@site/src/components/YouTubeShortEmbed';
 
 <YouTubeShortEmbed videoUrl="https://www.youtube.com/embed/X3tf61_Tak0" />
 
-This tutorial covers how to add the [Container Use MCP Server](https://container-use.com) as a Goose extension enabling Goose to work in an isolated environment.
+This tutorial covers how to add the [Container Use MCP Server](https://container-use.com) as a Daisy extension enabling Daisy to work in an isolated environment.
 
 :::tip TLDR
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-  [Launch the installer](goose://extension?cmd=container-use&arg=stdio&id=container-use&name=container%20use&description=use%20containers%20with%20dagger%20and%20git%20for%20isolated%20environments)
+  <TabItem value="ui" label="Daisy Desktop" default>
+  [Launch the installer](daisy://extension?cmd=container-use&arg=stdio&id=container-use&name=container%20use&description=use%20containers%20with%20dagger%20and%20git%20for%20isolated%20environments)
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
   **Command**
   ```sh
   container-use stdio
@@ -37,8 +37,8 @@ You'll need [Docker](https://www.docker.com/) installed on your system. If you w
   <TabItem value="remote-mcp" label="Remote MCP" default>
 
     <Tabs groupId="interface">
-      <TabItem value="ui" label="Goose Desktop" default>
-        <GooseDesktopInstaller
+      <TabItem value="ui" label="Daisy Desktop" default>
+        <DaisyDesktopInstaller
             extensionId="container-use"
             extensionName="Container Use"
             description="Run container automation with container-use"
@@ -49,7 +49,7 @@ You'll need [Docker](https://www.docker.com/) installed on your system. If you w
             note="Requires Node.js and Docker installed; see [container-use.com/quickstart](https://container-use.com/quickstart)."
         />
     </TabItem>
-      <TabItem value="cli" label="Goose CLI">
+      <TabItem value="cli" label="Daisy CLI">
           <CLIExtensionInstructions
             name="Container Use"
             command="npx -y mcp-remote https://container-use.com/mcp"
@@ -62,8 +62,8 @@ You'll need [Docker](https://www.docker.com/) installed on your system. If you w
   <TabItem value="local-mcp" label="Local MCP">
 
     <Tabs groupId="interface">
-      <TabItem value="ui" label="Goose Desktop" default>
-        <GooseDesktopInstaller
+      <TabItem value="ui" label="Daisy Desktop" default>
+        <DaisyDesktopInstaller
             extensionId="container-use"
             extensionName="Container Use"
             description="Run container automation with container-use"
@@ -74,7 +74,7 @@ You'll need [Docker](https://www.docker.com/) installed on your system. If you w
             note="Requires Docker installed; see [container-use.com/quickstart](https://container-use.com/quickstart)."
         />
     </TabItem>
-      <TabItem value="cli" label="Goose CLI">
+      <TabItem value="cli" label="Daisy CLI">
           <CLIExtensionInstructions
             name="Container Use"
             command="container-use stdio"
@@ -96,7 +96,7 @@ Here's a simple example of updating a file-based to-do app to use a SQLite datab
 Run a container agent to add a feature to save my to-do list data in sqlite, build and run tests, but use a separate Git branch so my main code stays safe.
 ```
 
-#### Goose Output
+#### Daisy Output
 
 ```
 I'll help you create a container environment to add SQLite functionality to your to-do list application on a separate Git branch. Let me start by creating the environment and examining your current code structure.

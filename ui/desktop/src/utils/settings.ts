@@ -4,8 +4,8 @@ import path from 'path';
 
 // Types
 export interface EnvToggles {
-  GOOSE_SERVER__MEMORY: boolean;
-  GOOSE_SERVER__COMPUTER_CONTROLLER: boolean;
+  DAISY_SERVER__MEMORY: boolean;
+  DAISY_SERVER__COMPUTER_CONTROLLER: boolean;
 }
 
 export type SchedulingEngine = 'builtin-cron' | 'temporal';
@@ -23,8 +23,8 @@ const SETTINGS_FILE = path.join(app.getPath('userData'), 'settings.json');
 
 const defaultSettings: Settings = {
   envToggles: {
-    GOOSE_SERVER__MEMORY: false,
-    GOOSE_SERVER__COMPUTER_CONTROLLER: false,
+    DAISY_SERVER__MEMORY: false,
+    DAISY_SERVER__COMPUTER_CONTROLLER: false,
   },
   showMenuBarIcon: true,
   showDockIcon: true,
@@ -55,24 +55,24 @@ export function saveSettings(settings: Settings): void {
 
 // Environment management
 export function updateEnvironmentVariables(envToggles: EnvToggles): void {
-  if (envToggles.GOOSE_SERVER__MEMORY) {
-    process.env.GOOSE_SERVER__MEMORY = 'true';
+  if (envToggles.DAISY_SERVER__MEMORY) {
+    process.env.DAISY_SERVER__MEMORY = 'true';
   } else {
-    delete process.env.GOOSE_SERVER__MEMORY;
+    delete process.env.DAISY_SERVER__MEMORY;
   }
 
-  if (envToggles.GOOSE_SERVER__COMPUTER_CONTROLLER) {
-    process.env.GOOSE_SERVER__COMPUTER_CONTROLLER = 'true';
+  if (envToggles.DAISY_SERVER__COMPUTER_CONTROLLER) {
+    process.env.DAISY_SERVER__COMPUTER_CONTROLLER = 'true';
   } else {
-    delete process.env.GOOSE_SERVER__COMPUTER_CONTROLLER;
+    delete process.env.DAISY_SERVER__COMPUTER_CONTROLLER;
   }
 }
 
 export function updateSchedulingEngineEnvironment(schedulingEngine: SchedulingEngine): void {
-  // Set GOOSE_SCHEDULER_TYPE based on the scheduling engine setting
+  // Set DAISY_SCHEDULER_TYPE based on the scheduling engine setting
   if (schedulingEngine === 'temporal') {
-    process.env.GOOSE_SCHEDULER_TYPE = 'temporal';
+    process.env.DAISY_SCHEDULER_TYPE = 'temporal';
   } else {
-    process.env.GOOSE_SCHEDULER_TYPE = 'legacy';
+    process.env.DAISY_SCHEDULER_TYPE = 'legacy';
   }
 }

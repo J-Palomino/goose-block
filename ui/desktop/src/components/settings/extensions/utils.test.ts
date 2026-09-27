@@ -368,7 +368,7 @@ describe('Extension Utils', () => {
     beforeEach(() => {
       mockElectron.getBinaryPath.mockImplementation((binary: string) => {
         const paths: Record<string, string> = {
-          goosed: '/path/to/goosed',
+          daisyd: '/path/to/daisyd',
           jbang: '/path/to/jbang',
           npx: '/path/to/npx',
           uvx: '/path/to/uvx',
@@ -378,7 +378,7 @@ describe('Extension Utils', () => {
     });
 
     it('should replace known commands with shim paths', async () => {
-      expect(await replaceWithShims('goosed')).toBe('/path/to/goosed');
+      expect(await replaceWithShims('daisyd')).toBe('/path/to/daisyd');
       expect(await replaceWithShims('jbang')).toBe('/path/to/jbang');
       expect(await replaceWithShims('npx')).toBe('/path/to/npx');
       expect(await replaceWithShims('uvx')).toBe('/path/to/uvx');
@@ -392,7 +392,7 @@ describe('Extension Utils', () => {
 
   describe('removeShims', () => {
     it('should remove shim paths and return command name', () => {
-      expect(removeShims('/path/to/goosed')).toBe('goosed');
+      expect(removeShims('/path/to/daisyd')).toBe('daisyd');
       expect(removeShims('/usr/local/bin/jbang')).toBe('jbang');
       expect(removeShims('/Applications/Docker.app/Contents/Resources/bin/docker')).toBe('docker');
       expect(removeShims('/path/to/npx.cmd')).toBe('npx.cmd');
@@ -401,7 +401,7 @@ describe('Extension Utils', () => {
     it('should handle paths with trailing slashes', () => {
       // The removeShims function only works if the path ends with the shim pattern
       // Trailing slashes prevent the pattern from matching
-      expect(removeShims('/path/to/goosed/')).toBe('/path/to/goosed/');
+      expect(removeShims('/path/to/daisyd/')).toBe('/path/to/daisyd/');
       expect(removeShims('/path/to/uvx//')).toBe('/path/to/uvx//');
     });
 
@@ -414,39 +414,39 @@ describe('Extension Utils', () => {
 
   describe('extractCommand', () => {
     it('should extract command from extension link', () => {
-      const link = 'goose://extension/add?name=Test&cmd=python&arg=script.py&arg=--flag';
+      const link = 'daisy://extension/add?name=Test&cmd=python&arg=script.py&arg=--flag';
       expect(extractCommand(link)).toBe('python script.py --flag');
     });
 
     it('should handle encoded arguments', () => {
-      const link = 'goose://extension/add?cmd=echo&arg=hello%20world&arg=--test%3Dvalue';
+      const link = 'daisy://extension/add?cmd=echo&arg=hello%20world&arg=--test%3Dvalue';
       expect(extractCommand(link)).toBe('echo hello world --test=value');
     });
 
     it('should handle missing command', () => {
-      const link = 'goose://extension/add?name=Test';
+      const link = 'daisy://extension/add?name=Test';
       expect(extractCommand(link)).toBe('Unknown Command');
     });
 
     it('should handle command without arguments', () => {
-      const link = 'goose://extension/add?cmd=python';
+      const link = 'daisy://extension/add?cmd=python';
       expect(extractCommand(link)).toBe('python');
     });
   });
 
   describe('extractExtensionName', () => {
     it('should extract extension name from link', () => {
-      const link = 'goose://extension/add?name=Test%20Extension&cmd=python';
+      const link = 'daisy://extension/add?name=Test%20Extension&cmd=python';
       expect(extractExtensionName(link)).toBe('Test Extension');
     });
 
     it('should handle missing name', () => {
-      const link = 'goose://extension/add?cmd=python';
+      const link = 'daisy://extension/add?cmd=python';
       expect(extractExtensionName(link)).toBe('Unknown Extension');
     });
 
     it('should decode URL encoded names', () => {
-      const link = 'goose://extension/add?name=My%20Special%20Extension%21';
+      const link = 'daisy://extension/add?name=My%20Special%20Extension%21';
       expect(extractExtensionName(link)).toBe('My Special Extension!');
     });
   });

@@ -1,22 +1,22 @@
 ---
 title: Building Custom Extensions
-description: Create your own custom MCP Server to use as a Goose extension
+description: Create your own custom MCP Server to use as a Daisy extension
 ---
 
 import { PanelLeft } from 'lucide-react';
 
-# Building Custom Extensions with Goose
+# Building Custom Extensions with Daisy
 
 
-Goose allows you to extend its functionality by creating your own custom extensions, which are built as MCP servers. These extensions are compatible with Goose because it adheres to the [Model Context Protocol (MCP)][mcp-docs]. MCP is an open protocol that standardizes how applications provide context to LLMs. It enables a consistent way to connect LLMs to various data sources and tools, making it ideal for extending functionality in a structured and interoperable way. 
+Daisy allows you to extend its functionality by creating your own custom extensions, which are built as MCP servers. These extensions are compatible with Daisy because it adheres to the [Model Context Protocol (MCP)][mcp-docs]. MCP is an open protocol that standardizes how applications provide context to LLMs. It enables a consistent way to connect LLMs to various data sources and tools, making it ideal for extending functionality in a structured and interoperable way. 
 
-In this guide, we build an MCP server using the [Python SDK for MCP][mcp-python]. We’ll demonstrate how to create an MCP server that reads Wikipedia articles and converts them to Markdown, integrate it as an extension in Goose. You can follow a similar process to develop your own custom extensions for Goose.
+In this guide, we build an MCP server using the [Python SDK for MCP][mcp-python]. We’ll demonstrate how to create an MCP server that reads Wikipedia articles and converts them to Markdown, integrate it as an extension in Daisy. You can follow a similar process to develop your own custom extensions for Daisy.
 
 You can checkout other examples in this [MCP servers repository][mcp-servers]. MCP SDKs are also available in [Typescript][mcp-typescript] and [Kotlin][mcp-kotlin].
 
 :::info
 
-Goose currently supports Tools and Resources for [MCP Server features](https://spec.modelcontextprotocol.io/specification/2024-11-05/server/). 
+Daisy currently supports Tools and Resources for [MCP Server features](https://spec.modelcontextprotocol.io/specification/2024-11-05/server/). 
 We will be adding support for MCP Prompts soon.
 
 :::
@@ -243,9 +243,9 @@ build-backend = "hatchling.build"
 
 ---
 
-## Step 5: Integrate with Goose
+## Step 5: Integrate with Daisy
 
-To add your MCP server as an extension in Goose:
+To add your MCP server as an extension in Daisy:
 
 1. Click the <PanelLeft className="inline" size={16} /> button in the top-left to open the sidebar
 2. Click `Extensions` in the sidebar
@@ -269,19 +269,19 @@ uvx mcp-wiki
 
 ---
 
-## Step 6: Use Your Extension in Goose
+## Step 6: Use Your Extension in Daisy
 
-Once integrated, you can start using your extension in Goose. Open the Goose chat interface and call your tool as needed.
+Once integrated, you can start using your extension in Daisy. Open the Daisy chat interface and call your tool as needed.
 
-You can verify that Goose has picked up the tools from your custom extension by asking it "what tools do you have?"
+You can verify that Daisy has picked up the tools from your custom extension by asking it "what tools do you have?"
 
-![Goose Chat - Ask about tools](../assets/guides/custom-extension-tools.png)
+![Daisy Chat - Ask about tools](../assets/guides/custom-extension-tools.png)
 
 Then, you can try asking questions that require using the extension you added.
 
-![Goose Chat - Use custom extension](../assets/guides/custom-extension-chat.png)
+![Daisy Chat - Use custom extension](../assets/guides/custom-extension-chat.png)
 
-🎉 **Congratulations!** You’ve successfully built and integrated a custom MCP server with Goose.
+🎉 **Congratulations!** You’ve successfully built and integrated a custom MCP server with Daisy.
 
 
 

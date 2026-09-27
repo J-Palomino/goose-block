@@ -1,6 +1,6 @@
 ---
 title: GitHub Extension
-description: Add GitHub MCP Server as a Goose Extension
+description: Add GitHub MCP Server as a Daisy Extension
 ---
 
 import Tabs from '@theme/Tabs';
@@ -11,15 +11,15 @@ import { PanelLeft } from 'lucide-react';
 
 <YouTubeShortEmbed videoUrl="https://www.youtube.com/embed/TbmQDv3SQOE" />
 
-This tutorial covers how to add the [GitHub MCP Server](https://github.com/github/github-mcp-server) as a Goose extension to enable file operations, repository management, search functionality, and more.
+This tutorial covers how to add the [GitHub MCP Server](https://github.com/github/github-mcp-server) as a Daisy extension to enable file operations, repository management, search functionality, and more.
 
 :::tip TLDR
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
+  <TabItem value="ui" label="Daisy Desktop" default>
   Use `Add custom extension` in Settings → Extensions to add a `Streamable HTTP` extension type with:
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
-  Use `goose configure` to add a `Remote Extension (Streaming HTTP)` extension type with:
+  <TabItem value="cli" label="Daisy CLI">
+  Use `daisy configure` to add a `Remote Extension (Streaming HTTP)` extension type with:
   </TabItem>
 </Tabs>
 
@@ -37,7 +37,7 @@ This tutorial covers how to add the [GitHub MCP Server](https://github.com/githu
 These steps configure the Remote MCP Server. For other deployment options, see the [official GitHub MCP Server documentation](https://github.com/github/github-mcp-server).
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
+  <TabItem value="ui" label="Daisy Desktop" default>
     1. Obtain a [GitHub Personal Access Token](https://github.com/settings/personal-access-tokens)
     2. Click the <PanelLeft className="inline" size={16} /> button in the top-left to open the sidebar
     3. Click `Extensions`
@@ -54,7 +54,7 @@ These steps configure the Remote MCP Server. For other deployment options, see t
     8. Navigate to the chat
 
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
     <CLIExtensionInstructions
       name="github"
       type="http"
@@ -76,16 +76,16 @@ These steps configure the Remote MCP Server. For other deployment options, see t
 ## Example Usage
 
 When creating my [GitHub Personal Access Token](https://github.com/settings/personal-access-tokens), I gave it the following access:
-* Repository: [goose-demo](https://github.com/angiejones/goose-demo)
+* Repository: [daisy-demo](https://github.com/angiejones/daisy-demo)
 * Read access to metadata
 * Read and Write access to code, commit status, issues, and pull requests
 
-### Goose Prompt
+### Daisy Prompt
 ```
-create a new branch called hello-world in my angiejones/goose-demo repository. Update the README.md file to say "this was written by goose" and commit it. Open a pull request with your changes.
+create a new branch called hello-world in my angiejones/daisy-demo repository. Update the README.md file to say "this was written by daisy" and commit it. Open a pull request with your changes.
 ```
 
-### Goose Output
+### Daisy Output
 
 ```
 I'll help you create a new branch, update the README, and open a pull request. Let me break this down into steps:
@@ -101,17 +101,17 @@ Let me execute these steps:
 ─── create_branch | github ──────────────────────────
 branch: hello-world
 owner: angiejones
-repo: goose-demo
+repo: daisy-demo
 
 2. Now, updating the README.md file in the new branch:
 
 ─── create_or_update_file | github ──────────────────────────
 branch: hello-world
-content: this was written by goose
-message: Update README.md with Goose message
+content: this was written by daisy
+message: Update README.md with Daisy message
 owner: angiejones
 path: README.md
-repo: goose-demo
+repo: daisy-demo
 
 
 
@@ -122,17 +122,17 @@ base: main
 body: ...
 head: hello-world
 owner: angiejones
-repo: goose-demo
+repo: daisy-demo
 title: Update README.md
 
 
 
 Great! I've completed all the requested tasks:
 1. Created a new branch called "hello-world"
-2. Updated the README.md file with the text "this was written by goose"
+2. Updated the README.md file with the text "this was written by daisy"
 3. Created a pull request to merge these changes into the main branch
 
-You can view the pull request at: https://github.com/angiejones/goose-demo/pull/1
+You can view the pull request at: https://github.com/angiejones/daisy-demo/pull/1
 
 The pull request is now ready for your review. Would you like me to do anything else with it?
 ```

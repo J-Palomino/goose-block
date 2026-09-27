@@ -1,7 +1,7 @@
 /**
  * Hub Component
  *
- * The Hub is the main landing page and entry point for the Goose Desktop application.
+ * The Hub is the main landing page and entry point for the Daisy Desktop application.
  * It serves as the welcome screen where users can start new conversations.
  *
  * Key Responsibilities:
@@ -23,12 +23,12 @@ import { View, ViewOptions } from '../utils/navigationUtils';
 
 export default function Hub({
   setView,
-  setIsGoosehintsModalOpen,
+  setIsDaisyhintsModalOpen,
   isExtensionsLoading,
   resetChat,
 }: {
   setView: (view: View, viewOptions?: ViewOptions) => void;
-  setIsGoosehintsModalOpen: (isOpen: boolean) => void;
+  setIsDaisyhintsModalOpen: (isOpen: boolean) => void;
   isExtensionsLoading: boolean;
   resetChat: () => void;
 }) {
@@ -75,7 +75,7 @@ export default function Hub({
           setMessages={() => {}}
           disableAnimation={false}
           sessionCosts={undefined}
-          setIsGoosehintsModalOpen={setIsGoosehintsModalOpen}
+          setIsDaisyhintsModalOpen={setIsDaisyhintsModalOpen}
           isExtensionsLoading={isExtensionsLoading}
           toolCount={0}
         />

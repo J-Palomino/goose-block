@@ -2,16 +2,16 @@
 sidebar_position: 1
 title: MCP-UI Extensions
 sidebar_label: MCP-UI Extensions
-description: Learn how Goose can render graphical and interactive UI components from MCP-UI-enabled extensions
+description: Learn how Daisy can render graphical and interactive UI components from MCP-UI-enabled extensions
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import GooseDesktopInstaller from '@site/src/components/GooseDesktopInstaller';
+import DaisyDesktopInstaller from '@site/src/components/DaisyDesktopInstaller';
 import CLIExtensionInstructions from '@site/src/components/CLIExtensionInstructions';
 import { PanelLeft } from 'lucide-react';
 
-Extensions built on MCP-UI allow Goose Desktop to provide interactive and engaging user experiences. Imagine using a graphical, clickable UI instead of reading text responses and typing all your prompts:
+Extensions built on MCP-UI allow Daisy Desktop to provide interactive and engaging user experiences. Imagine using a graphical, clickable UI instead of reading text responses and typing all your prompts:
 
 <div style={{ width: '100%', maxWidth: '800px', margin: '0 auto' }}>
   <video 
@@ -29,19 +29,19 @@ Extensions built on MCP-UI allow Goose Desktop to provide interactive and engagi
 </div>
 
 <br/>
-MCP-UI-enabled extensions return content that Goose can render as embedded UI elements for rich, dynamic, and streamlined interactions.
+MCP-UI-enabled extensions return content that Daisy can render as embedded UI elements for rich, dynamic, and streamlined interactions.
 
 ## Try It Out
 
-See how interactive responses work in Goose. 
+See how interactive responses work in Daisy. 
 
 ### Add Enabled Extension
 
 For this exercise, we'll add an MCP-UI-enabled extension that connects to [MCP-UI Demos](https://mcp-aharvard.netlify.app/) provided by Andrew Harvard.
 
   <Tabs groupId="interface">
-    <TabItem value="ui" label="Goose Desktop" default>
-      <GooseDesktopInstaller
+    <TabItem value="ui" label="Daisy Desktop" default>
+      <DaisyDesktopInstaller
         extensionId="richdemo"
         extensionName="Rich Demo"
         description="Demo MCP-UI-enabled extension"
@@ -49,7 +49,7 @@ For this exercise, we'll add an MCP-UI-enabled extension that connects to [MCP-U
         url="https://mcp-aharvard.netlify.app/mcp"
       />
     </TabItem>
-    <TabItem value="cli" label="Goose CLI">
+    <TabItem value="cli" label="Daisy CLI">
         <CLIExtensionInstructions
           name="rich_demo"
           type="http"
@@ -61,7 +61,7 @@ For this exercise, we'll add an MCP-UI-enabled extension that connects to [MCP-U
 
 ### Interact in Chat
 
-In Goose Desktop, ask:
+In Daisy Desktop, ask:
 
 - `Help me select seats for my flight`
 

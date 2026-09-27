@@ -32,7 +32,7 @@ export default function ToolCallChain({
           const toolRequests = getToolRequests(message);
 
           return toolRequests.map((toolRequest) => (
-            <div key={toolRequest.id} className="goose-message-tool">
+            <div key={toolRequest.id} className="daisy-message-tool">
               <ToolCallWithResponse
                 isCancelledMessage={
                   messageIndex < messageHistoryIndex &&

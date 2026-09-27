@@ -1,24 +1,24 @@
 ---
 title: Knowledge Graph Memory Extension
-description: Add Knowledge Graph Memory MCP Server as a Goose Extension
+description: Add Knowledge Graph Memory MCP Server as a Daisy Extension
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import YouTubeShortEmbed from '@site/src/components/YouTubeShortEmbed';
-import GooseDesktopInstaller from '@site/src/components/GooseDesktopInstaller';
+import DaisyDesktopInstaller from '@site/src/components/DaisyDesktopInstaller';
 
 <YouTubeShortEmbed videoUrl="https://www.youtube.com/embed/PF6hpDaI9Mc" />
 
 
-This tutorial covers how to add the [Knowledge Graph Memory MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/memory) as a Goose extension. This enables Goose to analyze relationships, detect patterns, and gain a deeper understanding of your data. The knowledge graph builds on the [memory extension](/docs/mcp/memory-mcp) by mapping complex relationships between concepts and providing persistent memory across Goose sessions.
+This tutorial covers how to add the [Knowledge Graph Memory MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/memory) as a Daisy extension. This enables Daisy to analyze relationships, detect patterns, and gain a deeper understanding of your data. The knowledge graph builds on the [memory extension](/docs/mcp/memory-mcp) by mapping complex relationships between concepts and providing persistent memory across Daisy sessions.
 
 :::tip TLDR
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-  [Launch the installer](goose://extension?cmd=npx&arg=-y&arg=%40modelcontextprotocol%2Fserver-memory&id=knowledge_graph_memory&name=Knowledge%20Graph%20Memory&description=Graph-based%20memory%20system%20for%20persistent%20knowledge%20storage)
+  <TabItem value="ui" label="Daisy Desktop" default>
+  [Launch the installer](daisy://extension?cmd=npx&arg=-y&arg=%40modelcontextprotocol%2Fserver-memory&id=knowledge_graph_memory&name=Knowledge%20Graph%20Memory&description=Graph-based%20memory%20system%20for%20persistent%20knowledge%20storage)
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
   **Command**
   ```sh
   npx -y @modelcontextprotocol/server-memory
@@ -34,8 +34,8 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 :::
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-  <GooseDesktopInstaller
+  <TabItem value="ui" label="Daisy Desktop" default>
+  <DaisyDesktopInstaller
     extensionId="knowledge_graph_memory"
     extensionName="Knowledge Graph Memory"
     description="Graph-based memory system for persistent knowledge storage"
@@ -43,15 +43,15 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
     args={["-y", "@modelcontextprotocol/server-memory"]}
   />
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
   1. Run the `configure` command:
   ```sh
-  goose configure
+  daisy configure
   ```
 
   2. Choose to add a `Command-line Extension`
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -68,7 +68,7 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 
   3. Give your extension a name
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -85,7 +85,7 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 
   4. Enter the command
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -103,9 +103,9 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
     └ 
   ```  
 
- 5. Enter the number of seconds Goose should wait for actions to complete before timing out. Default is 300s
+ 5. Enter the number of seconds Daisy should wait for actions to complete before timing out. Default is 300s
    ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -128,7 +128,7 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 
   6. Choose to add a description. If you select "Yes" here, you will be prompted to enter a description for the extension.
    ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -155,7 +155,7 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 
   7. Choose No when asked to add environment variables
    ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -188,14 +188,14 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 
 ## Example Usage
 
-In this example, I'll show you how Goose can become an intelligent security reviewer by using connected knowledge patterns to detect and analyze vulnerabilities. Goose will be able to understand the relationship between security issues, their impacts, and mitigations.
+In this example, I'll show you how Daisy can become an intelligent security reviewer by using connected knowledge patterns to detect and analyze vulnerabilities. Daisy will be able to understand the relationship between security issues, their impacts, and mitigations.
 
-This means Goose doesn't just spot issues - it understands how vulnerabilities connect to real world impacts and can suggest comprehensive solutions.
+This means Daisy doesn't just spot issues - it understands how vulnerabilities connect to real world impacts and can suggest comprehensive solutions.
 
-### Step 1: Teach Goose About Security Patterns
-    #### Goose Prompt #1
+### Step 1: Teach Daisy About Security Patterns
+    #### Daisy Prompt #1
     ```
-    goose, learn these security vulnerability patterns and their relationships:
+    daisy, learn these security vulnerability patterns and their relationships:
 
     1. SQL Injection relates to:
 
@@ -216,7 +216,7 @@ This means Goose doesn't just spot issues - it understands how vulnerabilities c
         - JWT-based solutions
     ```
 
-    #### Goose Output
+    #### Daisy Output
 
     ```
     I'll store this security knowledge in the Knowledge Graph Memory with proper entities and relationships
@@ -257,7 +257,7 @@ This means Goose doesn't just spot issues - it understands how vulnerabilities c
         - Understand how different security issues are related
     ```
 ### Step 2:  Use Connected Knowledge for Code Review
-    #### Goose Prompt # 2
+    #### Daisy Prompt # 2
 
     ```
     Review this API endpoint for security issues:
@@ -275,7 +275,7 @@ This means Goose doesn't just spot issues - it understands how vulnerabilities c
         });
     });
     ```
-    #### Goose Output
+    #### Daisy Output
     ```
     I'll analyze this code using our connected knowledge graph to trace security vulnerabilities and their implications:
 

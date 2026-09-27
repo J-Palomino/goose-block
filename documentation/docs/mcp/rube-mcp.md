@@ -1,23 +1,23 @@
 ---
 title: Rube Extension
-description: Add Rube as a Goose Extension to connect with 500+ apps
+description: Add Rube as a Daisy Extension to connect with 500+ apps
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CLIExtensionInstructions from '@site/src/components/CLIExtensionInstructions';
-import GooseDesktopInstaller from '@site/src/components/GooseDesktopInstaller';
+import DaisyDesktopInstaller from '@site/src/components/DaisyDesktopInstaller';
 import { PanelLeft } from 'lucide-react';
 
-This tutorial covers how to add [Rube](https://rube.app) as a Goose extension to enable seamless integration with 500+ apps including Slack, Gmail, Notion, Google Workspace, Microsoft Office, GitHub, and many more.
+This tutorial covers how to add [Rube](https://rube.app) as a Daisy extension to enable seamless integration with 500+ apps including Slack, Gmail, Notion, Google Workspace, Microsoft Office, GitHub, and many more.
 
 :::tip TLDR
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-    [Launch the installer](goose://extension?type=streamable_http&url=https%3A%2F%2Frube.app%2Fmcp&id=rube&name=Rube&description=Seamlessly%20connect%20across%20500%2B%20applications%20including%20Slack%2C%20Gmail%2C%20Notion%2C%20Google%20Workspace%2C%20Microsoft%20Office%2C%20GitHub%2C%20and%20many%20more)
+  <TabItem value="ui" label="Daisy Desktop" default>
+    [Launch the installer](daisy://extension?type=streamable_http&url=https%3A%2F%2Frube.app%2Fmcp&id=rube&name=Rube&description=Seamlessly%20connect%20across%20500%2B%20applications%20including%20Slack%2C%20Gmail%2C%20Notion%2C%20Google%20Workspace%2C%20Microsoft%20Office%2C%20GitHub%2C%20and%20many%20more)
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
-    Use `goose configure` to add a `Remote Extension (Streaming HTTP)` extension type with:
+  <TabItem value="cli" label="Daisy CLI">
+    Use `daisy configure` to add a `Remote Extension (Streaming HTTP)` extension type with:
     
     **Endpoint URL**
     ```
@@ -37,8 +37,8 @@ Rube is a platform powered by Composio that provides unified access to 500+ apps
 ## Configuration
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-    <GooseDesktopInstaller
+  <TabItem value="ui" label="Daisy Desktop" default>
+    <DaisyDesktopInstaller
       extensionId="rube"
       extensionName="Rube"
       description="Seamlessly connect across 500+ applications including Slack, Gmail, Notion, Google Workspace, Microsoft Office, GitHub, and many more"
@@ -46,7 +46,7 @@ Rube is a platform powered by Composio that provides unified access to 500+ apps
       url="https://rube.app/mcp"
     />
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
     <CLIExtensionInstructions
       name="rube"
       type="http"
@@ -68,7 +68,7 @@ Rube uses OAuth browser authentication, which means:
 
 ## Example Usage
 
-Once Rube is configured, you can interact with 500+ apps directly through Goose. Here are some examples:
+Once Rube is configured, you can interact with 500+ apps directly through Daisy. Here are some examples:
 
 **Email Management**
 ```

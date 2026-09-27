@@ -160,7 +160,7 @@ export interface UseMessageStreamHelpers {
 }
 
 /**
- * Hook for streaming messages directly from the server using the native Goose message format
+ * Hook for streaming messages directly from the server using the native Daisy message format
  */
 export function useMessageStream({
   api = '/api/chat/reply',

@@ -1,10 +1,10 @@
 ---
 sidebar_position: 2
 title: Recipe Reference Guide
-description: Complete technical reference for creating and customizing recipes in Goose via the CLI.
+description: Complete technical reference for creating and customizing recipes in Daisy via the CLI.
 ---
 
-Recipes are reusable Goose configurations that package up a specific setup so it can be easily shared and launched by others.
+Recipes are reusable Daisy configurations that package up a specific setup so it can be easily shared and launched by others.
 
 ## Recipe File Format
 
@@ -16,16 +16,16 @@ Files should be named either:
 - `recipe.yaml`/`recipe.json` 
 - `<recipe_name>.yaml`/`<recipe_name>.json`
 
-After creating recipe files, you can use [`goose` CLI commands](/docs/guides/goose-cli-commands) to run or validate the files and to manage recipe sharing.
+After creating recipe files, you can use [`daisy` CLI commands](/docs/guides/daisy-cli-commands) to run or validate the files and to manage recipe sharing.
 
 ### CLI and Desktop Formats
 
-The Goose CLI supports CLI and Desktop recipe formats:
+The Daisy CLI supports CLI and Desktop recipe formats:
 
 - **CLI Format**: Recipe fields (like `title`, `description`, `instructions`) are at the root level of the YAML/JSON file
 - **Desktop Format**: Recipe fields are nested inside a `recipe` object, with additional metadata fields at the root level
 
-The CLI automatically detects and handles both formats when running `goose run --recipe <file>` and `goose recipe` commands.
+The CLI automatically detects and handles both formats when running `daisy run --recipe <file>` and `daisy recipe` commands.
 
 <details>
 <summary>Format Examples</summary>
@@ -56,7 +56,7 @@ isArchived: false
 ```
 
 :::note
-Goose automatically adds metadata fields to recipes saved from the Desktop app.
+Daisy automatically adds metadata fields to recipes saved from the Desktop app.
 :::
 
 </details>
@@ -86,7 +86,7 @@ Goose automatically adds metadata fields to recipes saved from the Desktop app.
 
 ### Desktop Format Metadata Fields
 
-When recipes are saved from Goose Desktop, additional metadata fields are included at the top level (outside the `recipe` key). These fields are used by the Desktop app for organization and management but are ignored by CLI operations.
+When recipes are saved from Daisy Desktop, additional metadata fields are included at the top level (outside the `recipe` key). These fields are used by the Desktop app for organization and management but are ignored by CLI operations.
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -120,7 +120,7 @@ Each parameter in the `parameters` array has the following structure:
 - `optional`: Can be omitted if a default value is specified
 - `user_prompt`: Will interactively prompt the user for input if not provided
 
-The `required` and `optional` parameters work best for recipes opened in Goose Desktop. If a value isn't provided for a `user_prompt` parameter, the parameter won't be substituted and may appear as literal `{{ parameter_name }}` text in the recipe output.
+The `required` and `optional` parameters work best for recipes opened in Daisy Desktop. If a value isn't provided for a `user_prompt` parameter, the parameter won't be substituted and may appear as literal `{{ parameter_name }}` text in the recipe output.
 
 :::important
 - Optional parameters MUST have a default value specified
@@ -142,7 +142,7 @@ The `extensions` field allows you to specify which Model Context Protocol (MCP) 
 | `args` | Array | List of arguments for the command |
 | `env_keys` | Array | (Optional) Names of environment variables required by the extension |
 | `timeout` | Number | Timeout in seconds |
-| `bundled` | Boolean | (Optional) Whether the extension is bundled with Goose |
+| `bundled` | Boolean | (Optional) Whether the extension is bundled with Daisy |
 | `description` | String | Description of what the extension does |
 | `available_tools` | Array | List of tool names within the extension that will be available. When not specified all will be available |
 
@@ -157,7 +157,7 @@ extensions:
       - mcp_codesearch@latest
     timeout: 300
     bundled: true
-    description: "Query https://codesearch.sqprod.co/ directly from goose"
+    description: "Query https://codesearch.sqprod.co/ directly from daisy"
   
   - type: stdio
     name: presidio
@@ -182,10 +182,10 @@ extensions:
 
 This feature is only available through the CLI.
 
-If a recipe uses an extension that requires a secret, Goose can prompt users to provide the secret when running the recipe:
+If a recipe uses an extension that requires a secret, Daisy can prompt users to provide the secret when running the recipe:
 
-1. When a recipe is loaded, Goose scans all extensions (including those in sub-recipes) for `env_keys` fields
-2. If any required environment variables are missing from the secure keyring, Goose prompts the user to enter them
+1. When a recipe is loaded, Daisy scans all extensions (including those in sub-recipes) for `env_keys` fields
+2. If any required environment variables are missing from the secure keyring, Daisy prompts the user to enter them
 3. Values are stored securely in the system keyring and reused for subsequent runs
 
 To update a stored secret, remove it from the system keyring and run the recipe again to be re-prompted.
@@ -204,28 +204,28 @@ The `settings` field allows you to configure the AI model and provider settings 
 
 | Field | Type | Description |
 |-------|------|-------------|
-| `goose_provider` | String | (Optional) The AI provider to use (e.g., "anthropic", "openai") |
-| `goose_model` | String | (Optional) The specific model name to use |
+| `daisy_provider` | String | (Optional) The AI provider to use (e.g., "anthropic", "openai") |
+| `daisy_model` | String | (Optional) The specific model name to use |
 | `temperature` | Number | (Optional) The temperature setting for the model (typically 0.0-1.0) |
 
 ### Example Settings Configuration
 
 ```yaml
 settings:
-  goose_provider: "anthropic"
-  goose_model: "claude-sonnet-4-20250514"
+  daisy_provider: "anthropic"
+  daisy_model: "claude-sonnet-4-20250514"
   temperature: 0.7
 ```
 
 ```yaml
 settings:
-  goose_provider: "openai"
-  goose_model: "gpt-4o"
+  daisy_provider: "openai"
+  daisy_model: "gpt-4o"
   temperature: 0.3
 ```
 
 :::note
-Settings specified in a recipe will override your default Goose configuration when that recipe is executed. If no settings are specified, Goose will use your configured defaults.
+Settings specified in a recipe will override your default Daisy configuration when that recipe is executed. If no settings are specified, Daisy will use your configured defaults.
 :::
 
 ## Sub-Recipes
@@ -331,19 +331,19 @@ retry:
 
 You can configure retry behavior globally using environment variables:
 
-- `GOOSE_RECIPE_RETRY_TIMEOUT_SECONDS`: Global timeout for success check commands
-- `GOOSE_RECIPE_ON_FAILURE_TIMEOUT_SECONDS`: Global timeout for on_failure commands
+- `DAISY_RECIPE_RETRY_TIMEOUT_SECONDS`: Global timeout for success check commands
+- `DAISY_RECIPE_ON_FAILURE_TIMEOUT_SECONDS`: Global timeout for on_failure commands
 
 These environment variables are overridden by recipe-specific timeout configurations.
 
 ## Structured Output with `response`
 
-The `response` field enables recipes to enforce a final structured JSON output from Goose. When you specify a `json_schema`, Goose will:
+The `response` field enables recipes to enforce a final structured JSON output from Daisy. When you specify a `json_schema`, Daisy will:
 
 1. **Validate the output**: Validates the output JSON against your JSON schema with basic JSON schema validations
 2. **Final structured output**: Ensure the final output of the agent is a response matching your JSON structure
 
-This **enables automation** by returning consistent, parseable results for scripts and workflows. Recipes can produce structured output when run from either the Goose CLI or Goose Desktop. See [use cases and ideas for automation workflows](/docs/guides/recipes/session-recipes#structured-output-for-automation).
+This **enables automation** by returning consistent, parseable results for scripts and workflows. Recipes can produce structured output when run from either the Daisy CLI or Daisy Desktop. See [use cases and ideas for automation workflows](/docs/guides/recipes/session-recipes#structured-output-for-automation).
 
 ### Basic Structure
 
@@ -455,11 +455,11 @@ extensions:
       - mcp_codesearch@latest
     timeout: 300
     bundled: true
-    description: "Query codesearch directly from goose"
+    description: "Query codesearch directly from daisy"
 
 settings:
-  goose_provider: "anthropic"
-  goose_model: "claude-sonnet-4-20250514"
+  daisy_provider: "anthropic"
+  daisy_model: "claude-sonnet-4-20250514"
   temperature: 0.7
 
 retry:
@@ -514,10 +514,10 @@ Recipes can be loaded from:
 
 1. Local filesystem:
    - Current directory
-   - Directories specified in `GOOSE_RECIPE_PATH` environment variable
+   - Directories specified in `DAISY_RECIPE_PATH` environment variable
    
 2. GitHub repositories:
-   - Configure using `GOOSE_RECIPE_GITHUB_REPO` configuration key
+   - Configure using `DAISY_RECIPE_GITHUB_REPO` configuration key
    - Requires GitHub CLI (`gh`) to be installed and authenticated
 
 ## Validation Rules
@@ -542,7 +542,7 @@ Common errors to watch for:
 - Invalid extension configurations
 - Invalid retry configuration (missing required fields, invalid shell commands)
 
-When these occur, Goose will provide helpful error messages indicating what needs to be fixed.
+When these occur, Daisy will provide helpful error messages indicating what needs to be fixed.
 
 ### Retry-Specific Errors
 
@@ -552,4 +552,4 @@ When these occur, Goose will provide helpful error messages indicating what need
 - **Missing required retry fields**: When `max_retries` or `checks` are not specified
 
 ## Learn More
-Check out the [Goose Recipes](/docs/guides/recipes) guide for more docs, tools, and resources to help you master Goose recipes.
+Check out the [Daisy Recipes](/docs/guides/recipes) guide for more docs, tools, and resources to help you master Daisy recipes.

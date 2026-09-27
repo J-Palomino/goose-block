@@ -1,20 +1,20 @@
 ---
 title: MongoDB Extension
-description: Add MongoDB MCP Server as a Goose Extension
+description: Add MongoDB MCP Server as a Daisy Extension
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import GooseDesktopInstaller from '@site/src/components/GooseDesktopInstaller';
+import DaisyDesktopInstaller from '@site/src/components/DaisyDesktopInstaller';
 
-The [MongoDB MCP Server](https://github.com/mongodb-js/mongodb-mcp-server) extension allows Goose to interact directly with your MongoDB databases, enabling comprehensive database operations including querying, document manipulation, collection management, and database administration. This makes it easy to work with your MongoDB databases through natural language interactions.
+The [MongoDB MCP Server](https://github.com/mongodb-js/mongodb-mcp-server) extension allows Daisy to interact directly with your MongoDB databases, enabling comprehensive database operations including querying, document manipulation, collection management, and database administration. This makes it easy to work with your MongoDB databases through natural language interactions.
 
 :::tip TLDR
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-  [Launch the installer](goose://extension?cmd=npx&arg=-y&arg=mongodb-mcp-server&arg=--connection-string&arg=mongodb://localhost:27017&id=mongodb&name=MongoDB&description=MongoDB%20database%20integration)
+  <TabItem value="ui" label="Daisy Desktop" default>
+  [Launch the installer](daisy://extension?cmd=npx&arg=-y&arg=mongodb-mcp-server&arg=--connection-string&arg=mongodb://localhost:27017&id=mongodb&name=MongoDB&description=MongoDB%20database%20integration)
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
   **Command**
   ```sh
   npx -y mongodb-mcp-server --connection-string mongodb://localhost:27017
@@ -55,8 +55,8 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 :::
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-    <GooseDesktopInstaller
+  <TabItem value="ui" label="Daisy Desktop" default>
+    <DaisyDesktopInstaller
       extensionId="mongodb"
       extensionName="MongoDB"
       description="MongoDB database integration"
@@ -69,15 +69,15 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
     :::
 
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
   1. Run the `configure` command:
   ```sh
-  goose configure
+  daisy configure
   ```
 
   2. Choose to add a `Command-line Extension`
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -93,7 +93,7 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 
   3. Name your extension
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -110,7 +110,7 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 
   4. Enter the command with the database connection string that matches your [MongoDB environment](#customizing-your-connection)
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -127,7 +127,7 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 
   5. Set the timeout (default 300s is usually sufficient)
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -147,7 +147,7 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 
   6. Choose to add a description. If you select "Yes" here, you will be prompted to enter a description for the extension.
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -170,7 +170,7 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 
   7. Complete the configuration
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -223,16 +223,16 @@ The MongoDB extension provides comprehensive database management capabilities th
 - **View collection indexes** and their configurations
 - **Check database statistics** and collection storage sizes
 
-Just describe what you want to accomplish in natural language, and Goose will help you execute the appropriate MongoDB operations safely and efficiently.
+Just describe what you want to accomplish in natural language, and Daisy will help you execute the appropriate MongoDB operations safely and efficiently.
 
 ## Example Usage
 
-#### Goose Prompt
+#### Daisy Prompt
 ```
 Update all users in the premium tier who haven't logged in for more than 90 days - set their status to 'inactive' and add a note about when this change was made.
 ```
 
-#### Goose Output
+#### Daisy Output
 ```
 I've successfully updated inactive premium users using updateMany:
 

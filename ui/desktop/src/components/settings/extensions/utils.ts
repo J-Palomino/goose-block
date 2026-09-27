@@ -199,7 +199,7 @@ export function extractExtensionConfig(fixedEntry: FixedExtensionEntry): Extensi
 
 export async function replaceWithShims(cmd: string) {
   const binaryPathMap: Record<string, string> = {
-    goosed: await window.electron.getBinaryPath('goosed'),
+    daisyd: await window.electron.getBinaryPath('daisyd'),
     jbang: await window.electron.getBinaryPath('jbang'),
     npx: await window.electron.getBinaryPath('npx'),
     uvx: await window.electron.getBinaryPath('uvx'),
@@ -215,7 +215,7 @@ export async function replaceWithShims(cmd: string) {
 
 export function removeShims(cmd: string) {
   // Only remove shims if the path matches our known shim patterns
-  const shimPatterns = [/cu$/, /goosed$/, /docker$/, /jbang$/, /npx$/, /uvx$/, /npx.cmd$/];
+  const shimPatterns = [/cu$/, /daisyd$/, /docker$/, /jbang$/, /npx$/, /uvx$/, /npx.cmd$/];
 
   // Check if the command matches any shim pattern
   const isShim = shimPatterns.some((pattern) => pattern.test(cmd));

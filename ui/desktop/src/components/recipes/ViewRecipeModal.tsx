@@ -633,7 +633,7 @@ export default function ViewRecipeModal({ isOpen, onClose, config }: ViewRecipeM
                       className="mr-2"
                     />
                     <span className="text-sm text-textStandard">
-                      Global - Available across all Goose sessions
+                      Global - Available across all Daisy sessions
                     </span>
                   </label>
                   <label className="flex items-center">

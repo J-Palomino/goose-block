@@ -1,24 +1,24 @@
 ---
 title: Repomix Extension
-description: Add Repomix MCP Server as a Goose Extension
+description: Add Repomix MCP Server as a Daisy Extension
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import YouTubeShortEmbed from '@site/src/components/YouTubeShortEmbed';
-import GooseDesktopInstaller from '@site/src/components/GooseDesktopInstaller';
+import DaisyDesktopInstaller from '@site/src/components/DaisyDesktopInstaller';
 
 <YouTubeShortEmbed videoUrl="https://www.youtube.com/embed/69h4LLkIg_E" />
 
 
-This tutorial covers how to add the [Repomix MCP Server](https://github.com/yamadashy/repomix) as a Goose extension to enable automated repository packing, codebase analysis, architecture summaries, test generation, and code exploration, all while compressing the codebase to minimize token usage and stay within your LLM's context limits.
+This tutorial covers how to add the [Repomix MCP Server](https://github.com/yamadashy/repomix) as a Daisy extension to enable automated repository packing, codebase analysis, architecture summaries, test generation, and code exploration, all while compressing the codebase to minimize token usage and stay within your LLM's context limits.
 
 :::tip TLDR
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-  [Launch the installer](goose://extension?cmd=npx&arg=-y&arg=repomix&arg=--mcp&id=repomix&name=Repomix&description=Pack%20repositories%20into%20AI-friendly%20formats%20for%20Goose)
+  <TabItem value="ui" label="Daisy Desktop" default>
+  [Launch the installer](daisy://extension?cmd=npx&arg=-y&arg=repomix&arg=--mcp&id=repomix&name=Repomix&description=Pack%20repositories%20into%20AI-friendly%20formats%20for%20Daisy)
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
   **Command**
   ```sh
   npx -y repomix --mcp
@@ -34,24 +34,24 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 :::
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-  <GooseDesktopInstaller
+  <TabItem value="ui" label="Daisy Desktop" default>
+  <DaisyDesktopInstaller
     extensionId="repomix"
     extensionName="Repomix"
-    description="Pack repositories into AI-friendly formats for Goose"
+    description="Pack repositories into AI-friendly formats for Daisy"
     command="npx"
     args={["-y", "repomix", "--mcp"]}
   />
 </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
   1. Run the `configure` command:
   ```sh
-  goose configure
+  daisy configure
   ```
 
   2. Choose to add a `Command-line Extension`
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -68,7 +68,7 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 
   3. Give your extension a name
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -85,7 +85,7 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 
   4. Enter the command
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -103,9 +103,9 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
     └ 
   ```  
 
-  5. Enter the number of seconds Goose should wait for actions to complete before timing out. Default is 300s
+  5. Enter the number of seconds Daisy should wait for actions to complete before timing out. Default is 300s
     ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -129,7 +129,7 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 
   6. Choose to add a description. If you select "Yes" here, you will be prompted to enter a description for the extension.
     ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -157,7 +157,7 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
   7. Choose No when asked to add environment variables
 
    ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -190,16 +190,16 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 
 ## Example Usage
 
-In this example, I’ll show you how to use Goose with the Repomix Extension to analyze the compressed Axios repository. Goose will focus on the `lib/core/Axios.js` file, explain its role in the architecture, spot missing tests, write new unit tests, and suggest improvements to the testing strategy and code maintainability. 
+In this example, I’ll show you how to use Daisy with the Repomix Extension to analyze the compressed Axios repository. Daisy will focus on the `lib/core/Axios.js` file, explain its role in the architecture, spot missing tests, write new unit tests, and suggest improvements to the testing strategy and code maintainability. 
 
-By compressing the entire codebase into an AI-friendly format, Repomix helps Goose stay within token limits while providing detailed, file-specific insights.
+By compressing the entire codebase into an AI-friendly format, Repomix helps Daisy stay within token limits while providing detailed, file-specific insights.
 
-### Goose Prompt
+### Daisy Prompt
 
 > Review the file lib/core/Axios.js from the Axios repository and identify any missing unit tests needed to thoroughly cover its core functions and classes. Explain the role this file plays in the overall Axios architecture, how it integrates with other modules, and how well it is currently tested. Write new unit tests to improve coverage, and recommend improvements to the testing strategy or refactoring opportunities to make the code more maintainable.
 
 
-### Goose Output
+### Daisy Output
 
 :::note CLI
 

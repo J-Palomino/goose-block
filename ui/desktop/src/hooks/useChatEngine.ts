@@ -93,7 +93,7 @@ export const useChatEngine = ({
     initialMessages: chat.messages,
     body: {
       session_id: chat.sessionId,
-      session_working_dir: window.appConfig.get('GOOSE_WORKING_DIR'),
+      session_working_dir: window.appConfig.get('DAISY_WORKING_DIR'),
       ...(chat.recipeConfig?.title
         ? {
             recipe_name: chat.recipeConfig.title,
@@ -109,7 +109,7 @@ export const useChatEngine = ({
       if (timeSinceLastInteraction > 60000) {
         // 60000ms = 1 minute
         window.electron.showNotification({
-          title: 'Goose finished the task.',
+          title: 'Daisy finished the task.',
           body: 'Click here to expand.',
         });
       }
@@ -284,7 +284,7 @@ export const useChatEngine = ({
   );
 
   // Handle stopping the message stream
-  const onStopGoose = useCallback(() => {
+  const onStopDaisy = useCallback(() => {
     stop();
     setLastInteractionTime(Date.now());
     stopPowerSaveBlocker();
@@ -458,7 +458,7 @@ export const useChatEngine = ({
 
     // Event handlers
     handleSubmit,
-    onStopGoose,
+    onStopDaisy,
 
     // Token and session data
     sessionTokenCount,

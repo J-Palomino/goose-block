@@ -1,15 +1,15 @@
 ---
 title: Nostrbook Extension
-description: Add Nostrbook MCP Server as a Goose Extension
+description: Add Nostrbook MCP Server as a Daisy Extension
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import GooseDesktopInstaller from '@site/src/components/GooseDesktopInstaller';
+import DaisyDesktopInstaller from '@site/src/components/DaisyDesktopInstaller';
 
 
 
-This tutorial covers how to add the [Nostrbook MCP Server](https://gitlab.com/soapbox-pub/nostrbook) as a Goose extension to provide access to a comprehensive registry of Nostr documentation that helps users understand the decentralized social protocol, its implementation possibilities, and technical specifications.
+This tutorial covers how to add the [Nostrbook MCP Server](https://gitlab.com/soapbox-pub/nostrbook) as a Daisy extension to provide access to a comprehensive registry of Nostr documentation that helps users understand the decentralized social protocol, its implementation possibilities, and technical specifications.
 
 
 :::tip TLDR
@@ -29,8 +29,8 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-  <GooseDesktopInstaller
+  <TabItem value="ui" label="Daisy Desktop" default>
+  <DaisyDesktopInstaller
     extensionId="nostrbook"
     extensionName="Nostrbook"
     description="A comprehensive registry of Nostr documentation with structured knowledge"
@@ -38,15 +38,15 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
     args={["-y", "@nostrbook/mcp"]}
   />
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
   1. Run the `configure` command:
   ```sh
-  goose configure
+  daisy configure
   ```
 
   2. Choose to add a `Command-line Extension`
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension 
@@ -63,7 +63,7 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 
   3. Give your extension a name
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension 
@@ -80,7 +80,7 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 
   4. Enter the command
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension 
@@ -98,9 +98,9 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
     └ 
   ```  
 
-  5. Enter the number of seconds Goose should wait for actions to complete before timing out. Default is 300s
+  5. Enter the number of seconds Daisy should wait for actions to complete before timing out. Default is 300s
     ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension 
@@ -124,7 +124,7 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 
   6. Choose to add a description. If you select "Yes" here, you will be prompted to enter a description for the extension.
     ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension 
@@ -152,7 +152,7 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
   7. Choose No when asked to add environment variables
 
    ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension 
@@ -185,12 +185,12 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 
 ## Example Usage
 
-### Goose Prompt
+### Daisy Prompt
 
-> _Goose, what is the NIP-61 and how can I implement it?._
+> _Daisy, what is the NIP-61 and how can I implement it?._
 
 
-### Goose Output
+### Daisy Output
 
 Note that IDs have been changed to generic ones
 

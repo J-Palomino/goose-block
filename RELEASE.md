@@ -11,7 +11,7 @@ You'll generally create one of two release types: a regular feature release (min
 1. Wait for the bundled version of the app which will be linked from a comment on the PR
 1. Test the bundled version of the app
 1. When ready, tag the release: run `just tag-push` to create the tag and push it. This will start the release process
-1. Once the release is created on [Github](https://github.com/block/goose/releases), merge the PR and run `just release-notes <prior release>` to generate release notes. Copy these into the release description.
+1. Once the release is created on [Github](https://github.com/block/daisy/releases), merge the PR and run `just release-notes <prior release>` to generate release notes. Copy these into the release description.
 
 ## Patch release
 
@@ -23,6 +23,6 @@ Follow the above steps, but rather than starting on main, start on the release t
 1. Cherry-pick the relevant fixes from the main branch.
 1. Test this build. When ready to make the release, proceed to the next step.
 1. Tag the release: run `just tag-push` to create the tag and push it. This will start the build process for your new release.
-1. Once the release is created on [Github](https://github.com/block/goose/releases), run `just release-notes <prior release>` to generate release notes. Copy these into the release description.
+1. Once the release is created on [Github](https://github.com/block/daisy/releases), run `just release-notes <prior release>` to generate release notes. Copy these into the release description.
 
 Note that you won't merge this branch into main.

@@ -145,7 +145,7 @@ describe('Agent API', () => {
 
       expect(mockToastService.error).toHaveBeenCalledWith({
         title: 'test-extension',
-        msg: 'Failed to add extension. Goose Agent was still starting up. Please try again.',
+        msg: 'Failed to add extension. Daisy Agent was still starting up. Please try again.',
         traceback: 'Server returned 428: Precondition Required',
       });
     });

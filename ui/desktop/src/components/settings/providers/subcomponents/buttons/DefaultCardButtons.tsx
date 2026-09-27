@@ -53,7 +53,7 @@ export default function DefaultCardButtons({
       {/*show Launch button for configured providers on onboarding page*/}
       {provider.is_configured && isOnboardingPage && (
         <RocketButton
-          tooltip={'Get started with goose!'}
+          tooltip={'Get started with daisy!'}
           onClick={(e) => {
             e.stopPropagation();
             onLaunch(provider);

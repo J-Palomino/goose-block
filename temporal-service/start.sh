@@ -22,7 +22,7 @@ if [ ! -f "./temporal-service" ]; then
 fi
 
 # Set data directory
-DATA_DIR="${GOOSE_DATA_DIR:-./data}"
+DATA_DIR="${DAISY_DATA_DIR:-./data}"
 mkdir -p "$DATA_DIR"
 
 echo "Data directory: $DATA_DIR"
@@ -80,7 +80,7 @@ echo ""
 echo "Services:"
 echo "  - Temporal Server: http://localhost:7233 (gRPC)"
 echo "  - Temporal Web UI: http://localhost:8233"
-echo "  - Goose Scheduler API: http://localhost:${PORT:-8080}"
+echo "  - Daisy Scheduler API: http://localhost:${PORT:-8080}"
 echo ""
 echo "API Endpoints:"
 echo "  - Health: http://localhost:${PORT:-8080}/health"

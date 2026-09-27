@@ -30,17 +30,17 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install and Configure Goose
+      - name: Install and Configure Daisy
         run: |
           mkdir -p /home/runner/.local/bin
-          curl -fsSL https://github.com/block/goose/releases/download/stable/download_cli.sh \
+          curl -fsSL https://github.com/block/daisy/releases/download/stable/download_cli.sh \
             | CONFIGURE=false INSTALL_PATH=/home/runner/.local/bin bash
           echo "/home/runner/.local/bin" >> $GITHUB_PATH
 
-          mkdir -p ~/.config/goose
-          cat <<EOF > ~/.config/goose/config.yaml
-          GOOSE_PROVIDER: openrouter
-          GOOSE_MODEL: "anthropic/claude-sonnet-4"
+          mkdir -p ~/.config/daisy
+          cat <<EOF > ~/.config/daisy/config.yaml
+          DAISY_PROVIDER: openrouter
+          DAISY_MODEL: "anthropic/claude-sonnet-4"
           keyring: false
           EOF
 
@@ -123,7 +123,7 @@ jobs:
             if [ -f "$RECIPE_FILE" ]; then
               BASE_RECIPE_FILENAME=$(basename "$RECIPE_FILE")
               echo "🔍 Validating: $BASE_RECIPE_FILENAME"
-              if OUTPUT=$(goose recipe validate "$RECIPE_FILE" 2>&1); then
+              if OUTPUT=$(daisy recipe validate "$RECIPE_FILE" 2>&1); then
                 echo "✅ Valid: $BASE_RECIPE_FILENAME"
                 VALIDATION_OUTPUT="${VALIDATION_OUTPUT}✅ $BASE_RECIPE_FILENAME: VALID\n"
               else
@@ -219,7 +219,7 @@ jobs:
               2. If approved, we'll run a security scan
               3. Once merged, you'll receive $10 in OpenRouter credits (if email provided)
               
-              Thanks for contributing to the Goose Recipe Cookbook! 🎉`;
+              Thanks for contributing to the Daisy Recipe Cookbook! 🎉`;
             } else {
               // Read validation details from file
               let validationDetails = '';
@@ -235,7 +235,7 @@ jobs:
               
               ${validationDetails}
               
-              📚 Check our [Recipe Guide](https://block.github.io/goose/recipes) for help with the correct format.`;
+              📚 Check our [Recipe Guide](https://block.github.io/daisy/recipes) for help with the correct format.`;
             }
             
             await github.rest.issues.createComment({

@@ -98,8 +98,8 @@ export function useAgent(): UseAgentReturn {
 
         try {
           const config = window.electron.getConfig();
-          const provider = (await read('GOOSE_PROVIDER', false)) ?? config.GOOSE_DEFAULT_PROVIDER;
-          const model = (await read('GOOSE_MODEL', false)) ?? config.GOOSE_DEFAULT_MODEL;
+          const provider = (await read('DAISY_PROVIDER', false)) ?? config.DAISY_DEFAULT_PROVIDER;
+          const model = (await read('DAISY_MODEL', false)) ?? config.DAISY_DEFAULT_MODEL;
 
           if (!provider || !model) {
             setAgentState(AgentState.NO_PROVIDER);
@@ -115,7 +115,7 @@ export function useAgent(): UseAgentReturn {
               })
             : await startAgent({
                 body: {
-                  working_dir: window.appConfig.get('GOOSE_WORKING_DIR') as string,
+                  working_dir: window.appConfig.get('DAISY_WORKING_DIR') as string,
                   recipe: recipeFromAppConfig ?? initContext.recipeConfig,
                 },
                 throwOnError: true,

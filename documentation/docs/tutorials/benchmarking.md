@@ -1,11 +1,11 @@
 ---
-title: Benchmarking with Goose
-sidebar_label: Benchmark with Goose
+title: Benchmarking with Daisy
+sidebar_label: Benchmark with Daisy
 ---
 
-The Goose benchmarking system allows you to evaluate goose performance on complex tasks with one or more system
+The Daisy benchmarking system allows you to evaluate daisy performance on complex tasks with one or more system
 configurations.<br></br>
-This guide covers how to use the `goose bench` command to run benchmarks and analyze results.
+This guide covers how to use the `daisy bench` command to run benchmarks and analyze results.
 
 ### Quick Start
 
@@ -13,19 +13,19 @@ This guide covers how to use the `goose bench` command to run benchmarks and ana
    Run the following to see a listing of every valid selector:
 
 ```bash
-goose bench selectors
+daisy bench selectors
 ```
 
 2. Create a basic configuration file:
 
 ```bash
-goose bench init-config -n bench-config.json
+daisy bench init-config -n bench-config.json
 cat bench-config.json
 {
   "models": [
     {
       "provider": "databricks",
-      "name": "goose",
+      "name": "daisy",
       "parallel_safe": true
     }
   ],
@@ -43,7 +43,7 @@ cat bench-config.json
 2. Run the benchmark:
 
 ```bash
-goose bench run -c bench-config.json
+daisy bench run -c bench-config.json
 ```
 
 ## Configuration File
@@ -55,7 +55,7 @@ The benchmark configuration is specified in a JSON file with the following struc
   "models": [
     {
       "provider": "databricks",
-      "name": "goose",
+      "name": "daisy",
       "parallel_safe": true,
       "tool_shim": {
         "use_tool_shim": false,
@@ -186,14 +186,14 @@ benchmark-${datetime}/
 For detailed logging, you can enable debug mode:
 
 ```bash
-RUST_LOG=debug goose bench bench-config.json
+RUST_LOG=debug daisy bench bench-config.json
 ```
 
 ## Advanced Usage
 
 ### Tool Shimming
 
-Tool shimming allows you to use a non-tool-capable models with Goose, provided Ollama is installed on the
+Tool shimming allows you to use a non-tool-capable models with Daisy, provided Ollama is installed on the
 system.
 
 See this guide for important details on [tool shimming](/docs/experimental/ollama).

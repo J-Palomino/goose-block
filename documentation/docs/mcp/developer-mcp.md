@@ -1,43 +1,43 @@
 ---
 title: Developer Extension
-description: Use Developer MCP Server as a Goose Extension
+description: Use Developer MCP Server as a Daisy Extension
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import YouTubeShortEmbed from '@site/src/components/YouTubeShortEmbed';
-import GooseBuiltinInstaller from '@site/src/components/GooseBuiltinInstaller';
+import DaisyBuiltinInstaller from '@site/src/components/DaisyBuiltinInstaller';
 
 <YouTubeShortEmbed videoUrl="https://www.youtube.com/embed/on_p-LeIrak" />
 
-The Developer extension allows Goose to automate developer-centric tasks such as file editing, shell command execution, and project setup.
+The Developer extension allows Daisy to automate developer-centric tasks such as file editing, shell command execution, and project setup.
 
-This tutorial will cover enabling and using the Developer MCP Server, which is a built-in Goose extension. 
+This tutorial will cover enabling and using the Developer MCP Server, which is a built-in Daisy extension. 
 
 
 ## Configuration
 
 :::info
-The Developer extension is already enabled by default when Goose is installed.
+The Developer extension is already enabled by default when Daisy is installed.
 :::
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-  <GooseBuiltinInstaller
+  <TabItem value="ui" label="Daisy Desktop" default>
+  <DaisyBuiltinInstaller
     extensionName="Developer"
     description="Automate developer-centric tasks like file editing and shell commands"
   />
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
 
   1. Run the `configure` command:
   ```sh
-  goose configure
+  daisy configure
   ```
 
   2. Choose to `Toggle Extensions`
   ```sh
-  ┌   goose-configure 
+  ┌   daisy-configure 
   │
   ◇  What would you like to configure?
   │  Toggle Extensions 
@@ -53,7 +53,7 @@ The Developer extension is already enabled by default when Goose is installed.
 
 ## Example Usage
 
-In this example, I'm going to have Goose automate setting up my JavaScript developer environment with Express, Mongoose, Nodemon, Dotenv and initialize Git.
+In this example, I'm going to have Daisy automate setting up my JavaScript developer environment with Express, Mondaisy, Nodemon, Dotenv and initialize Git.
 
 :::info LLM
 Anthropic's Claude 4 Sonnet was used for this task.
@@ -61,28 +61,28 @@ Anthropic's Claude 4 Sonnet was used for this task.
 
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-   1. Open a new session in Goose Desktop
+  <TabItem value="ui" label="Daisy Desktop" default>
+   1. Open a new session in Daisy Desktop
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
 
-  1. Open a terminal and start a new Goose session:
+  1. Open a terminal and start a new Daisy session:
 
   ```sh
-  goose session
+  daisy session
   ```
 
   </TabItem>
 </Tabs>
 
-### Goose Prompt
+### Daisy Prompt
 ```
-set up a new JavaScript project with Express, Mongoose, Nodemon, and Dotenv? Fetch the latest package versions, generate a README with those versions, and initialize Git
+set up a new JavaScript project with Express, Mondaisy, Nodemon, and Dotenv? Fetch the latest package versions, generate a README with those versions, and initialize Git
 ```
 
-After 1 minute, Goose was done setting up my entire dev environment! 🎉
+After 1 minute, Daisy was done setting up my entire dev environment! 🎉
 
-### Goose Output
+### Daisy Output
 
 ```md
 I'll help you set up a new JavaScript project with those dependencies. I'll break this down into steps:
@@ -99,7 +99,7 @@ I'll help you set up a new JavaScript project with those dependencies. I'll brea
 Great! I've set up a complete Express project with MongoDB and Dotenv integrations:
 
 1. Created a new project directory and initialized npm
-2. Installed Express, Mongoose, and dotenv dependencies
+2. Installed Express, Mondaisy, and dotenv dependencies
 3. set up the basic project structure with directories for:
     - config/
     - models/

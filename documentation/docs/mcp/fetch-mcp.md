@@ -1,27 +1,27 @@
 ---
 title: Fetch Extension
-description: Add Fetch MCP Server as a Goose Extension
+description: Add Fetch MCP Server as a Daisy Extension
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import YouTubeShortEmbed from '@site/src/components/YouTubeShortEmbed';
-import GooseDesktopInstaller from '@site/src/components/GooseDesktopInstaller';
+import DaisyDesktopInstaller from '@site/src/components/DaisyDesktopInstaller';
 
 <YouTubeShortEmbed videoUrl="https://www.youtube.com/embed/_WMm4kDYMog" />
 
 :::warning Known Limitation
-The Fetch extension [does not work](https://github.com/block/goose/issues/1184) with Google models (e.g. gemini-2.0-flash) because this extension uses `format: uri` in its JSON schema which Google doesn't support.
+The Fetch extension [does not work](https://github.com/block/daisy/issues/1184) with Google models (e.g. gemini-2.0-flash) because this extension uses `format: uri` in its JSON schema which Google doesn't support.
 :::
 
-This tutorial covers how to add the [Fetch MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/fetch) as a Goose extension to retrieve and process content from the web.
+This tutorial covers how to add the [Fetch MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/fetch) as a Daisy extension to retrieve and process content from the web.
 
 :::tip TLDR
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-  [Launch the installer](goose://extension?cmd=uvx&arg=mcp-server-fetch&id=fetch&name=Fetch&description=Web%20content%20fetching%20and%20processing%20capabilities)
+  <TabItem value="ui" label="Daisy Desktop" default>
+  [Launch the installer](daisy://extension?cmd=uvx&arg=mcp-server-fetch&id=fetch&name=Fetch&description=Web%20content%20fetching%20and%20processing%20capabilities)
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
   **Command**
   ```sh
   uvx mcp-server-fetch
@@ -37,8 +37,8 @@ Note that you'll need [uv](https://docs.astral.sh/uv/#installation) installed on
 :::
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-  <GooseDesktopInstaller
+  <TabItem value="ui" label="Daisy Desktop" default>
+  <DaisyDesktopInstaller
     extensionId="fetch"
     extensionName="Fetch"
     description="Web content fetching and processing capabilities"
@@ -46,15 +46,15 @@ Note that you'll need [uv](https://docs.astral.sh/uv/#installation) installed on
     args={["mcp-server-fetch"]}
   />
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
   1. Run the `configure` command:
   ```sh
-  goose configure
+  daisy configure
   ```
 
   2. Choose to add a `Command-line Extension`
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -71,7 +71,7 @@ Note that you'll need [uv](https://docs.astral.sh/uv/#installation) installed on
 
   3. Give your extension a name
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -88,7 +88,7 @@ Note that you'll need [uv](https://docs.astral.sh/uv/#installation) installed on
 
   4. Enter the command
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -106,9 +106,9 @@ Note that you'll need [uv](https://docs.astral.sh/uv/#installation) installed on
     └ 
   ``` 
 
-  5. Enter the number of seconds Goose should wait for actions to complete before timing out. Default is 300s
+  5. Enter the number of seconds Daisy should wait for actions to complete before timing out. Default is 300s
    ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -131,7 +131,7 @@ Note that you'll need [uv](https://docs.astral.sh/uv/#installation) installed on
 
   6. Choose to add a description. If you select "Yes" here, you will be prompted to enter a description for the extension.
    ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -158,7 +158,7 @@ Note that you'll need [uv](https://docs.astral.sh/uv/#installation) installed on
   7. Choose No when asked to add environment variables
 
    ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -194,15 +194,15 @@ Note that you'll need [uv](https://docs.astral.sh/uv/#installation) installed on
 Let's use the Fetch extension to get random programming jokes from the [Official Joke API](https://official-joke-api.appspot.com/random_joke).
 
 :::info
-While this API does not require an API key, many APIs do. If you need to provide an API key, you can set it as an environment variable and tell Goose its name. Example: _"get tomorrow's weather for New Orleans from the weatherapi. Don't use the key directly but instead use a script that gets the value from the env var WEATHER_API_KEY"_
+While this API does not require an API key, many APIs do. If you need to provide an API key, you can set it as an environment variable and tell Daisy its name. Example: _"get tomorrow's weather for New Orleans from the weatherapi. Don't use the key directly but instead use a script that gets the value from the env var WEATHER_API_KEY"_
 :::
 
-### Goose Prompt
+### Daisy Prompt
 ```
 make a web page that tells jokes for programmers. The page should ask the user the setup of the joke, allow them to guess the punchline and then tell them if they are right or wrong. Include a button that allows them to request another joke. you can fetch the jokes from the official joke api
 ```
 
-### Goose Output
+### Daisy Output
 
 ```
 I'll help you create a web page that uses the Official Joke API to display programming jokes. I'll break this down into steps:
@@ -257,7 +257,7 @@ You can open the file programmer_jokes.html in your web browser to try it out. W
 
 ### Results
 
-![website goose built](../assets/guides/programmer-jokes-fetch-mcp.png)
+![website daisy built](../assets/guides/programmer-jokes-fetch-mcp.png)
 
 <details>
 <summary>Source Code</summary>

@@ -52,7 +52,7 @@ export const AlertBox = ({ alert, className }: AlertBoxProps) => {
           'X-Secret-Key': await window.electron.getSecretKey(),
         },
         body: JSON.stringify({
-          key: 'GOOSE_AUTO_COMPACT_THRESHOLD',
+          key: 'DAISY_AUTO_COMPACT_THRESHOLD',
           value: newThreshold,
           is_secret: false,
         }),

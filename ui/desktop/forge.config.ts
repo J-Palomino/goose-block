@@ -17,8 +17,8 @@ let cfg = {
   // Protocol registration
   protocols: [
     {
-      name: 'GooseProtocol',
-      schemes: ['goose'],
+      name: 'DaisyProtocol',
+      schemes: ['daisy'],
     },
   ],
   // macOS Info.plist extensions for drag-and-drop support
@@ -44,7 +44,7 @@ module.exports = {
       config: {
         repository: {
           owner: 'block',
-          name: 'goose',
+          name: 'daisy',
         },
         prerelease: false,
         draft: true,
@@ -65,12 +65,12 @@ module.exports = {
     {
       name: '@electron-forge/maker-deb',
       config: {
-        name: 'Goose',
-        bin: 'Goose',
+        name: 'Daisy',
+        bin: 'Daisy',
         maintainer: 'Block, Inc.',
-        homepage: 'https://block.github.io/goose/',
+        homepage: 'https://block.github.io/daisy/',
         categories: ['Development'],
-        mimeType: ['x-scheme-handler/goose'],
+        mimeType: ['x-scheme-handler/daisy'],
         options: {
           icon: 'src/images/icon.png'
         }
@@ -79,10 +79,10 @@ module.exports = {
     {
       name: '@electron-forge/maker-rpm',
       config: {
-        name: 'Goose',
-        bin: 'Goose',
+        name: 'Daisy',
+        bin: 'Daisy',
         maintainer: 'Block, Inc.',
-        homepage: 'https://block.github.io/goose/',
+        homepage: 'https://block.github.io/daisy/',
         categories: ['Development'],
         options: {
           icon: 'src/images/icon.png'

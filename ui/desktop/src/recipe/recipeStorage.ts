@@ -6,7 +6,7 @@ import { validateRecipe, getValidationErrorMessages } from './validation';
 export interface SaveRecipeOptions {
   name: string;
   title?: string;
-  global?: boolean; // true for global (~/.config/goose/recipes/), false for project-specific (.goose/recipes/)
+  global?: boolean; // true for global (~/.config/daisy/recipes/), false for project-specific (.daisy/recipes/)
 }
 
 export interface SavedRecipe {
@@ -37,11 +37,11 @@ function parseLastModified(val: string | Date): Date {
  */
 export function getStorageDirectory(isGlobal: boolean): string {
   if (isGlobal) {
-    return '~/.config/goose/recipes';
+    return '~/.config/daisy/recipes';
   } else {
     // For directory recipes, build absolute path using working directory
-    const workingDir = window.appConfig.get('GOOSE_WORKING_DIR') as string;
-    return `${workingDir}/.goose/recipes`;
+    const workingDir = window.appConfig.get('DAISY_WORKING_DIR') as string;
+    return `${workingDir}/.daisy/recipes`;
   }
 }
 

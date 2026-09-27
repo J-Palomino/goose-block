@@ -1,27 +1,27 @@
 ---
 title: Reddit Extension
 
-description: Add Reddit MCP Server as a Goose Extension
+description: Add Reddit MCP Server as a Daisy Extension
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import YouTubeShortEmbed from '@site/src/components/YouTubeShortEmbed';
 import CLIExtensionInstructions from '@site/src/components/CLIExtensionInstructions';
-import GooseDesktopInstaller from '@site/src/components/GooseDesktopInstaller';
+import DaisyDesktopInstaller from '@site/src/components/DaisyDesktopInstaller';
 
 
 <!-- <YouTubeShortEmbed videoUrl="https://www.youtube.com/embed/VIDEO_ID" /> -->
 
 
-This tutorial covers how to add the [Reddit MCP Server](https://github.com/adhikasp/mcp-reddit) as a Goose extension to fetch trending threads, analyze Reddit post content, and explore subreddit discussions.
+This tutorial covers how to add the [Reddit MCP Server](https://github.com/adhikasp/mcp-reddit) as a Daisy extension to fetch trending threads, analyze Reddit post content, and explore subreddit discussions.
 
 :::tip TLDR
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-  [Launch the installer](goose://extension?cmd=uvx&arg=--from&arg=git%2Bhttps%3A%2F%2Fgithub.com%2Fadhikasp%2Fmcp-reddit.git&arg=mcp-reddit&id=reddit&name=Reddit&description=Fetch%20and%20analyze%20Reddit%20content)
+  <TabItem value="ui" label="Daisy Desktop" default>
+  [Launch the installer](daisy://extension?cmd=uvx&arg=--from&arg=git%2Bhttps%3A%2F%2Fgithub.com%2Fadhikasp%2Fmcp-reddit.git&arg=mcp-reddit&id=reddit&name=Reddit&description=Fetch%20and%20analyze%20Reddit%20content)
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
   **Command**
   ```sh
   uvx --from git+https://github.com/adhikasp/mcp-reddit.git mcp-reddit
@@ -37,8 +37,8 @@ Note that you'll need [uv](https://docs.astral.sh/uv/#installation) installed on
 :::
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-    <GooseDesktopInstaller
+  <TabItem value="ui" label="Daisy Desktop" default>
+    <DaisyDesktopInstaller
       extensionId="reddit"
       extensionName="Reddit"
       description="Fetch and analyze Reddit content"
@@ -47,7 +47,7 @@ Note that you'll need [uv](https://docs.astral.sh/uv/#installation) installed on
     />
   </TabItem>
 
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
     <CLIExtensionInstructions
       name="Reddit MCP"
       command="uvx --from git+https://github.com/adhikasp/mcp-reddit.git mcp-reddit"
@@ -59,17 +59,17 @@ Note that you'll need [uv](https://docs.astral.sh/uv/#installation) installed on
 
 ## Example Usage
 
-In this example, I’ll use Goose with the Reddit MCP Server to build a custom news feed for AI topics. Goose will pull top AI threads from Reddit and turn them into a scrollable, social media-style feed with images and highlights.
+In this example, I’ll use Daisy with the Reddit MCP Server to build a custom news feed for AI topics. Daisy will pull top AI threads from Reddit and turn them into a scrollable, social media-style feed with images and highlights.
 
 It’s like Reddit, but curated just for you.
 
-### Goose Prompt
+### Daisy Prompt
 
-> goose using the reddit MCP server, create a personalized social feed of the latest AI threads. Include images and format it like a real social media app.
+> daisy using the reddit MCP server, create a personalized social feed of the latest AI threads. Include images and format it like a real social media app.
 
 
 
-### Goose Output
+### Daisy Output
 
 :::note Desktop
 

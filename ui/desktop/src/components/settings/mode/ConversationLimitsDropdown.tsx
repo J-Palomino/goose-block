@@ -44,7 +44,7 @@ export const ConversationLimitsDropdown = ({
             <div>
               <h4 className="text-text-default text-sm">Max Turns</h4>
               <p className="text-xs text-text-muted mt-[2px]">
-                Maximum agent turns before Goose asks for user input
+                Maximum agent turns before Daisy asks for user input
               </p>
             </div>
             <Input

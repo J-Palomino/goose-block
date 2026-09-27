@@ -414,7 +414,7 @@ Parameters you can use:
                         className="mr-2"
                       />
                       <span className="text-sm text-text-standard">
-                        Global - Available across all Goose sessions
+                        Global - Available across all Daisy sessions
                       </span>
                     </label>
                     <label className="flex items-center">

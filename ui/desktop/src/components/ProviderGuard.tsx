@@ -4,11 +4,11 @@ import { useConfig } from './ConfigContext';
 import { SetupModal } from './SetupModal';
 import { startOpenRouterSetup } from '../utils/openRouterSetup';
 import { startTetrateSetup } from '../utils/tetrateSetup';
-import WelcomeGooseLogo from './WelcomeGooseLogo';
+import WelcomeDaisyLogo from './WelcomeDaisyLogo';
 import { toastService } from '../toasts';
 import { OllamaSetup } from './OllamaSetup';
 
-import { Goose } from './icons/Goose';
+import { Daisy } from './icons/Daisy';
 import { OpenRouter } from './icons';
 
 interface ProviderGuardProps {
@@ -55,7 +55,7 @@ export default function ProviderGuard({ didSelectProvider, children }: ProviderG
       setTetrateSetupState({
         show: true,
         title: 'Setup Complete!',
-        message: 'Tetrate Agent Router has been configured successfully. Initializing Goose...',
+        message: 'Tetrate Agent Router has been configured successfully. Initializing Daisy...',
         showProgress: true,
         showRetry: false,
       });
@@ -64,14 +64,14 @@ export default function ProviderGuard({ didSelectProvider, children }: ProviderG
       try {
         // Get the latest config from disk
         const config = window.electron.getConfig();
-        const provider = (await read('GOOSE_PROVIDER', false)) ?? config.GOOSE_DEFAULT_PROVIDER;
-        const model = (await read('GOOSE_MODEL', false)) ?? config.GOOSE_DEFAULT_MODEL;
+        const provider = (await read('DAISY_PROVIDER', false)) ?? config.DAISY_DEFAULT_PROVIDER;
+        const model = (await read('DAISY_MODEL', false)) ?? config.DAISY_DEFAULT_MODEL;
 
         if (provider && model) {
           toastService.configure({ silent: false });
           toastService.success({
             title: 'Success!',
-            msg: `Started goose with ${model} by Tetrate. You can change the model via the dropdown.`,
+            msg: `Started daisy with ${model} by Tetrate. You can change the model via the dropdown.`,
           });
 
           // Close the modal and mark as having provider
@@ -115,7 +115,7 @@ export default function ProviderGuard({ didSelectProvider, children }: ProviderG
       setOpenRouterSetupState({
         show: true,
         title: 'Setup Complete!',
-        message: 'OpenRouter has been configured successfully. Initializing Goose...',
+        message: 'OpenRouter has been configured successfully. Initializing Daisy...',
         showProgress: true,
         showRetry: false,
       });
@@ -124,14 +124,14 @@ export default function ProviderGuard({ didSelectProvider, children }: ProviderG
       try {
         // Get the latest config from disk
         const config = window.electron.getConfig();
-        const provider = (await read('GOOSE_PROVIDER', false)) ?? config.GOOSE_DEFAULT_PROVIDER;
-        const model = (await read('GOOSE_MODEL', false)) ?? config.GOOSE_DEFAULT_MODEL;
+        const provider = (await read('DAISY_PROVIDER', false)) ?? config.DAISY_DEFAULT_PROVIDER;
+        const model = (await read('DAISY_MODEL', false)) ?? config.DAISY_DEFAULT_MODEL;
 
         if (provider && model) {
           toastService.configure({ silent: false });
           toastService.success({
             title: 'Success!',
-            msg: `Started goose with ${model} by OpenRouter. You can change the model via the dropdown.`,
+            msg: `Started daisy with ${model} by OpenRouter. You can change the model via the dropdown.`,
           });
 
           // Close the modal and mark as having provider
@@ -170,8 +170,8 @@ export default function ProviderGuard({ didSelectProvider, children }: ProviderG
         const config = window.electron.getConfig();
         console.log('ProviderGuard - Full config:', config);
 
-        const provider = (await read('GOOSE_PROVIDER', false)) ?? config.GOOSE_DEFAULT_PROVIDER;
-        const model = (await read('GOOSE_MODEL', false)) ?? config.GOOSE_DEFAULT_MODEL;
+        const provider = (await read('DAISY_PROVIDER', false)) ?? config.DAISY_DEFAULT_PROVIDER;
+        const model = (await read('DAISY_MODEL', false)) ?? config.DAISY_DEFAULT_MODEL;
 
         // Always check for Ollama regardless of provider status
 
@@ -245,7 +245,7 @@ export default function ProviderGuard({ didSelectProvider, children }: ProviderG
       <div className="min-h-screen w-full flex flex-col items-center justify-center p-4 bg-background-default">
         <div className="max-w-md w-full mx-auto p-8">
           <div className="mb-8 text-center">
-            <WelcomeGooseLogo />
+            <WelcomeDaisyLogo />
           </div>
           <OllamaSetup
             onSuccess={() => {
@@ -273,10 +273,10 @@ export default function ProviderGuard({ didSelectProvider, children }: ProviderG
               {/* Header section - same width as buttons, left aligned */}
               <div className="text-left mb-8 sm:mb-12">
                 <div className="space-y-3 sm:space-y-4">
-                  <div className="origin-bottom-left goose-icon-animation">
-                    <Goose className="size-6 sm:size-8" />
+                  <div className="origin-bottom-left daisy-icon-animation">
+                    <Daisy className="size-6 sm:size-8" />
                   </div>
-                  <h1 className="text-2xl sm:text-4xl font-light text-left">Welcome to Goose</h1>
+                  <h1 className="text-2xl sm:text-4xl font-light text-left">Welcome to Daisy</h1>
                 </div>
                 <p className="text-text-muted text-base sm:text-lg mt-4 sm:mt-6">
                   Since it's your first time here, let's get you setup with a provider so we can

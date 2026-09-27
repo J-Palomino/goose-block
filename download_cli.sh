@@ -2,58 +2,58 @@
 set -eu
 
 ##############################################################################
-# Goose CLI Install Script
+# Daisy CLI Install Script
 #
-# This script downloads the latest stable 'goose' CLI binary from GitHub releases
+# This script downloads the latest stable 'daisy' CLI binary from GitHub releases
 # and installs it to your system.
 #
 # Supported OS: macOS (darwin), Linux, Windows (MSYS2/Git Bash/WSL)
 # Supported Architectures: x86_64, arm64
 #
 # Usage:
-#   curl -fsSL https://github.com/block/goose/releases/download/stable/download_cli.sh | bash
+#   curl -fsSL https://github.com/block/daisy/releases/download/stable/download_cli.sh | bash
 #
 # Environment variables:
-#   GOOSE_BIN_DIR  - Directory to which Goose will be installed (default: $HOME/.local/bin)
-#   GOOSE_VERSION  - Optional: specific version to install (e.g., "v1.0.25"). Overrides CANARY. Can be in the format vX.Y.Z, vX.Y.Z-suffix, or X.Y.Z
-#   GOOSE_PROVIDER - Optional: provider for goose
-#   GOOSE_MODEL    - Optional: model for goose
+#   DAISY_BIN_DIR  - Directory to which Daisy will be installed (default: $HOME/.local/bin)
+#   DAISY_VERSION  - Optional: specific version to install (e.g., "v1.0.25"). Overrides CANARY. Can be in the format vX.Y.Z, vX.Y.Z-suffix, or X.Y.Z
+#   DAISY_PROVIDER - Optional: provider for daisy
+#   DAISY_MODEL    - Optional: model for daisy
 #   CANARY         - Optional: if set to "true", downloads from canary release instead of stable
-#   CONFIGURE      - Optional: if set to "false", disables running goose configure interactively
+#   CONFIGURE      - Optional: if set to "false", disables running daisy configure interactively
 #   ** other provider specific environment variables (eg. DATABRICKS_HOST)
 ##############################################################################
 
 # --- 1) Check for dependencies ---
 # Check for curl
 if ! command -v curl >/dev/null 2>&1; then
-  echo "Error: 'curl' is required to download Goose. Please install curl and try again."
+  echo "Error: 'curl' is required to download Daisy. Please install curl and try again."
   exit 1
 fi
 
 # Check for tar or unzip (depending on OS)
 if ! command -v tar >/dev/null 2>&1 && ! command -v unzip >/dev/null 2>&1; then
-  echo "Error: Either 'tar' or 'unzip' is required to extract Goose. Please install one and try again."
+  echo "Error: Either 'tar' or 'unzip' is required to extract Daisy. Please install one and try again."
   exit 1
 fi
 
 
 # --- 2) Variables ---
-REPO="block/goose"
-OUT_FILE="goose"
-GOOSE_BIN_DIR="${GOOSE_BIN_DIR:-"$HOME/.local/bin"}"
+REPO="block/daisy"
+OUT_FILE="daisy"
+DAISY_BIN_DIR="${DAISY_BIN_DIR:-"$HOME/.local/bin"}"
 RELEASE="${CANARY:-false}"
 CONFIGURE="${CONFIGURE:-true}"
-if [ -n "${GOOSE_VERSION:-}" ]; then
+if [ -n "${DAISY_VERSION:-}" ]; then
   # Validate the version format
-  if [[ ! "$GOOSE_VERSION" =~ ^v?[0-9]+\.[0-9]+\.[0-9]+(-.*)?$ ]]; then
-    echo "[error]: invalid version '$GOOSE_VERSION'."
+  if [[ ! "$DAISY_VERSION" =~ ^v?[0-9]+\.[0-9]+\.[0-9]+(-.*)?$ ]]; then
+    echo "[error]: invalid version '$DAISY_VERSION'."
     echo "  expected: semver format vX.Y.Z, vX.Y.Z-suffix, or X.Y.Z"
     exit 1
   fi
-  GOOSE_VERSION=$(echo "$GOOSE_VERSION" | sed 's/^v\{0,1\}/v/') # Ensure the version string is prefixed with 'v' if not already present
-  RELEASE_TAG="$GOOSE_VERSION"
+  DAISY_VERSION=$(echo "$DAISY_VERSION" | sed 's/^v\{0,1\}/v/') # Ensure the version string is prefixed with 'v' if not already present
+  RELEASE_TAG="$DAISY_VERSION"
 else
-  # If GOOSE_VERSION is not set, fall back to existing behavior for backwards compatibility
+  # If DAISY_VERSION is not set, fall back to existing behavior for backwards compatibility
   RELEASE_TAG="$([[ "$RELEASE" == "true" ]] && echo "canary" || echo "stable")"
 fi
 
@@ -68,7 +68,7 @@ case "$OS" in
     OS="windows"
     ;;
   *)
-    echo "Error: Unsupported OS '$OS'. Goose currently supports Linux, macOS, and Windows."
+    echo "Error: Unsupported OS '$OS'. Daisy currently supports Linux, macOS, and Windows."
     exit 1
     ;;
 esac
@@ -89,7 +89,7 @@ esac
 
 # Build the filename and URL for the stable release
 if [ "$OS" = "darwin" ]; then
-  FILE="goose-$ARCH-apple-darwin.tar.bz2"
+  FILE="daisy-$ARCH-apple-darwin.tar.bz2"
   EXTRACT_CMD="tar"
 elif [ "$OS" = "windows" ]; then
   # Windows only supports x86_64 currently
@@ -97,17 +97,17 @@ elif [ "$OS" = "windows" ]; then
     echo "Error: Windows currently only supports x86_64 architecture."
     exit 1
   fi
-  FILE="goose-$ARCH-pc-windows-gnu.zip"
+  FILE="daisy-$ARCH-pc-windows-gnu.zip"
   EXTRACT_CMD="unzip"
-  OUT_FILE="goose.exe"
+  OUT_FILE="daisy.exe"
 else
-  FILE="goose-$ARCH-unknown-linux-gnu.tar.bz2"
+  FILE="daisy-$ARCH-unknown-linux-gnu.tar.bz2"
   EXTRACT_CMD="tar"
 fi
 
 DOWNLOAD_URL="https://github.com/$REPO/releases/download/$RELEASE_TAG/$FILE"
 
-# --- 4) Download & extract 'goose' binary ---
+# --- 4) Download & extract 'daisy' binary ---
 echo "Downloading $RELEASE_TAG release: $FILE..."
 if ! curl -sLf "$DOWNLOAD_URL" --output "$FILE"; then
   echo "Error: Failed to download $DOWNLOAD_URL"
@@ -115,7 +115,7 @@ if ! curl -sLf "$DOWNLOAD_URL" --output "$FILE"; then
 fi
 
 # Create a temporary directory for extraction
-TMP_DIR="/tmp/goose_install_$RANDOM"
+TMP_DIR="/tmp/daisy_install_$RANDOM"
 if ! mkdir -p "$TMP_DIR"; then
   echo "Error: Could not create temporary extraction directory"
   exit 1
@@ -162,87 +162,87 @@ set -e  # Re-enable immediate exit on error
 rm "$FILE" # clean up the downloaded archive
 
 # Determine the extraction directory (handle subdirectory in Windows packages)
-# Windows releases may contain files in a 'goose-package' subdirectory
+# Windows releases may contain files in a 'daisy-package' subdirectory
 EXTRACT_DIR="$TMP_DIR"
-if [ "$OS" = "windows" ] && [ -d "$TMP_DIR/goose-package" ]; then
-  echo "Found goose-package subdirectory, using that as extraction directory"
-  EXTRACT_DIR="$TMP_DIR/goose-package"
+if [ "$OS" = "windows" ] && [ -d "$TMP_DIR/daisy-package" ]; then
+  echo "Found daisy-package subdirectory, using that as extraction directory"
+  EXTRACT_DIR="$TMP_DIR/daisy-package"
 fi
 
 # Make binary executable
 if [ "$OS" = "windows" ]; then
-  chmod +x "$EXTRACT_DIR/goose.exe"
+  chmod +x "$EXTRACT_DIR/daisy.exe"
 else
-  chmod +x "$EXTRACT_DIR/goose"
+  chmod +x "$EXTRACT_DIR/daisy"
 fi
 
-# --- 5) Install to $GOOSE_BIN_DIR ---
-if [ ! -d "$GOOSE_BIN_DIR" ]; then
-  echo "Creating directory: $GOOSE_BIN_DIR"
-  mkdir -p "$GOOSE_BIN_DIR"
+# --- 5) Install to $DAISY_BIN_DIR ---
+if [ ! -d "$DAISY_BIN_DIR" ]; then
+  echo "Creating directory: $DAISY_BIN_DIR"
+  mkdir -p "$DAISY_BIN_DIR"
 fi
 
-echo "Moving goose to $GOOSE_BIN_DIR/$OUT_FILE"
+echo "Moving daisy to $DAISY_BIN_DIR/$OUT_FILE"
 if [ "$OS" = "windows" ]; then
-  mv "$EXTRACT_DIR/goose.exe" "$GOOSE_BIN_DIR/$OUT_FILE"
+  mv "$EXTRACT_DIR/daisy.exe" "$DAISY_BIN_DIR/$OUT_FILE"
 else
-  mv "$EXTRACT_DIR/goose" "$GOOSE_BIN_DIR/$OUT_FILE"
+  mv "$EXTRACT_DIR/daisy" "$DAISY_BIN_DIR/$OUT_FILE"
 fi
 
 # Also move temporal-service and temporal CLI if they exist
 if [ "$OS" = "windows" ]; then
   if [ -f "$EXTRACT_DIR/temporal-service.exe" ]; then
-    echo "Moving temporal-service to $GOOSE_BIN_DIR/temporal-service.exe"
-    mv "$EXTRACT_DIR/temporal-service.exe" "$GOOSE_BIN_DIR/temporal-service.exe"
-    chmod +x "$GOOSE_BIN_DIR/temporal-service.exe"
+    echo "Moving temporal-service to $DAISY_BIN_DIR/temporal-service.exe"
+    mv "$EXTRACT_DIR/temporal-service.exe" "$DAISY_BIN_DIR/temporal-service.exe"
+    chmod +x "$DAISY_BIN_DIR/temporal-service.exe"
   fi
   
   # Move temporal CLI if it exists
   if [ -f "$EXTRACT_DIR/temporal.exe" ]; then
-    echo "Moving temporal CLI to $GOOSE_BIN_DIR/temporal.exe"
-    mv "$EXTRACT_DIR/temporal.exe" "$GOOSE_BIN_DIR/temporal.exe"
-    chmod +x "$GOOSE_BIN_DIR/temporal.exe"
+    echo "Moving temporal CLI to $DAISY_BIN_DIR/temporal.exe"
+    mv "$EXTRACT_DIR/temporal.exe" "$DAISY_BIN_DIR/temporal.exe"
+    chmod +x "$DAISY_BIN_DIR/temporal.exe"
   fi
   
   # Copy Windows runtime DLLs if they exist
   for dll in "$EXTRACT_DIR"/*.dll; do
     if [ -f "$dll" ]; then
       echo "Moving Windows runtime DLL: $(basename "$dll")"
-      mv "$dll" "$GOOSE_BIN_DIR/"
+      mv "$dll" "$DAISY_BIN_DIR/"
     fi
   done
 else
   if [ -f "$EXTRACT_DIR/temporal-service" ]; then
-    echo "Moving temporal-service to $GOOSE_BIN_DIR/temporal-service"
-    mv "$EXTRACT_DIR/temporal-service" "$GOOSE_BIN_DIR/temporal-service"
-    chmod +x "$GOOSE_BIN_DIR/temporal-service"
+    echo "Moving temporal-service to $DAISY_BIN_DIR/temporal-service"
+    mv "$EXTRACT_DIR/temporal-service" "$DAISY_BIN_DIR/temporal-service"
+    chmod +x "$DAISY_BIN_DIR/temporal-service"
   fi
   
   # Move temporal CLI if it exists
   if [ -f "$EXTRACT_DIR/temporal" ]; then
-    echo "Moving temporal CLI to $GOOSE_BIN_DIR/temporal"
-    mv "$EXTRACT_DIR/temporal" "$GOOSE_BIN_DIR/temporal"
-    chmod +x "$GOOSE_BIN_DIR/temporal"
+    echo "Moving temporal CLI to $DAISY_BIN_DIR/temporal"
+    mv "$EXTRACT_DIR/temporal" "$DAISY_BIN_DIR/temporal"
+    chmod +x "$DAISY_BIN_DIR/temporal"
   fi
 fi
 
 # skip configuration for non-interactive installs e.g. automation, docker
 if [ "$CONFIGURE" = true ]; then
-  # --- 6) Configure Goose (Optional) ---
+  # --- 6) Configure Daisy (Optional) ---
   echo ""
-  echo "Configuring Goose"
+  echo "Configuring Daisy"
   echo ""
-  "$GOOSE_BIN_DIR/$OUT_FILE" configure
+  "$DAISY_BIN_DIR/$OUT_FILE" configure
 else
-  echo "Skipping 'goose configure', you may need to run this manually later"
+  echo "Skipping 'daisy configure', you may need to run this manually later"
 fi
 
 # --- 7) Check PATH and give instructions if needed ---
-if [[ ":$PATH:" != *":$GOOSE_BIN_DIR:"* ]]; then
+if [[ ":$PATH:" != *":$DAISY_BIN_DIR:"* ]]; then
   echo ""
-  echo "Warning: Goose installed, but $GOOSE_BIN_DIR is not in your PATH."
+  echo "Warning: Daisy installed, but $DAISY_BIN_DIR is not in your PATH."
   echo "Add it to your PATH by editing ~/.bashrc, ~/.zshrc, or similar:"
-  echo "    export PATH=\"$GOOSE_BIN_DIR:\$PATH\""
+  echo "    export PATH=\"$DAISY_BIN_DIR:\$PATH\""
   echo "Then reload your shell (e.g. 'source ~/.bashrc', 'source ~/.zshrc') to apply changes."
   echo ""
 fi

@@ -6,7 +6,7 @@ import { fetchSessions, type Session, resumeSession } from '../../sessions';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../ui/button';
 import { ChatSmart } from '../icons/';
-import { Goose } from '../icons/Goose';
+import { Daisy } from '../icons/Daisy';
 import { Skeleton } from '../ui/skeleton';
 
 interface SessionInsightsType {
@@ -134,8 +134,8 @@ export function SessionInsights() {
       {/* Header container with rounded bottom */}
       <div className="bg-background-default rounded-b-2xl mb-0.5">
         <div className="px-8 pb-12 pt-19 space-y-4">
-          <div className="origin-bottom-left goose-icon-animation">
-            <Goose className="size-8" />
+          <div className="origin-bottom-left daisy-icon-animation">
+            <Daisy className="size-8" />
           </div>
           <Greeting />
         </div>
@@ -237,8 +237,8 @@ export function SessionInsights() {
       {/* Header container with rounded bottom */}
       <div className="bg-background-default rounded-b-2xl mb-0.5">
         <div className="px-8 pb-12 pt-19 space-y-4">
-          <div className="origin-bottom-left goose-icon-animation">
-            <Goose className="size-8" />
+          <div className="origin-bottom-left daisy-icon-animation">
+            <Daisy className="size-8" />
           </div>
           <Greeting />
         </div>

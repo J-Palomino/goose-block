@@ -109,7 +109,7 @@ function handleErrorResponse(
     toastService.dismiss(toastId);
     toastService.error({
       title: extensionName,
-      msg: 'Failed to add extension. Goose Agent was still starting up. Please try again.',
+      msg: 'Failed to add extension. Daisy Agent was still starting up. Please try again.',
       traceback: errorMsg,
     });
     throw new Error('Agent is not initialized. Please initialize the agent first.');
@@ -156,7 +156,7 @@ export async function addToAgent(
     // Check if this is a 428 error and make the message more descriptive
     if (error instanceof Error && error.message && error.message.includes('428')) {
       const enhancedError = new Error(
-        'Failed to add extension. Goose Agent was still starting up. Please try again.'
+        'Failed to add extension. Daisy Agent was still starting up. Please try again.'
       );
       console.error(`Failed to add extension ${extension.name} to agent: ${enhancedError.message}`);
       throw enhancedError;

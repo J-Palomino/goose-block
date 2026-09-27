@@ -9,7 +9,7 @@ assignees: ''
 
 **Describe the bug**
 
-Note: Please check the common issues on https://block.github.io/goose/docs/troubleshooting before filing a report
+Note: Please check the common issues on https://block.github.io/daisy/docs/troubleshooting before filing a report
 
 A clear and concise description of what the bug is.
 

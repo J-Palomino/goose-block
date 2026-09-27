@@ -1,5 +1,5 @@
 {
-  description = "Goose - An AI agent CLI";
+  description = "Daisy - An AI agent CLI";
 
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
@@ -18,7 +18,7 @@
         rust = pkgs.rust-bin.fromRustupToolchainFile ./rust-toolchain.toml;
         
         # Read package metadata from Cargo.toml
-        cargoToml = builtins.fromTOML (builtins.readFile ./crates/goose-cli/Cargo.toml);
+        cargoToml = builtins.fromTOML (builtins.readFile ./crates/daisy-cli/Cargo.toml);
         workspaceToml = builtins.fromTOML (builtins.readFile ./Cargo.toml);
         
         commonInputs = [
@@ -64,7 +64,7 @@
           ] ++ pkgs.lib.optionals pkgs.stdenv.isDarwin darwinInputs;
 
           # Build only the CLI package
-          cargoBuildFlags = [ "--package" "goose-cli" ];
+          cargoBuildFlags = [ "--package" "daisy-cli" ];
           
           # Enable tests with proper environment
           # Tests need writable HOME and XDG directories for config/cache access
@@ -77,8 +77,8 @@
             export XDG_CACHE_HOME=$HOME/.cache
             mkdir -p $XDG_CONFIG_HOME $XDG_DATA_HOME $XDG_STATE_HOME $XDG_CACHE_HOME
             
-            # Run tests for goose-cli package only
-            cargo test --package goose-cli --release
+            # Run tests for daisy-cli package only
+            cargo test --package daisy-cli --release
           '';
 
           meta = with pkgs.lib; {
@@ -99,14 +99,14 @@
           ]);
           
           shellHook = ''
-            echo "Goose development environment"
+            echo "Daisy development environment"
             echo "Rust version: $(rustc --version)"
             echo ""
             echo "Commands:"
-            echo "  nix build           - Build goose CLI"
-            echo "  nix run             - Run goose CLI"
-            echo "  cargo build -p goose-cli - Build with cargo"
-            echo "  cargo run -p goose-cli   - Run with cargo"
+            echo "  nix build           - Build daisy CLI"
+            echo "  nix run             - Run daisy CLI"
+            echo "  cargo build -p daisy-cli - Build with cargo"
+            echo "  cargo run -p daisy-cli   - Run with cargo"
           '';
         };
       }

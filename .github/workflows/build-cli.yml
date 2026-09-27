@@ -124,7 +124,7 @@ jobs:
           cross --version
 
           echo "Building with explicit PROTOC path..."
-          cross build --release --target ${TARGET} -p goose-cli -vv
+          cross build --release --target ${TARGET} -p daisy-cli -vv
 
       - name: Build CLI (Windows)
         if: matrix.use-docker
@@ -204,7 +204,7 @@ jobs:
               CARGO_NET_RETRY=3 \
               CARGO_HTTP_TIMEOUT=60 \
               RUST_BACKTRACE=1 \
-              cargo build --release --target x86_64-pc-windows-gnu -p goose-cli --jobs 4
+              cargo build --release --target x86_64-pc-windows-gnu -p daisy-cli --jobs 4
               
               echo '=== Copying Windows runtime DLLs ==='
               GCC_DIR=\$(ls -d /usr/lib/gcc/x86_64-w64-mingw32/*/ | head -n 1)
@@ -217,14 +217,14 @@ jobs:
             "
           
           # Verify build succeeded
-          if [ ! -f "./target/x86_64-pc-windows-gnu/release/goose.exe" ]; then
+          if [ ! -f "./target/x86_64-pc-windows-gnu/release/daisy.exe" ]; then
             echo "❌ Windows CLI binary not found."
             ls -la ./target/x86_64-pc-windows-gnu/release/ || echo "Release directory doesn't exist"
             exit 1
           fi
           
           echo "✅ Windows CLI binary found!"
-          ls -la ./target/x86_64-pc-windows-gnu/release/goose.exe
+          ls -la ./target/x86_64-pc-windows-gnu/release/daisy.exe
           
           echo "✅ Windows runtime DLLs:"
           ls -la ./target/x86_64-pc-windows-gnu/release/*.dll
@@ -369,17 +369,17 @@ jobs:
           export TARGET="${{ matrix.architecture }}-${{ matrix.target-suffix }}"
           
           # Create a directory for the package contents
-          mkdir -p "target/${TARGET}/release/goose-package"
+          mkdir -p "target/${TARGET}/release/daisy-package"
           
           # Copy binaries
-          cp "target/${TARGET}/release/goose" "target/${TARGET}/release/goose-package/"
-          cp "target/${TARGET}/release/temporal-service" "target/${TARGET}/release/goose-package/"
-          cp "target/${TARGET}/release/temporal" "target/${TARGET}/release/goose-package/"
+          cp "target/${TARGET}/release/daisy" "target/${TARGET}/release/daisy-package/"
+          cp "target/${TARGET}/release/temporal-service" "target/${TARGET}/release/daisy-package/"
+          cp "target/${TARGET}/release/temporal" "target/${TARGET}/release/daisy-package/"
           
           # Create the tar archive with all binaries
           cd "target/${TARGET}/release"
-          tar -cjf "goose-${TARGET}.tar.bz2" -C goose-package .
-          echo "ARTIFACT=target/${TARGET}/release/goose-${TARGET}.tar.bz2" >> $GITHUB_ENV
+          tar -cjf "daisy-${TARGET}.tar.bz2" -C daisy-package .
+          echo "ARTIFACT=target/${TARGET}/release/daisy-${TARGET}.tar.bz2" >> $GITHUB_ENV
 
       - name: Package CLI with temporal-service (Windows)
         if: matrix.use-docker
@@ -387,23 +387,23 @@ jobs:
           export TARGET="${{ matrix.architecture }}-${{ matrix.target-suffix }}"
           
           # Create a directory for the package contents
-          mkdir -p "target/${TARGET}/release/goose-package"
+          mkdir -p "target/${TARGET}/release/daisy-package"
           
           # Copy binaries
-          cp "target/${TARGET}/release/goose.exe" "target/${TARGET}/release/goose-package/"
-          cp "target/${TARGET}/release/temporal-service.exe" "target/${TARGET}/release/goose-package/"
-          cp "target/${TARGET}/release/temporal.exe" "target/${TARGET}/release/goose-package/"
+          cp "target/${TARGET}/release/daisy.exe" "target/${TARGET}/release/daisy-package/"
+          cp "target/${TARGET}/release/temporal-service.exe" "target/${TARGET}/release/daisy-package/"
+          cp "target/${TARGET}/release/temporal.exe" "target/${TARGET}/release/daisy-package/"
           
           # Copy Windows runtime DLLs
-          cp "target/${TARGET}/release/"*.dll "target/${TARGET}/release/goose-package/"
+          cp "target/${TARGET}/release/"*.dll "target/${TARGET}/release/daisy-package/"
           
           # Create the zip archive with all binaries and DLLs
           cd "target/${TARGET}/release"
-          zip -r "goose-${TARGET}.zip" goose-package/
-          echo "ARTIFACT=target/${TARGET}/release/goose-${TARGET}.zip" >> $GITHUB_ENV
+          zip -r "daisy-${TARGET}.zip" daisy-package/
+          echo "ARTIFACT=target/${TARGET}/release/daisy-${TARGET}.zip" >> $GITHUB_ENV
 
       - name: Upload CLI artifact
         uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1 # pin@v4
         with:
-          name: goose-${{ matrix.architecture }}-${{ matrix.target-suffix }}
+          name: daisy-${{ matrix.architecture }}-${{ matrix.target-suffix }}
           path: ${{ env.ARTIFACT }}

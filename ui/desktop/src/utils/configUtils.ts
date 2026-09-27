@@ -1,18 +1,18 @@
 export const configLabels: Record<string, string> = {
-  // goose settings
-  GOOSE_PROVIDER: 'Provider',
-  GOOSE_MODEL: 'Model',
-  GOOSE_TEMPERATURE: 'Temperature',
-  GOOSE_MODE: 'Mode',
-  GOOSE_LEAD_PROVIDER: 'Lead Provider',
-  GOOSE_LEAD_MODEL: 'Lead Model',
-  GOOSE_PLANNER_PROVIDER: 'Planner Provider',
-  GOOSE_PLANNER_MODEL: 'Planner Model',
-  GOOSE_TOOLSHIM: 'Tool Shim',
-  GOOSE_TOOLSHIM_OLLAMA_MODEL: 'Tool Shim Ollama Model',
-  GOOSE_CLI_MIN_PRIORITY: 'CLI Min Priority',
-  GOOSE_ALLOWLIST: 'Allow List',
-  GOOSE_RECIPE_GITHUB_REPO: 'Recipe GitHub Repo',
+  // daisy settings
+  DAISY_PROVIDER: 'Provider',
+  DAISY_MODEL: 'Model',
+  DAISY_TEMPERATURE: 'Temperature',
+  DAISY_MODE: 'Mode',
+  DAISY_LEAD_PROVIDER: 'Lead Provider',
+  DAISY_LEAD_MODEL: 'Lead Model',
+  DAISY_PLANNER_PROVIDER: 'Planner Provider',
+  DAISY_PLANNER_MODEL: 'Planner Model',
+  DAISY_TOOLSHIM: 'Tool Shim',
+  DAISY_TOOLSHIM_OLLAMA_MODEL: 'Tool Shim Ollama Model',
+  DAISY_CLI_MIN_PRIORITY: 'CLI Min Priority',
+  DAISY_ALLOWLIST: 'Allow List',
+  DAISY_RECIPE_GITHUB_REPO: 'Recipe GitHub Repo',
 
   // openai
   OPENAI_API_KEY: 'OpenAI API Key',

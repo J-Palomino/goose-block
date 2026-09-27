@@ -11,7 +11,7 @@ const schedulingEngineOptions: SchedulingEngineOption[] = [
   {
     key: 'builtin-cron',
     label: 'Built-in Cron (Default)',
-    description: 'Uses Goose\'s built-in cron scheduler. Simple and reliable for basic scheduling needs.',
+    description: 'Uses Daisy\'s built-in cron scheduler. Simple and reliable for basic scheduling needs.',
   },
   {
     key: 'temporal',
@@ -101,8 +101,8 @@ export default function SchedulerSection({ onSchedulingEngineChange }: Scheduler
 
       <div className="mt-4 p-3 bg-background-subtle rounded-md">
         <p className="text-xs text-text-muted">
-          <strong>Note:</strong> Changing the scheduling engine will apply to new Goose sessions.
-          You will need to restart Goose for the change to take full effect. <br />
+          <strong>Note:</strong> Changing the scheduling engine will apply to new Daisy sessions.
+          You will need to restart Daisy for the change to take full effect. <br />
           The scheduling engines do not share the list of schedules.
         </p>
       </div>

@@ -58,7 +58,7 @@ export default function RecipeActivityEditor({
         Activities
       </label>
       <p className="text-textSubtle space-y-2 pb-4">
-        The top-line prompts and activities that will display within your goose home page.
+        The top-line prompts and activities that will display within your daisy home page.
       </p>
 
       {/* Message Field */}

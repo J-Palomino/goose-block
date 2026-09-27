@@ -72,7 +72,7 @@ export function ExtensionInstallModal({ addExtension }: ExtensionInstallModalPro
   ): Promise<ModalType> => {
     try {
       const config = window.electron.getConfig();
-      const ALLOWLIST_WARNING_MODE = config.GOOSE_ALLOWLIST_WARNING === true;
+      const ALLOWLIST_WARNING_MODE = config.DAISY_ALLOWLIST_WARNING === true;
 
       if (ALLOWLIST_WARNING_MODE) {
         return 'untrusted';

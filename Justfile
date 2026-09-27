@@ -10,17 +10,17 @@ release-binary:
     cargo build --release
     @just copy-binary
     @echo "Generating OpenAPI schema..."
-    cargo run -p goose-server --bin generate_schema
+    cargo run -p daisy-server --bin generate_schema
 
 # Build Windows executable
 release-windows:
     #!/usr/bin/env sh
     if [ "$(uname)" = "Darwin" ] || [ "$(uname)" = "Linux" ]; then
         echo "Building Windows executable using Docker..."
-        docker volume create goose-windows-cache || true
+        docker volume create daisy-windows-cache || true
         docker run --rm \
             -v "$(pwd)":/usr/src/myapp \
-            -v goose-windows-cache:/usr/local/cargo/registry \
+            -v daisy-windows-cache:/usr/local/cargo/registry \
             -w /usr/src/myapp \
             rust:latest \
             sh -c "rustup target add x86_64-pc-windows-gnu && \
@@ -41,7 +41,7 @@ release-windows:
                 cp /usr/x86_64-w64-mingw32/lib/libwinpthread-1.dll /usr/src/myapp/target/x86_64-pc-windows-gnu/release/"
     else
         echo "Building Windows executable using Docker through PowerShell..."
-        powershell.exe -Command "docker volume create goose-windows-cache; docker run --rm -v ${PWD}:/usr/src/myapp -v goose-windows-cache:/usr/local/cargo/registry -w /usr/src/myapp rust:latest sh -c 'rustup target add x86_64-pc-windows-gnu && apt-get update && apt-get install -y mingw-w64 && cargo build --release --target x86_64-pc-windows-gnu && GCC_DIR=\$(ls -d /usr/lib/gcc/x86_64-w64-mingw32/*/ | head -n 1) && cp \$GCC_DIR/libstdc++-6.dll /usr/src/myapp/target/x86_64-pc-windows-gnu/release/ && cp \$GCC_DIR/libgcc_s_seh-1.dll /usr/src/myapp/target/x86_64-pc-windows-gnu/release/ && cp /usr/x86_64-w64-mingw32/lib/libwinpthread-1.dll /usr/src/myapp/target/x86_64-pc-windows-gnu/release/'"
+        powershell.exe -Command "docker volume create daisy-windows-cache; docker run --rm -v ${PWD}:/usr/src/myapp -v daisy-windows-cache:/usr/local/cargo/registry -w /usr/src/myapp rust:latest sh -c 'rustup target add x86_64-pc-windows-gnu && apt-get update && apt-get install -y mingw-w64 && cargo build --release --target x86_64-pc-windows-gnu && GCC_DIR=\$(ls -d /usr/lib/gcc/x86_64-w64-mingw32/*/ | head -n 1) && cp \$GCC_DIR/libstdc++-6.dll /usr/src/myapp/target/x86_64-pc-windows-gnu/release/ && cp \$GCC_DIR/libgcc_s_seh-1.dll /usr/src/myapp/target/x86_64-pc-windows-gnu/release/ && cp /usr/x86_64-w64-mingw32/lib/libwinpthread-1.dll /usr/src/myapp/target/x86_64-pc-windows-gnu/release/'"
     fi
     echo "Windows executable and required DLLs created at ./target/x86_64-pc-windows-gnu/release/"
 
@@ -52,18 +52,18 @@ release-intel:
     @just copy-binary-intel
 
 copy-binary BUILD_MODE="release":
-    @if [ -f ./target/{{BUILD_MODE}}/goosed ]; then \
-        echo "Copying goosed binary from target/{{BUILD_MODE}}..."; \
-        cp -p ./target/{{BUILD_MODE}}/goosed ./ui/desktop/src/bin/; \
+    @if [ -f ./target/{{BUILD_MODE}}/daisyd ]; then \
+        echo "Copying daisyd binary from target/{{BUILD_MODE}}..."; \
+        cp -p ./target/{{BUILD_MODE}}/daisyd ./ui/desktop/src/bin/; \
     else \
         echo "Binary not found in target/{{BUILD_MODE}}"; \
         exit 1; \
     fi
-    @if [ -f ./target/{{BUILD_MODE}}/goose ]; then \
-        echo "Copying goose CLI binary from target/{{BUILD_MODE}}..."; \
-        cp -p ./target/{{BUILD_MODE}}/goose ./ui/desktop/src/bin/; \
+    @if [ -f ./target/{{BUILD_MODE}}/daisy ]; then \
+        echo "Copying daisy CLI binary from target/{{BUILD_MODE}}..."; \
+        cp -p ./target/{{BUILD_MODE}}/daisy ./ui/desktop/src/bin/; \
     else \
-        echo "Goose CLI binary not found in target/{{BUILD_MODE}}"; \
+        echo "Daisy CLI binary not found in target/{{BUILD_MODE}}"; \
         exit 1; \
     fi
     @if [ -f ./temporal-service/temporal-service ]; then \
@@ -83,18 +83,18 @@ copy-binary BUILD_MODE="release":
 
 # Copy binary command for Intel build
 copy-binary-intel:
-    @if [ -f ./target/x86_64-apple-darwin/release/goosed ]; then \
-        echo "Copying Intel goosed binary to ui/desktop/src/bin with permissions preserved..."; \
-        cp -p ./target/x86_64-apple-darwin/release/goosed ./ui/desktop/src/bin/; \
+    @if [ -f ./target/x86_64-apple-darwin/release/daisyd ]; then \
+        echo "Copying Intel daisyd binary to ui/desktop/src/bin with permissions preserved..."; \
+        cp -p ./target/x86_64-apple-darwin/release/daisyd ./ui/desktop/src/bin/; \
     else \
         echo "Intel release binary not found."; \
         exit 1; \
     fi
-    @if [ -f ./target/x86_64-apple-darwin/release/goose ]; then \
-        echo "Copying Intel goose CLI binary to ui/desktop/src/bin..."; \
-        cp -p ./target/x86_64-apple-darwin/release/goose ./ui/desktop/src/bin/; \
+    @if [ -f ./target/x86_64-apple-darwin/release/daisy ]; then \
+        echo "Copying Intel daisy CLI binary to ui/desktop/src/bin..."; \
+        cp -p ./target/x86_64-apple-darwin/release/daisy ./ui/desktop/src/bin/; \
     else \
-        echo "Intel goose CLI binary not found."; \
+        echo "Intel daisy CLI binary not found."; \
         exit 1; \
     fi
     @if [ -f ./temporal-service/temporal-service ]; then \
@@ -114,19 +114,19 @@ copy-binary-intel:
 
 # Copy Windows binary command
 copy-binary-windows:
-    @powershell.exe -Command "if (Test-Path ./target/x86_64-pc-windows-gnu/release/goosed.exe) { \
+    @powershell.exe -Command "if (Test-Path ./target/x86_64-pc-windows-gnu/release/daisyd.exe) { \
         Write-Host 'Copying Windows binary and DLLs to ui/desktop/src/bin...'; \
-        Copy-Item -Path './target/x86_64-pc-windows-gnu/release/goosed.exe' -Destination './ui/desktop/src/bin/' -Force; \
+        Copy-Item -Path './target/x86_64-pc-windows-gnu/release/daisyd.exe' -Destination './ui/desktop/src/bin/' -Force; \
         Copy-Item -Path './target/x86_64-pc-windows-gnu/release/*.dll' -Destination './ui/desktop/src/bin/' -Force; \
     } else { \
         Write-Host 'Windows binary not found.' -ForegroundColor Red; \
         exit 1; \
     }"
-    @powershell.exe -Command "if (Test-Path ./target/x86_64-pc-windows-gnu/release/goose-scheduler-executor.exe) { \
-        Write-Host 'Copying Windows goose-scheduler-executor binary...'; \
-        Copy-Item -Path './target/x86_64-pc-windows-gnu/release/goose-scheduler-executor.exe' -Destination './ui/desktop/src/bin/' -Force; \
+    @powershell.exe -Command "if (Test-Path ./target/x86_64-pc-windows-gnu/release/daisy-scheduler-executor.exe) { \
+        Write-Host 'Copying Windows daisy-scheduler-executor binary...'; \
+        Copy-Item -Path './target/x86_64-pc-windows-gnu/release/daisy-scheduler-executor.exe' -Destination './ui/desktop/src/bin/' -Force; \
     } else { \
-        Write-Host 'Windows goose-scheduler-executor binary not found.' -ForegroundColor Yellow; \
+        Write-Host 'Windows daisy-scheduler-executor binary not found.' -ForegroundColor Yellow; \
     }"
     @if [ -f ./temporal-service/temporal-service.exe ]; then \
         echo "Copying Windows temporal-service binary..."; \
@@ -148,10 +148,10 @@ run-ui-only:
     cd ui/desktop && npm install && npm run start-gui
 
 debug-ui:
-	@echo "🚀 Starting Goose frontend in external backend mode"
+	@echo "🚀 Starting Daisy frontend in external backend mode"
 	cd ui/desktop && \
-	export GOOSE_EXTERNAL_BACKEND=true && \
-	export GOOSE_EXTERNAL_PORT=3000 && \
+	export DAISY_EXTERNAL_BACKEND=true && \
+	export DAISY_EXTERNAL_PORT=3000 && \
 	npm install && \
 	npm run start-gui
 
@@ -163,7 +163,7 @@ debug-ui:
 # 4. If not auto-detected, click "Configure" and add: localhost:9229
 
 debug-ui-main-process:
-	@echo "🔍 Starting Goose UI with main process debugging enabled"
+	@echo "🔍 Starting Daisy UI with main process debugging enabled"
 	@just release-binary
 	cd ui/desktop && \
 	npm install && \
@@ -173,13 +173,13 @@ debug-ui-main-process:
 run-ui-alpha temporal="true":
     @just release-binary
     @echo "Running UI with {{ if temporal == "true" { "Temporal" } else { "Legacy" } }} scheduler..."
-    cd ui/desktop && npm install && ALPHA=true GOOSE_SCHEDULER_TYPE={{ if temporal == "true" { "temporal" } else { "legacy" } }} npm run start-alpha-gui
+    cd ui/desktop && npm install && ALPHA=true DAISY_SCHEDULER_TYPE={{ if temporal == "true" { "temporal" } else { "legacy" } }} npm run start-alpha-gui
 
 # Run UI with alpha changes using legacy scheduler (no Temporal dependency)
 run-ui-alpha-legacy:
     @just release-binary
     @echo "Running UI with Legacy scheduler (no Temporal required)..."
-    cd ui/desktop && npm install && ALPHA=true GOOSE_SCHEDULER_TYPE=legacy npm run start-alpha-gui
+    cd ui/desktop && npm install && ALPHA=true DAISY_SCHEDULER_TYPE=legacy npm run start-alpha-gui
 
 # Run UI with latest (Windows version)
 run-ui-windows:
@@ -196,7 +196,7 @@ run-docs:
 # Run server
 run-server:
     @echo "Running server..."
-    cargo run -p goose-server
+    cargo run -p daisy-server
 
 # Check if OpenAPI schema is up-to-date
 check-openapi-schema: generate-openapi
@@ -205,7 +205,7 @@ check-openapi-schema: generate-openapi
 # Generate OpenAPI specification without starting the UI
 generate-openapi:
     @echo "Generating OpenAPI schema..."
-    cargo run -p goose-server --bin generate_schema
+    cargo run -p daisy-server --bin generate_schema
     @echo "Generating frontend API..."
     cd ui/desktop && npm run generate-api
 
@@ -228,12 +228,12 @@ make-ui-windows:
     @just release-windows
     #!/usr/bin/env sh
     set -e
-    if [ -f "./target/x86_64-pc-windows-gnu/release/goosed.exe" ]; then \
+    if [ -f "./target/x86_64-pc-windows-gnu/release/daisyd.exe" ]; then \
         echo "Cleaning destination directory..." && \
         rm -rf ./ui/desktop/src/bin && \
         mkdir -p ./ui/desktop/src/bin && \
         echo "Copying Windows binary and DLLs..." && \
-        cp -f ./target/x86_64-pc-windows-gnu/release/goosed.exe ./ui/desktop/src/bin/ && \
+        cp -f ./target/x86_64-pc-windows-gnu/release/daisyd.exe ./ui/desktop/src/bin/ && \
         cp -f ./target/x86_64-pc-windows-gnu/release/*.dll ./ui/desktop/src/bin/ && \
         echo "Starting Windows package build..." && \
         (cd ui/desktop && npm run bundle:windows) && \
@@ -387,7 +387,7 @@ set windows-shell := ["powershell.exe", "-NoLogo", "-Command"]
 ### profile = --release or "" for debug
 ### allparam = OR/AND/ANY/NONE --workspace --all-features --all-targets
 win-bld profile allparam:
-  cargo run {{profile}} -p goose-server --bin  generate_schema
+  cargo run {{profile}} -p daisy-server --bin  generate_schema
   cargo build {{profile}} {{allparam}}
 
 ### Build just debug
@@ -459,8 +459,8 @@ win-total-rls *allparam:
   just win-run-rls
 
 build-test-tools:
-  cargo build -p goose-test
+  cargo build -p daisy-test
 
 record-mcp-tests: build-test-tools
-  GOOSE_RECORD_MCP=1 cargo test --package goose --test mcp_integration_test
-  git add crates/goose/tests/mcp_replays/
+  DAISY_RECORD_MCP=1 cargo test --package daisy --test mcp_integration_test
+  git add crates/daisy/tests/mcp_replays/

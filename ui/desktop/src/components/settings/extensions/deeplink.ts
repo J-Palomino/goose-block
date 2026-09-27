@@ -14,7 +14,7 @@ function getStdioConfig(
   timeout: number
 ) {
   // Validate that the command is one of the allowed commands
-  const allowedCommands = ['cu', 'docker', 'jbang', 'npx', 'uvx', 'goosed', 'npx.cmd'];
+  const allowedCommands = ['cu', 'docker', 'jbang', 'npx', 'uvx', 'daisyd', 'npx.cmd'];
   if (!allowedCommands.includes(cmd)) {
     toastService.handleError(
       'Invalid Command',
@@ -116,10 +116,10 @@ export async function addExtensionFromDeepLink(
 
   const parsedUrl = new URL(url);
 
-  if (parsedUrl.protocol !== 'goose:') {
+  if (parsedUrl.protocol !== 'daisy:') {
     toastService.handleError(
       'Invalid Protocol',
-      'Failed to install extension: Invalid protocol: URL must use the goose:// scheme',
+      'Failed to install extension: Invalid protocol: URL must use the daisy:// scheme',
       { shouldThrow: true }
     );
   }

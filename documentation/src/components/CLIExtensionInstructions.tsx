@@ -47,7 +47,7 @@ export default function CLIExtensionInstructions({
       <ol>
         <li>Run the <code>configure</code> command:</li>
       </ol>
-      <CodeBlock language="sh">{`goose configure`}</CodeBlock>
+      <CodeBlock language="sh">{`daisy configure`}</CodeBlock>
 
       <ol start={2}>
         <li>
@@ -62,7 +62,7 @@ export default function CLIExtensionInstructions({
           </code>.
         </li>
       </ol>
-      <CodeBlock language="sh">{`┌   goose-configure 
+      <CodeBlock language="sh">{`┌   daisy-configure 
 │
 ◇  What would you like to configure?
 │  Add Extension 
@@ -80,7 +80,7 @@ ${
       <ol start={3}>
         <li>Give your extension a name.</li>
       </ol>
-      <CodeBlock language="sh">{`┌   goose-configure 
+      <CodeBlock language="sh">{`┌   daisy-configure 
 │
 ◇  What would you like to configure?
 │  Add Extension
@@ -99,7 +99,7 @@ ${
           <ol start={4}>
             <li>Enter the {isSSE ? 'SSE endpoint URI' : 'Streaming HTTP endpoint URI'}.</li>
           </ol>
-          <CodeBlock language="sh">{`┌   goose-configure 
+          <CodeBlock language="sh">{`┌   daisy-configure 
 │
 ◇  What would you like to configure?
 │  Add Extension 
@@ -121,7 +121,7 @@ ${
           <ol start={4}>
             <li>Enter the command to run when this extension is used.</li>
           </ol>
-          <CodeBlock language="sh">{`┌   goose-configure 
+          <CodeBlock language="sh">{`┌   daisy-configure 
 │
 ◇  What would you like to configure?
 │  Add Extension
@@ -142,11 +142,11 @@ ${
 
       <ol start={5}>
         <li>
-          Enter the number of seconds Goose should wait for actions to complete before timing out. Default is{' '}
+          Enter the number of seconds Daisy should wait for actions to complete before timing out. Default is{' '}
           <code>300</code> seconds.
         </li>
       </ol>
-      <CodeBlock language="sh">{`┌   goose-configure 
+      <CodeBlock language="sh">{`┌   daisy-configure 
 │
 ◇  What would you like to configure?
 │  Add Extension
@@ -169,9 +169,9 @@ ${
 └`}</CodeBlock>
 
       <ol start={6}>
-        <li>Choose to add a description. If you select <code>No</code>, Goose will skip it.</li>
+        <li>Choose to add a description. If you select <code>No</code>, Daisy will skip it.</li>
       </ol>
-      <CodeBlock language="sh">{`┌   goose-configure 
+      <CodeBlock language="sh">{`┌   daisy-configure 
 │
 ◇  What would you like to configure?
 │  Add Extension
@@ -210,7 +210,7 @@ ${
       </ol>
 
       {!hasEnvVars && (
-        <CodeBlock language="sh">{`┌   goose-configure 
+        <CodeBlock language="sh">{`┌   daisy-configure 
 │
 ◇  What would you like to configure?
 │  Add Extension 
@@ -251,7 +251,7 @@ ${
             </>
           )}
 
-          <CodeBlock language="sh">{`┌   goose-configure 
+          <CodeBlock language="sh">{`┌   daisy-configure 
 │
 ◇  What would you like to configure?
 │  Add Extension

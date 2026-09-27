@@ -29,17 +29,17 @@ import styles from '@site/src/components/Card/styles.module.css';
   <div className={styles.cardGrid}>
     <Card 
       title="Shareable Recipes"
-      description="Share a Goose session setup (including tools, goals, and instructions) as a reusable recipe that others can launch with a single click."
+      description="Share a Daisy session setup (including tools, goals, and instructions) as a reusable recipe that others can launch with a single click."
       link="/docs/guides/recipes/session-recipes"
     />
     <Card 
       title="Recipe Reference Guide"
-      description="Complete technical reference for creating and customizing recipes in Goose via the CLI."
+      description="Complete technical reference for creating and customizing recipes in Daisy via the CLI."
       link="/docs/guides/recipes/recipe-reference"
     />
     <Card 
-      title="Goose Recipes Tutorial"
-      description="Learn how to create and use Goose recipes with prompts, parameters, MCP servers, and more."
+      title="Daisy Recipes Tutorial"
+      description="Learn how to create and use Daisy recipes with prompts, parameters, MCP servers, and more."
       link="/docs/tutorials/recipes-tutorial"
     />
     <Card 
@@ -49,7 +49,7 @@ import styles from '@site/src/components/Card/styles.module.css';
     />
     <Card 
       title="Saving Recipes"
-      description="Learn how to save, organize, and find your Goose recipes for easy access and reuse."
+      description="Learn how to save, organize, and find your Daisy recipes for easy access and reuse."
       link="/docs/guides/recipes/storing-recipes"
     />
     <Card 
@@ -65,7 +65,7 @@ import styles from '@site/src/components/Card/styles.module.css';
   <div className={styles.cardGrid}>
     <Card 
       title="Recipe Generator"
-      description="Interactive tool that creates a shareable Goose recipe URL that others can use to launch a session with your predefined settings."
+      description="Interactive tool that creates a shareable Daisy recipe URL that others can use to launch a session with your predefined settings."
       link="/recipe-generator"
     />
     <Card 

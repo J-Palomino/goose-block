@@ -1,49 +1,49 @@
 ---
 title: Computer Controller Extension
-description: Use Computer Controller MCP Server as a Goose Extension
+description: Use Computer Controller MCP Server as a Daisy Extension
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import YouTubeShortEmbed from '@site/src/components/YouTubeShortEmbed';
-import GooseBuiltinInstaller from '@site/src/components/GooseBuiltinInstaller';
+import DaisyBuiltinInstaller from '@site/src/components/DaisyBuiltinInstaller';
 
 <YouTubeShortEmbed videoUrl="https://www.youtube.com/embed/EuMzToNOQtw" />
 
 The Computer Controller extension helps automate everyday computer tasks and web interactions such as searching the web, controlling system settings, processing data files, and controlling applications without needing to know how to code.
 
-This tutorial covers enabling and using the Computer Controller MCP Server, which is a built-in Goose extension.
+This tutorial covers enabling and using the Computer Controller MCP Server, which is a built-in Daisy extension.
 
 :::tip
-Let Goose complete its tasks without interruption - avoid using your mouse or keyboard until it's done.
+Let Daisy complete its tasks without interruption - avoid using your mouse or keyboard until it's done.
 :::
 
 ## Configuration
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-  <GooseBuiltinInstaller
+  <TabItem value="ui" label="Daisy Desktop" default>
+  <DaisyBuiltinInstaller
     extensionName="Computer Controller"
     description="Automate everyday computer tasks and web interactions"
   />
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
 
   1. Run the `configure` command:
   ```sh
-  goose configure
+  daisy configure
   ```
 
   2. Choose to add a `Built-in Extension`
   ```sh
-  ┌   goose-configure 
+  ┌   daisy-configure 
   │
   ◇  What would you like to configure?
   │  Add Extension (Connect to a new extension) 
   │
   ◆  What type of extension would you like to add?
   // highlight-start    
-  │  ● Built-in Extension (Use an extension that comes with Goose)
+  │  ● Built-in Extension (Use an extension that comes with Daisy)
   // highlight-end  
   │  ○ Command-line Extension 
   │  ○ Remote Extension (SSE) 
@@ -53,7 +53,7 @@ Let Goose complete its tasks without interruption - avoid using your mouse or ke
 
   3. Select the `Computer Controller` extension
   ```sh
-  ┌   goose-configure 
+  ┌   daisy-configure 
   │
   ◇  What would you like to configure?
   │  Add Extension (Connect to a new extension) 
@@ -71,9 +71,9 @@ Let Goose complete its tasks without interruption - avoid using your mouse or ke
   └  Enabled Computer Controller extension
   ```
 
-  4. Enter the number of seconds Goose should wait for actions to complete before timing out. Default is 300s
+  4. Enter the number of seconds Daisy should wait for actions to complete before timing out. Default is 300s
   ```sh
-  ┌   goose-configure 
+  ┌   daisy-configure 
   │
   ◇  What would you like to configure?
   │  Add Extension (Connect to a new extension) 
@@ -95,30 +95,30 @@ Let Goose complete its tasks without interruption - avoid using your mouse or ke
 
 ## Example Usage
 
-In this example, I'll show you how Goose can multitask, handling everything from system controls and music playback to web research and data organization.
+In this example, I'll show you how Daisy can multitask, handling everything from system controls and music playback to web research and data organization.
 
 :::info LLM
 Anthropic's Claude 4 Sonnet was used for this task.
 :::
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-   1. Open a new session in Goose Desktop
+  <TabItem value="ui" label="Daisy Desktop" default>
+   1. Open a new session in Daisy Desktop
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
 
-  1. Open a terminal and start a new Goose session:
+  1. Open a terminal and start a new Daisy session:
 
   ```sh
-  goose session
+  daisy session
   ```
 
   </TabItem>
 </Tabs>
 
-### Goose Prompt
+### Daisy Prompt
 ```
-Goose, I need to decompress while researching AI models for tomorrow's meeting. Can you create a relaxing environment and help me research?
+Daisy, I need to decompress while researching AI models for tomorrow's meeting. Can you create a relaxing environment and help me research?
 
 1. Play classical music in Safari
 2. Dim screen brightness (2 levels)
@@ -131,7 +131,7 @@ Goose, I need to decompress while researching AI models for tomorrow's meeting. 
 6. Reset brightness and close Safari
 ```
 
-### Goose Output
+### Daisy Output
 ```md
 I'll help you create a relaxing research environment and gather information about AI models. I'll break this down into steps:
 

@@ -4,19 +4,19 @@ title: Managing Projects
 sidebar_label: Managing Projects
 ---
 
-Goose Projects automatically track your working directories and associated sessions, making it easy to resume work across multiple codebases with full context preservation.
+Daisy Projects automatically track your working directories and associated sessions, making it easy to resume work across multiple codebases with full context preservation.
 
-A **project** in Goose is a record of a working directory where you've used Goose. Every time you run Goose, it automatically tracks the current directory as a project, storing:
+A **project** in Daisy is a record of a working directory where you've used Daisy. Every time you run Daisy, it automatically tracks the current directory as a project, storing:
 
 - **Path**: The absolute path to the project directory
 - **Last accessed**: When you last worked on this project  
-- **Last instruction**: The most recent command you gave to Goose
+- **Last instruction**: The most recent command you gave to Daisy
 - **Session ID**: The associated session for context continuity
 
-Projects are stored in `~/.local/share/goose/projects.json`.
+Projects are stored in `~/.local/share/daisy/projects.json`.
 
 :::info CLI Only Feature
-Projects are currently available only through the Goose CLI. Desktop support is planned for future releases.
+Projects are currently available only through the Daisy CLI. Desktop support is planned for future releases.
 :::
 
 ## Basic Usage
@@ -24,19 +24,19 @@ Projects are currently available only through the Goose CLI. Desktop support is 
 **Resume your most recent project:**
 
 ```bash
-goose project  
+daisy project  
 ```
 
 **Browse all your projects:**
 
 ```bash
-goose projects  
+daisy projects  
 ```
 :::tip
 When resuming a project, you can continue the previous session or start fresh in that directory.
 :::
 
-For complete command syntax and options, see the [CLI Commands Guide](/docs/guides/goose-cli-commands#project).
+For complete command syntax and options, see the [CLI Commands Guide](/docs/guides/daisy-cli-commands#project).
 
 ## Workflow Example
 
@@ -45,33 +45,33 @@ Let's follow Sarah, a developer working on multiple projects throughout her day:
 ### Morning: API Development
 ```bash
 cd ~/projects/ecommerce-api
-goose session --name "api-auth-work"
+daisy session --name "api-auth-work"
 ```
-*Sarah asks Goose to help implement JWT token refresh logic*
+*Sarah asks Daisy to help implement JWT token refresh logic*
 
 ### Mid-Morning: Mobile App Bug Fix  
 ```bash
 cd ~/projects/mobile-app
-goose session
+daisy session
 ```
 *Sarah gets help debugging an iOS crash in the login screen*
 
 ### Afternoon: Admin Dashboard
 ```bash
 cd ~/projects/admin-dashboard  
-goose session --name "dashboard-ui"
+daisy session --name "dashboard-ui"
 ```
 *Sarah works on creating user management interface components*
 
 ### Next Day: Quick Resume
 ```bash
 # From any directory, quickly resume the most recent project
-goose project
+daisy project
 ```
 
-Goose shows:
+Daisy shows:
 ```
-┌ Goose Project Manager
+┌ Daisy Project Manager
 │
 ◆ Choose an option:
 │  ○ Resume project with session: .../admin-dashboard
@@ -85,12 +85,12 @@ Goose shows:
 
 ### Later: Browse All Projects
 ```bash
-goose projects
+daisy projects
 ```
 
-Goose displays:
+Daisy displays:
 ```
-┌ Goose Project Manager
+┌ Daisy Project Manager
 │
 ◆ Select a project:
 │  ○ 1  .../admin-dashboard (2025-01-07 09:15:30) [create user management interface]

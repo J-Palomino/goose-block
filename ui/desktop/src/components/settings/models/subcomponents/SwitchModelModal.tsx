@@ -114,7 +114,7 @@ export const SwitchModelModal = ({ sessionId, onClose, setView }: SwitchModelMod
       // Initialize selected predefined model with current model
       (async () => {
         try {
-          const currentModelName = (await read('GOOSE_MODEL', false)) as string;
+          const currentModelName = (await read('DAISY_MODEL', false)) as string;
           const matchingModel = models.find((model) => model.name === currentModelName);
           if (matchingModel) {
             setSelectedPredefinedModel(matchingModel);

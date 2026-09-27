@@ -1,6 +1,6 @@
 # AGENTS Instructions
 
-Goose is an AI agent framework in Rust with CLI and Electron desktop interfaces.
+Daisy is an AI agent framework in Rust with CLI and Electron desktop interfaces.
 
 ## Setup
 ```bash
@@ -20,8 +20,8 @@ just release-binary           # release + openapi
 ### Test
 ```bash
 cargo test                   # all tests
-cargo test -p goose          # specific crate
-cargo test --package goose --test mcp_integration_test
+cargo test -p daisy          # specific crate
+cargo test --package daisy --test mcp_integration_test
 just record-mcp-tests        # record MCP
 ```
 
@@ -42,12 +42,12 @@ cd ui/desktop && npm test    # test UI
 ## Structure
 ```
 crates/
-├── goose             # core logic
-├── goose-bench       # benchmarking
-├── goose-cli         # CLI entry
-├── goose-server      # backend (binary: goosed)
-├── goose-mcp         # MCP extensions
-├── goose-test        # test utilities
+├── daisy             # core logic
+├── daisy-bench       # benchmarking
+├── daisy-cli         # CLI entry
+├── daisy-server      # backend (binary: daisyd)
+├── daisy-mcp         # MCP extensions
+├── daisy-test        # test utilities
 ├── mcp-client        # MCP client
 ├── mcp-core          # MCP shared
 └── mcp-server        # MCP server
@@ -69,10 +69,10 @@ ui/desktop/           # Electron app
 
 ## Rules
 
-Test: Prefer tests/ folder, e.g. crates/goose/tests/
+Test: Prefer tests/ folder, e.g. crates/daisy/tests/
 Error: Use anyhow::Result
 Provider: Implement Provider trait see providers/base.rs
-MCP: Extensions in crates/goose-mcp/
+MCP: Extensions in crates/daisy-mcp/
 Server: Changes need just generate-openapi
 
 ## Never
@@ -83,7 +83,7 @@ Never: Skip cargo fmt
 Never: Merge without ./scripts/clippy-lint.sh
 
 ## Entry Points
-- CLI: crates/goose-cli/src/main.rs
-- Server: crates/goose-server/src/main.rs
+- CLI: crates/daisy-cli/src/main.rs
+- Server: crates/daisy-server/src/main.rs
 - UI: ui/desktop/src/main.ts
-- Agent: crates/goose/src/agents/agent.rs
+- Agent: crates/daisy/src/agents/agent.rs

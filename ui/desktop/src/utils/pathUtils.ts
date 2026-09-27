@@ -24,11 +24,11 @@ export const getBinaryPath = (app: Electron.App, binaryName: string): string => 
   }
 
   // On Windows, rely on PATH we just patched in ensureWinShims for command-line tools
-  // but use explicit resources/bin path for goosed.exe
+  // but use explicit resources/bin path for daisyd.exe
   if (process.platform === 'win32') {
-    // For goosed.exe, always use the explicit resources/bin path
-    if (binaryName === 'goosed') {
-      return path.join(process.resourcesPath, 'bin', 'goosed.exe');
+    // For daisyd.exe, always use the explicit resources/bin path
+    if (binaryName === 'daisyd') {
+      return path.join(process.resourcesPath, 'bin', 'daisyd.exe');
     }
 
     // Map binary names to their Windows equivalents

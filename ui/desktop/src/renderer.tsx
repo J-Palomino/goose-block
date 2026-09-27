@@ -9,7 +9,7 @@ const App = lazy(() => import('./App'));
 
 (async () => {
   client.setConfig({
-    baseUrl: window.appConfig.get('GOOSE_API_HOST') + ':' + window.appConfig.get('GOOSE_PORT'),
+    baseUrl: window.appConfig.get('DAISY_API_HOST') + ':' + window.appConfig.get('DAISY_PORT'),
     headers: {
       'Content-Type': 'application/json',
       'X-Secret-Key': await window.electron.getSecretKey(),

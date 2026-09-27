@@ -11,21 +11,21 @@ authors:
 
 I'm a developer at heart, so when I'm working on a personal project, the hardest part isn't writing code—it's making design decisions. I recently built a calendar user interface. I wanted to enhance its visual appeal, so I researched UI design trends like "glassmorphism" and "claymorphism."
 
-However, I didn't want to spend hours implementing the CSS for each design trend, so I developed a faster approach: screenshot-driven development. I used an open source developer agent called [Goose](https://github.com/block/goose) to transform my user interfaces quickly.
+However, I didn't want to spend hours implementing the CSS for each design trend, so I developed a faster approach: screenshot-driven development. I used an open source developer agent called [Daisy](https://github.com/block/daisy) to transform my user interfaces quickly.
 
 <!-- truncate -->
 
-:::warning Goose Beta Version
-This post was written about a beta version of Goose and the commands and flow may have changed.
+:::warning Daisy Beta Version
+This post was written about a beta version of Daisy and the commands and flow may have changed.
 :::
 
 ### My original calendar:
 ![calendar](screenshot-calendar-og.png)
 
-### Goose prototyped the designs below: 
-![Goose prototypes](goose-prototypes-calendar.png)
+### Daisy prototyped the designs below: 
+![Daisy prototypes](daisy-prototypes-calendar.png)
 
-In this blog post, I'll show you how to quickly prototype design styles by letting Goose handle the CSS for you.
+In this blog post, I'll show you how to quickly prototype design styles by letting Daisy handle the CSS for you.
 >💡 Note: Your results might look different from my examples - that's part of the fun of generative AI! Each run can produce unique variations of these design trends.
 
 ## Get Started with Screenshot-Driven Development
@@ -180,23 +180,23 @@ Let's create a basic UI to experiment with. Create an index.html file with the c
 
 Once saved, open the file in your browser. You should see a calendar!
 
-### Step 2: Install Goose
+### Step 2: Install Daisy
 
 ```bash
 brew install pipx
 pipx ensurepath
-pipx install goose-ai
+pipx install daisy-ai
 ```
 
 ### Step 3: Start a session
 
 ```bash
-goose session start
+daisy session start
 ```
 
 #### Bring your own LLM
 
->Goose will prompt you to set up your API key when you first run this command. You can use various LLM providers like OpenAI or Anthropic
+>Daisy will prompt you to set up your API key when you first run this command. You can use various LLM providers like OpenAI or Anthropic
 
 ```bash
 export OPENAI_API_KEY=your_api_key
@@ -205,9 +205,9 @@ export ANTHROPIC_API_KEY=your_api_key
 ```
 
 ### Step 4: Enable the Screen toolkit
-Goose uses [toolkits](https://block.github.io/goose/plugins/plugins.html) to extend its capabilities. The [screen](https://block.github.io/goose/plugins/available-toolkits.html#6-screen-toolkit) toolkit lets Goose take and analyze screenshots.
+Daisy uses [toolkits](https://block.github.io/daisy/plugins/plugins.html) to extend its capabilities. The [screen](https://block.github.io/daisy/plugins/available-toolkits.html#6-screen-toolkit) toolkit lets Daisy take and analyze screenshots.
 
-To enable the Screen toolkit, add it to your Goose profile at ~/.config/goose/profiles.yaml.
+To enable the Screen toolkit, add it to your Daisy profile at ~/.config/daisy/profiles.yaml.
 
 > Your configuration might look slightly different depending on your LLM provider preferences.
 
@@ -225,8 +225,8 @@ default:
     requires: {}
 ```
 
-### Step 5: Prompt Goose to screenshot your UI
-Goose analyzes your UI through screenshots to understand its structure and elements. In your Gooses session, prompt Goose to take a screenshot by specifying which display your UI is on:
+### Step 5: Prompt Daisy to screenshot your UI
+Daisy analyzes your UI through screenshots to understand its structure and elements. In your Daisys session, prompt Daisy to take a screenshot by specifying which display your UI is on:
 
 ```bash
 Take a screenshot of display(1)  
@@ -234,11 +234,11 @@ Take a screenshot of display(1)
 
 > The display number is required - use display(1) for your main monitor or display(2) for a secondary monitor.
 
-Upon success, Goose will run a `screencapture` command and save it as a temporary file.
+Upon success, Daisy will run a `screencapture` command and save it as a temporary file.
 
-### Step 6: Prompt Goose to transform your UI
+### Step 6: Prompt Daisy to transform your UI
 
-Now, you can ask Goose to apply different design styles. Here are some of the prompts I gave Goose and the results it produced:
+Now, you can ask Daisy to apply different design styles. Here are some of the prompts I gave Daisy and the results it produced:
 
 #### Glassmorphism
 
@@ -277,21 +277,21 @@ Apply a brutalist effect please
 
 ## Learn More
 
-Developing user interfaces is a blend of creativity and problem-solving. And I love that using Goose gives me more time to focus on creativity rather than wrestling with CSS for hours. 
+Developing user interfaces is a blend of creativity and problem-solving. And I love that using Daisy gives me more time to focus on creativity rather than wrestling with CSS for hours. 
 
-Beyond prototyping, Goose's ability to analyze screenshots can help developers identify and resolve UI bugs.
+Beyond prototyping, Daisy's ability to analyze screenshots can help developers identify and resolve UI bugs.
 
-If you're interested in learning more, check out the [Goose repo](https://github.com/block/goose) and join our [Discord community](https://discord.gg/block-opensource).
+If you're interested in learning more, check out the [Daisy repo](https://github.com/block/daisy) and join our [Discord community](https://discord.gg/block-opensource).
 
 <head>
     <meta property="og:title" content="Screenshot-Driven Development" />
     <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://block.github.io/goose/blog/2024/11/22/screenshot-driven-development" />
+    <meta property="og:url" content="https://block.github.io/daisy/blog/2024/11/22/screenshot-driven-development" />
     <meta property="og:description" content="AI Agent uses screenshots to assist in styling." />
-    <meta property="og:image" content="https://block.github.io/goose/assets/images/screenshot-driven-development-4ed1beaa10c6062c0bf87e2d27590ad6.png" />
+    <meta property="og:image" content="https://block.github.io/daisy/assets/images/screenshot-driven-development-4ed1beaa10c6062c0bf87e2d27590ad6.png" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta property="twitter:domain" content="block.github.io/goose" />
+    <meta property="twitter:domain" content="block.github.io/daisy" />
     <meta name="twitter:title" content="Screenshot-Driven Development" />
     <meta name="twitter:description" content="AI Agent uses screenshots to assist in styling." />
-    <meta name="twitter:image" content="https://block.github.io/goose/assets/images/screenshot-driven-development-4ed1beaa10c6062c0bf87e2d27590ad6.png" />
+    <meta name="twitter:image" content="https://block.github.io/daisy/assets/images/screenshot-driven-development-4ed1beaa10c6062c0bf87e2d27590ad6.png" />
 </head>

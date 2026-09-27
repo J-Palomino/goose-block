@@ -1,23 +1,23 @@
 ---
 title: Google Drive Extension
-description: Add Google Drive MCP Server as a Goose Extension
+description: Add Google Drive MCP Server as a Daisy Extension
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import YouTubeShortEmbed from '@site/src/components/YouTubeShortEmbed';
-import GooseDesktopInstaller from '@site/src/components/GooseDesktopInstaller';
+import DaisyDesktopInstaller from '@site/src/components/DaisyDesktopInstaller';
 
 <YouTubeShortEmbed videoUrl="https://www.youtube.com/embed/p9HGYbJk9wU" />
 
-This tutorial covers how to add the [Google Drive MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/gdrive) as a Goose extension, allowing you to list, read, and search files in Google Drive.
+This tutorial covers how to add the [Google Drive MCP Server](https://github.com/modelcontextprotocol/servers/tree/main/src/gdrive) as a Daisy extension, allowing you to list, read, and search files in Google Drive.
 
 :::tip TLDR
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-  [Launch the installer](goose://extension?cmd=npx&arg=-y&arg=%40modelcontextprotocol%2Fserver-gdrive&id=google-drive&name=Google%20Drive&description=Google%20Drive%20integration&env=GDRIVE_CREDENTIALS_PATH%3DPath%20to%20Google%20Drive%20credentials&env=GDRIVE_OAUTH_PATH%3DPath%20to%20OAuth%20token)
+  <TabItem value="ui" label="Daisy Desktop" default>
+  [Launch the installer](daisy://extension?cmd=npx&arg=-y&arg=%40modelcontextprotocol%2Fserver-gdrive&id=google-drive&name=Google%20Drive&description=Google%20Drive%20integration&env=GDRIVE_CREDENTIALS_PATH%3DPath%20to%20Google%20Drive%20credentials&env=GDRIVE_OAUTH_PATH%3DPath%20to%20OAuth%20token)
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
   **Command**
   ```sh
   GDRIVE_OAUTH_PATH=$USER_HOME/.config/gcp-oauth.keys.json \ 
@@ -92,8 +92,8 @@ You'll need to re-authenticate once a day when using the Google Drive extension.
 :::
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-  <GooseDesktopInstaller
+  <TabItem value="ui" label="Daisy Desktop" default>
+  <DaisyDesktopInstaller
     extensionId="google-drive"
     extensionName="Google Drive"
     description="Google Drive integration"
@@ -112,15 +112,15 @@ You'll need to re-authenticate once a day when using the Google Drive extension.
   Replace `$USER_HOME` with your home directory. You must specify an absolute path for this extension to work.
   :::
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
   1. Run the `configure` command:
   ```sh
-  goose configure
+  daisy configure
   ```
 
   2. Choose to add a `Command-line Extension`
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -137,7 +137,7 @@ You'll need to re-authenticate once a day when using the Google Drive extension.
 
   3. Give your extension a name
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -154,7 +154,7 @@ You'll need to re-authenticate once a day when using the Google Drive extension.
 
   4. Enter the command
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -172,9 +172,9 @@ You'll need to re-authenticate once a day when using the Google Drive extension.
     └ 
   ```  
 
-  5. Enter the number of seconds Goose should wait for actions to complete before timing out. Default is 300s
+  5. Enter the number of seconds Daisy should wait for actions to complete before timing out. Default is 300s
    ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -197,7 +197,7 @@ You'll need to re-authenticate once a day when using the Google Drive extension.
 
   6. Choose to add a description. If you select "Yes" here, you will be prompted to enter a description for the extension.
    ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -224,7 +224,7 @@ You'll need to re-authenticate once a day when using the Google Drive extension.
   7. Add your environment variables 
 
    ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -272,9 +272,9 @@ You'll need to re-authenticate once a day when using the Google Drive extension.
 
 ## Example Usage
 
-In this example, I’ll use Goose to quickly gather and summarize important information for my upcoming marketing budget review meeting in 30 minutes. I’ll ask Goose to find relevant documents from my Google Drive, summarize Q1 performance, highlight critical decisions on marketing automation and video production, and identify any outstanding action items from our last meeting.
+In this example, I’ll use Daisy to quickly gather and summarize important information for my upcoming marketing budget review meeting in 30 minutes. I’ll ask Daisy to find relevant documents from my Google Drive, summarize Q1 performance, highlight critical decisions on marketing automation and video production, and identify any outstanding action items from our last meeting.
 
-### Goose Prompt
+### Daisy Prompt
 ```
 I have an important marketing budget review meeting in 30 minutes and I need your help getting prepared. I have several documents in my Google Drive from our previous meetings and planning sessions. Could you help me by:
 
@@ -286,7 +286,7 @@ I have an important marketing budget review meeting in 30 minutes and I need you
 I need a quick but comprehensive overview so I can walk into this meeting well-prepared.
 ```
 
-### Goose Output
+### Daisy Output
 
 ```
 I'll help you prepare for your meeting. Let me first list available resources from Google Drive to make sure we access the correct files. 

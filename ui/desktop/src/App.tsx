@@ -13,7 +13,7 @@ import { type SharedSessionDetails } from './sharedSessions';
 import { ErrorUI } from './components/ErrorBoundary';
 import { ExtensionInstallModal } from './components/ExtensionInstallModal';
 import { ToastContainer } from 'react-toastify';
-import { GoosehintsModal } from './components/GoosehintsModal';
+import { DaisyhintsModal } from './components/DaisyhintsModal';
 import AnnouncementModal from './components/AnnouncementModal';
 import { generateSessionId } from './sessions';
 import ProviderGuard from './components/ProviderGuard';
@@ -48,11 +48,11 @@ import {
 
 // Route Components
 const HubRouteWrapper = ({
-  setIsGoosehintsModalOpen,
+  setIsDaisyhintsModalOpen,
   isExtensionsLoading,
   resetChat,
 }: {
-  setIsGoosehintsModalOpen: (isOpen: boolean) => void;
+  setIsDaisyhintsModalOpen: (isOpen: boolean) => void;
   isExtensionsLoading: boolean;
   resetChat: () => void;
 }) => {
@@ -62,7 +62,7 @@ const HubRouteWrapper = ({
   return (
     <Hub
       setView={setView}
-      setIsGoosehintsModalOpen={setIsGoosehintsModalOpen}
+      setIsDaisyhintsModalOpen={setIsDaisyhintsModalOpen}
       isExtensionsLoading={isExtensionsLoading}
       resetChat={resetChat}
     />
@@ -72,7 +72,7 @@ const HubRouteWrapper = ({
 const PairRouteWrapper = ({
   chat,
   setChat,
-  setIsGoosehintsModalOpen,
+  setIsDaisyhintsModalOpen,
   setAgentWaitingMessage,
   setFatalError,
   agentState,
@@ -80,7 +80,7 @@ const PairRouteWrapper = ({
 }: {
   chat: ChatType;
   setChat: (chat: ChatType) => void;
-  setIsGoosehintsModalOpen: (isOpen: boolean) => void;
+  setIsDaisyhintsModalOpen: (isOpen: boolean) => void;
   setAgentWaitingMessage: (msg: string | null) => void;
   setFatalError: (value: ((prevState: string | null) => string | null) | string | null) => void;
   agentState: AgentState;
@@ -105,7 +105,7 @@ const PairRouteWrapper = ({
       loadCurrentChat={loadCurrentChat}
       setFatalError={setFatalError}
       setAgentWaitingMessage={setAgentWaitingMessage}
-      setIsGoosehintsModalOpen={setIsGoosehintsModalOpen}
+      setIsDaisyhintsModalOpen={setIsDaisyhintsModalOpen}
       resumeSessionId={resumeSessionId}
       initialMessage={initialMessage}
     />
@@ -261,7 +261,7 @@ const SharedSessionRouteWrapper = ({
         if (shareToken && baseUrl) {
           setIsLoadingSharedSession(true);
           try {
-            await openSharedSessionFromDeepLink(`goose://sessions/${shareToken}`, setView, baseUrl);
+            await openSharedSessionFromDeepLink(`daisy://sessions/${shareToken}`, setView, baseUrl);
           } catch (error) {
             console.error('Failed to retry loading shared session:', error);
           } finally {
@@ -308,7 +308,7 @@ const ExtensionsRoute = () => {
 
 export function AppInner() {
   const [fatalError, setFatalError] = useState<string | null>(null);
-  const [isGoosehintsModalOpen, setIsGoosehintsModalOpen] = useState(false);
+  const [isDaisyhintsModalOpen, setIsDaisyhintsModalOpen] = useState(false);
   const [agentWaitingMessage, setAgentWaitingMessage] = useState<string | null>(null);
   const [isLoadingSharedSession, setIsLoadingSharedSession] = useState(false);
   const [sharedSessionError, setSharedSessionError] = useState<string | null>(null);
@@ -386,7 +386,7 @@ export function AppInner() {
       } catch (error) {
         console.error('Unexpected error opening shared session:', error);
         // Navigate to shared session view with error
-        const shareToken = link.replace('goose://sessions/', '');
+        const shareToken = link.replace('daisy://sessions/', '');
         const options = {
           sessionDetails: null,
           error: error instanceof Error ? error.message : 'Unknown error',
@@ -410,7 +410,7 @@ export function AppInner() {
       if ((isMac ? event.metaKey : event.ctrlKey) && event.key === 'n') {
         event.preventDefault();
         try {
-          const workingDir = window.appConfig?.get('GOOSE_WORKING_DIR');
+          const workingDir = window.appConfig?.get('DAISY_WORKING_DIR');
           console.log(`Creating new chat window with working dir: ${workingDir}`);
           window.electron.createChatWindow(undefined, workingDir as string);
         } catch (error) {
@@ -553,7 +553,7 @@ export function AppInner() {
                   contextKey="hub"
                   agentWaitingMessage={agentWaitingMessage}
                 >
-                  <AppLayout setIsGoosehintsModalOpen={setIsGoosehintsModalOpen} />
+                  <AppLayout setIsDaisyhintsModalOpen={setIsDaisyhintsModalOpen} />
                 </ChatProvider>
               </ProviderGuard>
             }
@@ -562,7 +562,7 @@ export function AppInner() {
               index
               element={
                 <HubRouteWrapper
-                  setIsGoosehintsModalOpen={setIsGoosehintsModalOpen}
+                  setIsDaisyhintsModalOpen={setIsDaisyhintsModalOpen}
                   isExtensionsLoading={isExtensionsLoading}
                   resetChat={resetChatIfNecessary}
                 />
@@ -578,7 +578,7 @@ export function AppInner() {
                   loadCurrentChat={loadCurrentChat}
                   setFatalError={setFatalError}
                   setAgentWaitingMessage={setAgentWaitingMessage}
-                  setIsGoosehintsModalOpen={setIsGoosehintsModalOpen}
+                  setIsDaisyhintsModalOpen={setIsDaisyhintsModalOpen}
                 />
               }
             />
@@ -602,10 +602,10 @@ export function AppInner() {
           </Route>
         </Routes>
       </div>
-      {isGoosehintsModalOpen && (
-        <GoosehintsModal
-          directory={window.appConfig?.get('GOOSE_WORKING_DIR') as string}
-          setIsGoosehintsModalOpen={setIsGoosehintsModalOpen}
+      {isDaisyhintsModalOpen && (
+        <DaisyhintsModal
+          directory={window.appConfig?.get('DAISY_WORKING_DIR') as string}
+          setIsDaisyhintsModalOpen={setIsDaisyhintsModalOpen}
         />
       )}
     </>

@@ -1,23 +1,23 @@
 ---
 title: Tavily Web Search Extension
-description: Add Tavily MCP Server as a Goose Extension
+description: Add Tavily MCP Server as a Daisy Extension
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import YouTubeShortEmbed from '@site/src/components/YouTubeShortEmbed';
-import GooseDesktopInstaller from '@site/src/components/GooseDesktopInstaller';
+import DaisyDesktopInstaller from '@site/src/components/DaisyDesktopInstaller';
 
 <YouTubeShortEmbed videoUrl="https://youtube.com/embed/mxS2G9afGxE" />
 
-This tutorial covers how to add the [Tavily Web Search MCP Server](https://github.com/tavily-ai/tavily-mcp) as a Goose extension to enable AI-powered web search functionality.
+This tutorial covers how to add the [Tavily Web Search MCP Server](https://github.com/tavily-ai/tavily-mcp) as a Daisy extension to enable AI-powered web search functionality.
 
 :::tip TLDR
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-  [Launch the installer](goose://extension?cmd=npx&arg=-y&arg=tavily-mcp&id=tavily&name=Tavily%20Web%20Search&description=Search%20the%20web%20with%20Tavily%20MCP&env=TAVILY_API_KEY%3DTavily%20API%20Key)
+  <TabItem value="ui" label="Daisy Desktop" default>
+  [Launch the installer](daisy://extension?cmd=npx&arg=-y&arg=tavily-mcp&id=tavily&name=Tavily%20Web%20Search&description=Search%20the%20web%20with%20Tavily%20MCP&env=TAVILY_API_KEY%3DTavily%20API%20Key)
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
   **Command**
   ```sh
   npx -y tavily-mcp
@@ -37,8 +37,8 @@ Note that you'll need [uv](https://docs.astral.sh/uv/#installation) installed on
 :::
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-  <GooseDesktopInstaller
+  <TabItem value="ui" label="Daisy Desktop" default>
+  <DaisyDesktopInstaller
     extensionId="tavily"
     extensionName="Tavily Web Search"
     description="Search the web with Tavily MCP"
@@ -51,15 +51,15 @@ Note that you'll need [uv](https://docs.astral.sh/uv/#installation) installed on
     apiKeyLinkText="Tavily API Key"
   />
 </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
   1. Run the `configure` command:
   ```sh
-  goose configure
+  daisy configure
   ```
 
   2. Choose to add a `Command-line Extension`
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -76,7 +76,7 @@ Note that you'll need [uv](https://docs.astral.sh/uv/#installation) installed on
 
   3. Give your extension a name
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -93,7 +93,7 @@ Note that you'll need [uv](https://docs.astral.sh/uv/#installation) installed on
 
   4. Enter the command
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -111,9 +111,9 @@ Note that you'll need [uv](https://docs.astral.sh/uv/#installation) installed on
     └ 
   ```  
 
-  5. Enter the number of seconds Goose should wait for actions to complete before timing out. Default is 300s
+  5. Enter the number of seconds Daisy should wait for actions to complete before timing out. Default is 300s
    ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -136,7 +136,7 @@ Note that you'll need [uv](https://docs.astral.sh/uv/#installation) installed on
 
   6. Choose to add a description. If you select "Yes" here, you will be prompted to enter a description for the extension.
    ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -166,7 +166,7 @@ Note that you'll need [uv](https://docs.astral.sh/uv/#installation) installed on
   :::
 
    ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -207,20 +207,20 @@ Note that you'll need [uv](https://docs.astral.sh/uv/#installation) installed on
 
 ## Example Usage
 
-The Tavily MCP server enables AI-powered web search functionality in your Goose interactions. When you obtain your API key, you'll have access to Tavily's advanced search capabilities including:
+The Tavily MCP server enables AI-powered web search functionality in your Daisy interactions. When you obtain your API key, you'll have access to Tavily's advanced search capabilities including:
 
 1. Real-time web search
 2. Structured data extraction
 3. Content analysis
 4. Topic-specific search
 
-### Goose Prompt
+### Daisy Prompt
 
 ```
 Search for recent news about artificial intelligence breakthroughs in medicine and summarize the key findings.
 ```
 
-### Goose Output
+### Daisy Output
 
 ```
 I'll use the Tavily news search tool to find recent news about AI breakthroughs in medicine.

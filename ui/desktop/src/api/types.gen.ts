@@ -181,7 +181,7 @@ export type ExtendPromptResponse = {
 export type ExtensionConfig = {
     available_tools?: Array<string>;
     /**
-     * Whether this extension is bundled with Goose
+     * Whether this extension is bundled with Daisy
      */
     bundled?: boolean | null;
     description?: string | null;
@@ -198,7 +198,7 @@ export type ExtensionConfig = {
     args: Array<string>;
     available_tools?: Array<string>;
     /**
-     * Whether this extension is bundled with Goose
+     * Whether this extension is bundled with Daisy
      */
     bundled?: boolean | null;
     cmd: string;
@@ -214,7 +214,7 @@ export type ExtensionConfig = {
 } | {
     available_tools?: Array<string>;
     /**
-     * Whether this extension is bundled with Goose
+     * Whether this extension is bundled with Daisy
      */
     bundled?: boolean | null;
     description?: string | null;
@@ -228,7 +228,7 @@ export type ExtensionConfig = {
 } | {
     available_tools?: Array<string>;
     /**
-     * Whether this extension is bundled with Goose
+     * Whether this extension is bundled with Daisy
      */
     bundled?: boolean | null;
     description?: string | null;
@@ -247,7 +247,7 @@ export type ExtensionConfig = {
 } | {
     available_tools?: Array<string>;
     /**
-     * Whether this extension is bundled with Goose
+     * Whether this extension is bundled with Daisy
      */
     bundled?: boolean | null;
     /**
@@ -524,7 +524,7 @@ export type RawTextContent = {
 
 /**
  * A Recipe represents a personalized, user-generated agent configuration that defines
- * specific behaviors and capabilities within the Goose system.
+ * specific behaviors and capabilities within the Daisy system.
  *
  * # Fields
  *
@@ -546,7 +546,7 @@ export type RawTextContent = {
  * # Example
  *
  *
- * use goose::recipe::Recipe;
+ * use daisy::recipe::Recipe;
  *
  * // Using the builder pattern
  * let recipe = Recipe::builder()
@@ -792,8 +792,8 @@ export type SessionsQuery = {
 };
 
 export type Settings = {
-    goose_model?: string | null;
-    goose_provider?: string | null;
+    daisy_model?: string | null;
+    daisy_provider?: string | null;
     temperature?: number | null;
 };
 

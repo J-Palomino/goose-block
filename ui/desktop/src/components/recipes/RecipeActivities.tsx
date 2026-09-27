@@ -1,6 +1,6 @@
 import { Card } from '../ui/card';
 import { gsap } from 'gsap';
-import GooseLogo from '../GooseLogo';
+import DaisyLogo from '../DaisyLogo';
 import MarkdownContent from '../MarkdownContent';
 import { substituteParameters } from '../../utils/providerUtils';
 
@@ -35,9 +35,9 @@ export default function RecipeActivities({
   if (activities && activities.length > 0) {
     return (
       <div className="flex flex-col px-6">
-        {/* Animated goose icon */}
+        {/* Animated daisy icon */}
         <div className="flex justify-start mb-6">
-          <GooseLogo size="default" hover={true} />
+          <DaisyLogo size="default" hover={true} />
         </div>
 
         {messagePill && (

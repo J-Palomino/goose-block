@@ -5,7 +5,7 @@ import Layout from "@theme/Layout";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
 
 import styles from "./index.module.css";
-import { GooseLogo } from "../components/GooseLogo";
+import { DaisyLogo } from "../components/DaisyLogo";
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
@@ -14,11 +14,11 @@ function HomepageHeader() {
       <div className={styles.wrapper}>
         <div className={styles.textColumn}>
           <div className="hero--logo">
-            <GooseLogo />
+            <DaisyLogo />
           </div>
           <p className={styles.subtitle}>{siteConfig.tagline}</p>
           <Link className="button button--primary button--lg" to="docs/getting-started/installation">
-            install goose
+            install daisy
           </Link>
         </div>
 
@@ -26,7 +26,7 @@ function HomepageHeader() {
           <iframe
             src="https://www.youtube.com/embed/D-DpDunrbpo"
             className="aspect-ratio"
-            title="vibe coding with goose"
+            title="vibe coding with daisy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>

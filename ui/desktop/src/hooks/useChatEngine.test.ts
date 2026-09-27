@@ -26,8 +26,8 @@ describe('useChatEngine', () => {
     Object.defineProperty(window, 'appConfig', {
       value: {
         get: vi.fn((key: string) => {
-          if (key === 'GOOSE_API_HOST') return 'http://localhost';
-          if (key === 'GOOSE_PORT') return '8000';
+          if (key === 'DAISY_API_HOST') return 'http://localhost';
+          if (key === 'DAISY_PORT') return '8000';
           return null;
         }),
       },

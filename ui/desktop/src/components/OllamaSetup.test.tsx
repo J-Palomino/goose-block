@@ -167,12 +167,12 @@ describe('OllamaSetup', () => {
       render(<OllamaSetup onSuccess={mockOnSuccess} onCancel={mockOnCancel} />);
 
       await waitFor(() => {
-        fireEvent.click(screen.getByText(/Use Goose with Ollama/));
+        fireEvent.click(screen.getByText(/Use Daisy with Ollama/));
       });
 
       await waitFor(() => {
-        expect(mockUpsert).toHaveBeenCalledWith('GOOSE_PROVIDER', 'ollama', false);
-        expect(mockUpsert).toHaveBeenCalledWith('GOOSE_MODEL', 'gpt-oss:20b', false);
+        expect(mockUpsert).toHaveBeenCalledWith('DAISY_PROVIDER', 'ollama', false);
+        expect(mockUpsert).toHaveBeenCalledWith('DAISY_MODEL', 'gpt-oss:20b', false);
         expect(mockUpsert).toHaveBeenCalledWith('OLLAMA_HOST', 'localhost', false);
         expect(providerUtils.initializeSystem).toHaveBeenCalledWith(
           'ollama',
@@ -191,7 +191,7 @@ describe('OllamaSetup', () => {
       render(<OllamaSetup onSuccess={mockOnSuccess} onCancel={mockOnCancel} />);
 
       await waitFor(() => {
-        fireEvent.click(screen.getByText('Use Goose with Ollama'));
+        fireEvent.click(screen.getByText('Use Daisy with Ollama'));
       });
 
       await waitFor(() => {

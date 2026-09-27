@@ -1,13 +1,13 @@
 ---
 title: Cognee Extension
-description: Add Cognee MCP Server as a Goose Extension
+description: Add Cognee MCP Server as a Daisy Extension
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CLIExtensionInstructions from '@site/src/components/CLIExtensionInstructions';
 
-This tutorial covers how to add the [Cognee MCP Server](https://github.com/topoteretes/cognee) as a Goose extension to enable knowledge graph memory capabilities, connecting to over 30 data sources for enhanced context and retrieval.
+This tutorial covers how to add the [Cognee MCP Server](https://github.com/topoteretes/cognee) as a Daisy extension to enable knowledge graph memory capabilities, connecting to over 30 data sources for enhanced context and retrieval.
 
 :::tip TLDR
 **Command**
@@ -28,7 +28,7 @@ Note that you'll need [uv](https://docs.astral.sh/uv/#installation) installed on
 :::
 
 <Tabs groupId="interface">
-  <TabItem value="cli" label="Goose CLI" default>
+  <TabItem value="cli" label="Daisy CLI" default>
 
 1. First, install Cognee:
 ```bash
@@ -43,12 +43,12 @@ sudo apt install -y libpq-dev python3-dev
 
 2. Run the `configure` command:
 ```sh
-goose configure
+daisy configure
 ```
 
 3. Choose to add a `Command-line Extension`
 ```sh
-  ┌   goose-configure 
+  ┌   daisy-configure 
   │
   ◇  What would you like to configure?
   │  Add Extension (Connect to a new extension) 
@@ -65,7 +65,7 @@ goose configure
 
 4. Give your extension a name
 ```sh
-  ┌   goose-configure 
+  ┌   daisy-configure 
   │
   ◇  What would you like to configure?
   │  Add Extension (Connect to a new extension) 
@@ -82,7 +82,7 @@ goose configure
 
 5. Enter the command
 ```sh
-  ┌   goose-configure 
+  ┌   daisy-configure 
   │
   ◇  What would you like to configure?
   │  Add Extension (Connect to a new extension) 
@@ -100,9 +100,9 @@ goose configure
   └ 
 ```  
 
-6. Enter the number of seconds Goose should wait for actions to complete before timing out. Default is 300s
+6. Enter the number of seconds Daisy should wait for actions to complete before timing out. Default is 300s
   ```sh
-  ┌   goose-configure 
+  ┌   daisy-configure 
   │
   ◇  What would you like to configure?
   │  Add Extension (Connect to a new extension) 
@@ -126,7 +126,7 @@ goose configure
 
 7. Choose to add a description. If you select "Yes" here, you will be prompted to enter a description for the extension.
   ```sh
-  ┌   goose-configure 
+  ┌   daisy-configure 
   │
   ◇  What would you like to configure?
   │  Add Extension (Connect to a new extension) 
@@ -157,7 +157,7 @@ You'll need OpenAI API keys for both LLM and embedding models. [Get your API key
 :::
 
  ```sh
-  ┌   goose-configure 
+  ┌   daisy-configure 
   │
   ◇  What would you like to configure?
   │  Add Extension (Connect to a new extension) 
@@ -207,17 +207,17 @@ You'll need OpenAI API keys for both LLM and embedding models. [Get your API key
 
 ## Example Usage
 
-Cognee provides knowledge graph memory capabilities for Goose, allowing it to remember and connect information across conversations and documents.
+Cognee provides knowledge graph memory capabilities for Daisy, allowing it to remember and connect information across conversations and documents.
 
 :::info LLM
 OpenAI's GPT-4o was used for this task.
 :::
 
-### Goose Prompt
+### Daisy Prompt
 
-> _Goose, please cognify this information: "I prefer Python for data analysis and use pandas extensively. My current project involves analyzing customer behavior data." Then search for information about my programming preferences._
+> _Daisy, please cognify this information: "I prefer Python for data analysis and use pandas extensively. My current project involves analyzing customer behavior data." Then search for information about my programming preferences._
 
-### Goose Output
+### Daisy Output
 
 :::note CLI
 

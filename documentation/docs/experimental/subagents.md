@@ -12,7 +12,7 @@ Subagents are an experimental feature in active development. Behavior and config
 
 ## How to Use Subagents
 
-To use subagents, ask Goose to delegate tasks using natural language. Goose automatically decides when to spawn subagents and handles their lifecycle. You can:
+To use subagents, ask Daisy to delegate tasks using natural language. Daisy automatically decides when to spawn subagents and handles their lifecycle. You can:
 
 1. **Request specialized help**: "Use a code reviewer to analyze this function for security issues"
 2. **Reference specific recipes**: "Use the 'security-auditor' recipe to scan this endpoint"  
@@ -39,14 +39,14 @@ To use subagents, you need to enable alpha features first. You can do this by se
 export ALPHA_FEATURES=true
 ```
 
-**Config File** (`~/.config/goose/config.yaml`):
+**Config File** (`~/.config/daisy/config.yaml`):
 ```yaml
 ALPHA_FEATURES: true
 ```
 
 ## Internal Subagents
 
-Internal subagents spawn Goose instances to handle tasks using your current session's context and extensions. There are two ways to configure and execute internal subagents:
+Internal subagents spawn Daisy instances to handle tasks using your current session's context and extensions. There are two ways to configure and execute internal subagents:
 
 1. **Direct Prompts** - Quick, one-off tasks using natural language instructions
 2. **Recipes** - Reusable, structured configurations for specialized subagent behavior
@@ -54,7 +54,7 @@ Internal subagents spawn Goose instances to handle tasks using your current sess
 ### Direct Prompts
 Direct prompts provided for one-off tasks using natural language prompts. The main agent automatically configures the subagent based on your request.
 
-**Goose Prompt:**
+**Daisy Prompt:**
 ```
 "Use 2 subagents to create hello.html with 'Hello World' content and goodbye.html with 'Goodbye World' content in parallel"
 ```
@@ -122,16 +122,16 @@ prompt: |
   Provide specific, actionable feedback with examples.
 ```
 
-**Place your recipe file where Goose can find it**
-- Set [`GOOSE_RECIPE_PATH`](/docs/guides/recipes/recipe-reference#recipe-location) environment variable to your recipe directory
+**Place your recipe file where Daisy can find it**
+- Set [`DAISY_RECIPE_PATH`](/docs/guides/recipes/recipe-reference#recipe-location) environment variable to your recipe directory
 - Or place it in your current working directory
 
-**Goose Prompt**
+**Daisy Prompt**
 ```
 Use the "code-reviewer" recipe to analyze the authentication feature I implemented
 ```
 
-**Goose Output**
+**Daisy Output**
 ```
 I'll use your code-reviewer recipe to create a specialized subagent for this analysis.
 
@@ -154,9 +154,9 @@ I'll use your code-reviewer recipe to create a specialized subagent for this ana
 
 ## External Subagents
 
-External subagents let you bring in AI agents from other providers and platforms, enabling Goose to coordinate and integrate your workflow with the broader ecosystem. In the below example, we use Codex as a subagent by running it as an MCP server:
+External subagents let you bring in AI agents from other providers and platforms, enabling Daisy to coordinate and integrate your workflow with the broader ecosystem. In the below example, we use Codex as a subagent by running it as an MCP server:
 
-**[Goose Configuration File](/docs/guides/config-file)** (`.~/.config/goose/config.yaml `):
+**[Daisy Configuration File](/docs/guides/config-file)** (`.~/.config/daisy/config.yaml `):
 ```yaml
 subagent:
   args:
@@ -186,26 +186,26 @@ approval_policy = "never"
 mode = "workspace-write"
 ```
 
-**Goose Prompt:**
+**Daisy Prompt:**
 ```
 "Use the codex subagent to analyze my codebase structure and identify the main components"
 ```
 
-**Goose Output:**
+**Daisy Output:**
 
 ```md
 Based on my analysis of your codebase, here are the main components:
 
-1. **Core Agent System** (`crates/goose/src/agents/`)
+1. **Core Agent System** (`crates/daisy/src/agents/`)
    - Agent orchestration and session management
    - Tool execution framework
    - Extension system integration
 
-2. **CLI Interface** (`crates/goose-cli/`)
+2. **CLI Interface** (`crates/daisy-cli/`)
    - Command-line interface and session handling
    - Configuration management
 
-3. **Server Components** (`crates/goose-server/`)
+3. **Server Components** (`crates/daisy-server/`)
    - HTTP API endpoints
    - WebSocket communication for real-time interaction
 

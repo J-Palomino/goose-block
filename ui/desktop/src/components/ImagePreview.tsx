@@ -49,8 +49,8 @@ export default function ImagePreview({
     }
   };
 
-  // Validate that this is a safe file path (should contain goose-pasted-images)
-  if (!src.includes('goose-pasted-images')) {
+  // Validate that this is a safe file path (should contain daisy-pasted-images)
+  if (!src.includes('daisy-pasted-images')) {
     return <div className="text-red-500 text-xs italic mt-1 mb-1">Invalid image path: {src}</div>;
   }
 

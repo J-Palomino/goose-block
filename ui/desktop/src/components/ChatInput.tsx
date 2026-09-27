@@ -79,7 +79,7 @@ interface ChatInputProps {
       totalCost: number;
     };
   };
-  setIsGoosehintsModalOpen?: (isOpen: boolean) => void;
+  setIsDaisyhintsModalOpen?: (isOpen: boolean) => void;
   disableAnimation?: boolean;
   recipeConfig?: Recipe | null;
   recipeAccepted?: boolean;
@@ -107,7 +107,7 @@ export default function ChatInput({
   setMessages,
   disableAnimation = false,
   sessionCosts,
-  setIsGoosehintsModalOpen,
+  setIsDaisyhintsModalOpen,
   recipeConfig,
   recipeAccepted,
   initialPrompt,
@@ -156,7 +156,7 @@ export default function ChatInput({
   // Save queue state (paused/interrupted) to storage
   useEffect(() => {
     try {
-      window.sessionStorage.setItem('goose-queue-paused', JSON.stringify(queuePausedRef.current));
+      window.sessionStorage.setItem('daisy-queue-paused', JSON.stringify(queuePausedRef.current));
     } catch (error) {
       console.error('Error saving queue pause state:', error);
     }
@@ -164,7 +164,7 @@ export default function ChatInput({
 
   useEffect(() => {
     try {
-      window.sessionStorage.setItem('goose-queue-interruption', JSON.stringify(lastInterruption));
+      window.sessionStorage.setItem('daisy-queue-interruption', JSON.stringify(lastInterruption));
     } catch (error) {
       console.error('Error saving queue interruption state:', error);
     }
@@ -175,8 +175,8 @@ export default function ChatInput({
     return () => {
       // Save final queue state when component unmounts
       try {
-        window.sessionStorage.setItem('goose-queue-paused', JSON.stringify(queuePausedRef.current));
-        window.sessionStorage.setItem('goose-queue-interruption', JSON.stringify(lastInterruption));
+        window.sessionStorage.setItem('daisy-queue-paused', JSON.stringify(queuePausedRef.current));
+        window.sessionStorage.setItem('daisy-queue-interruption', JSON.stringify(lastInterruption));
       } catch (error) {
         console.error('Error saving queue state on unmount:', error);
       }
@@ -508,7 +508,7 @@ export default function ChatInput({
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          key: 'GOOSE_AUTO_COMPACT_THRESHOLD',
+          key: 'DAISY_AUTO_COMPACT_THRESHOLD',
           is_secret: false,
         }),
       });
@@ -1636,7 +1636,7 @@ export default function ChatInput({
             <Tooltip>
               <TooltipTrigger asChild>
                 <Button
-                  onClick={() => setIsGoosehintsModalOpen?.(true)}
+                  onClick={() => setIsDaisyhintsModalOpen?.(true)}
                   variant="ghost"
                   size="sm"
                   className="flex items-center justify-center text-text-default/70 hover:text-text-default text-xs cursor-pointer"
@@ -1644,7 +1644,7 @@ export default function ChatInput({
                   <FolderKey size={16} />
                 </Button>
               </TooltipTrigger>
-              <TooltipContent>Configure goosehints</TooltipContent>
+              <TooltipContent>Configure daisyhints</TooltipContent>
             </Tooltip>
           </div>
         </div>

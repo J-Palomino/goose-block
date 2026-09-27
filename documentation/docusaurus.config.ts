@@ -12,7 +12,7 @@ const inkeepIntegrationId = process.env.INKEEP_INTEGRATION_ID;
 const inkeepOrgId = process.env.INKEEP_ORG_ID;
 
 const config: Config = {
-  title: "goose",
+  title: "daisy",
   tagline:
     "your local AI agent, automating engineering tasks seamlessly",
   favicon: "img/favicon.ico",
@@ -21,12 +21,12 @@ const config: Config = {
   url: "https://block.github.io/",
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: process.env.TARGET_PATH || "/goose/",
+  baseUrl: process.env.TARGET_PATH || "/daisy/",
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: "block", // Usually your GitHub org/user name.
-  projectName: "goose", // Usually your repo name.
+  projectName: "daisy", // Usually your repo name.
 
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
@@ -79,8 +79,8 @@ const config: Config = {
       {
         redirects: [
           {
-            from: '/docs/getting-started/using-goose-free',
-            to: '/docs/getting-started/providers#using-goose-for-free'
+            from: '/docs/getting-started/using-daisy-free',
+            to: '/docs/getting-started/providers#using-daisy-for-free'
           },
           {
             from: '/v1/docs/getting-started/providers',
@@ -115,7 +115,7 @@ const config: Config = {
             to: '/docs/mcp/computer-controller-mcp'
           },
           {
-            from: '/docs/guides/managing-goose-sessions',
+            from: '/docs/guides/managing-daisy-sessions',
             to: '/docs/guides/sessions/session-management'
           },
           {
@@ -123,7 +123,7 @@ const config: Config = {
             to: '/docs/guides/sessions/smart-context-management'
           },
           {
-            from: '/docs/guides/share-goose-sessions',
+            from: '/docs/guides/share-daisy-sessions',
             to: '/docs/guides/recipes/session-recipes'
           },
           {
@@ -147,8 +147,8 @@ const config: Config = {
             to: '/docs/tutorials/benchmarking'
           },
           {
-            from: '/docs/guides/goose-in-docker',
-            to: '/docs/tutorials/goose-in-docker'
+            from: '/docs/guides/daisy-in-docker',
+            to: '/docs/tutorials/daisy-in-docker'
           },
           // MCP tutorial redirects - moved from /docs/tutorials/ to /docs/mcp/
           {
@@ -366,7 +366,7 @@ const config: Config = {
           position: "right",
         },
         {
-          href: "https://github.com/block/goose",
+          href: "https://github.com/block/daisy",
           label: "GitHub",
           position: "right",
         },
@@ -378,7 +378,7 @@ const config: Config = {
           title: "Quick Links",
           items: [
             {
-              label: "Install Goose",
+              label: "Install Daisy",
               to: "docs/getting-started/installation",
             },
             {
@@ -400,15 +400,15 @@ const config: Config = {
             },
             {
               label: "YouTube",
-              href: "https://www.youtube.com/@goose-oss",
+              href: "https://www.youtube.com/@daisy-oss",
             },
             {
               label: "LinkedIn",
-              href: "https://www.linkedin.com/company/goose-oss",
+              href: "https://www.linkedin.com/company/daisy-oss",
             },
             {
               label: "Twitter / X",
-              href: "https://x.com/goose_oss",
+              href: "https://x.com/daisy_oss",
             },
             {
               label: "BlueSky",
@@ -429,7 +429,7 @@ const config: Config = {
             },
             {
               label: "GitHub",
-              href: "https://github.com/block/goose",
+              href: "https://github.com/block/daisy",
             },
           ],
         },
@@ -448,25 +448,25 @@ const config: Config = {
         primaryBrandColor: "#1E1E1E",
       },
       aiChatSettings: {
-        chatSubjectName: "goose",
+        chatSubjectName: "daisy",
         botAvatarSrcUrl:
           "",
         getHelpCallToActions: [
           {
             name: "GitHub",
-            url: "https://github.com/block/goose",
+            url: "https://github.com/block/daisy",
             icon: {
               builtIn: "FaGithub",
             },
           },
         ],
-        quickQuestions: ["What is Goose?"],
+        quickQuestions: ["What is Daisy?"],
       },
     },
     announcementBar: {
-      id: 'goose-grants',
+      id: 'daisy-grants',
       content:
-        '✨ goose grant program now open: <a href="/goose/grants">apply now</a>! ✨',
+        '✨ daisy grant program now open: <a href="/daisy/grants">apply now</a>! ✨',
       backgroundColor: '#20232a',
       textColor: '#fff',
       isCloseable: false,

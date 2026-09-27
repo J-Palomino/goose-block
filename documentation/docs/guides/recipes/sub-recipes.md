@@ -21,7 +21,7 @@ The "main recipe" registers its sub-recipes in the `sub_recipes` field, which co
 - `path`: File path to the sub-recipe file (relative or absolute)
 - `values`: (Optional) Pre-configured parameter values that are always passed to the sub-recipe
 
-When the main recipe is run, Goose generates a tool for each sub-recipe that:
+When the main recipe is run, Daisy generates a tool for each sub-recipe that:
 - Accepts parameters defined by the sub-recipe
 - Executes the sub-recipe in a separate session with its own context
 - Returns output to the main recipe
@@ -49,7 +49,7 @@ This Code Review Pipeline example shows a main recipe that uses two sub-recipes 
 
 **Usage:**
 ```bash
-goose run --recipe code-review-pipeline.yaml --params repository_path=/path/to/repo
+daisy run --recipe code-review-pipeline.yaml --params repository_path=/path/to/repo
 ```
 
 **Main Recipe:**
@@ -165,7 +165,7 @@ This Smart Project Analyzer example shows conditional logic that chooses between
 
 **Usage:**
 ```bash
-goose run --recipe smart-analyzer.yaml --params repository_path=/path/to/project
+daisy run --recipe smart-analyzer.yaml --params repository_path=/path/to/project
 ```
 
 **Main Recipe:**
@@ -298,7 +298,7 @@ This Travel Planner example shows how sub-recipes can receive parameters from co
 
 **Usage:**
 ```bash
-goose run --recipe travel-planner.yaml
+daisy run --recipe travel-planner.yaml
 ```
 
 **Main Recipe:**
@@ -410,4 +410,4 @@ In this example:
 - **Test independently**: Verify sub-recipes work alone before combining
 
 ## Learn More
-Check out the [Goose Recipes](/docs/guides/recipes) guide for more docs, tools, and resources to help you master Goose recipes.
+Check out the [Daisy Recipes](/docs/guides/recipes) guide for more docs, tools, and resources to help you master Daisy recipes.

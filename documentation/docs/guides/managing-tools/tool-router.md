@@ -13,7 +13,7 @@ import { PanelLeft } from 'lucide-react';
 Tool Selection Strategy is an experimental feature and currently only tested with Claude models. Behavior and configuration may change in future releases.
 :::
 
-When you enable an [extension](/docs/getting-started/using-extensions), you gain access to all of its tools. For example, the Google Drive extension provides tools for reading documents, updating permissions, managing comments, and more. By default, Goose loads all tools into context when interacting with the LLM.
+When you enable an [extension](/docs/getting-started/using-extensions), you gain access to all of its tools. For example, the Google Drive extension provides tools for reading documents, updating permissions, managing comments, and more. By default, Daisy loads all tools into context when interacting with the LLM.
 
 Enabling multiple extensions gives you access to a wider range of tools, but loading a lot of tools into context can be inefficient and confusing for the LLM. It's like having every tool in your workshop spread out on your bench when you only need one or two. 
 
@@ -36,7 +36,7 @@ You can also use [tool permissions](/docs/guides/managing-tools/tool-permissions
 :::
 
 ### Disabled (Default)
-When tool selection strategy is disabled, Goose loads all tools from enabled extensions into context. This is the traditional behavior and works well if you only have a few extensions enabled.
+When tool selection strategy is disabled, Daisy loads all tools from enabled extensions into context. This is the traditional behavior and works well if you only have a few extensions enabled.
 
 **Best for:**
 - Simple setups with few extensions
@@ -44,7 +44,7 @@ When tool selection strategy is disabled, Goose loads all tools from enabled ext
 - Maximum tool availability without selection logic
 
 ### Enabled (LLM-based Strategy)
-When enabled, Goose uses LLM intelligence to analyze your query and select only the most relevant tools from your enabled extensions. This reduces token consumption and improves tool selection accuracy when you have many extensions enabled.
+When enabled, Daisy uses LLM intelligence to analyze your query and select only the most relevant tools from your enabled extensions. This reduces token consumption and improves tool selection accuracy when you have many extensions enabled.
 
 **Best for:**
 - Complex or ambiguous queries that require understanding context
@@ -58,7 +58,7 @@ When enabled, Goose uses LLM intelligence to analyze your query and select only 
 ## Configuration
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
+  <TabItem value="ui" label="Daisy Desktop" default>
     1. Click the <PanelLeft className="inline" size={16} /> button in the top-left to open the sidebar
     2. Click the `Settings` button on the sidebar
     3. Click the `Chat` tab
@@ -66,15 +66,15 @@ When enabled, Goose uses LLM intelligence to analyze your query and select only 
        - `Disabled` - Use the default tool selection strategy
        - `Enabled` - Use LLM-based intelligence to select tools
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
     1. Run the configuration command:
     ```sh
-    goose configure
+    daisy configure
     ```
 
-    2. Select `Goose Settings`:
+    2. Select `Daisy Settings`:
     ```sh
-    ┌   goose-configure
+    ┌   daisy-configure
     │
     ◆  What would you like to configure?
     │  ○ Configure Providers
@@ -82,36 +82,36 @@ When enabled, Goose uses LLM intelligence to analyze your query and select only 
     │  ○ Toggle Extensions
     │  ○ Remove Extension
     // highlight-start
-    │  ● Goose Settings (Set the Goose Mode, Tool Output, Tool Permissions, Experiment, Goose recipe github repo and more)
+    │  ● Daisy Settings (Set the Daisy Mode, Tool Output, Tool Permissions, Experiment, Daisy recipe github repo and more)
     // highlight-end
     └ 
     ```
 
     3. Select `Router Tool Selection Strategy`:
     ```sh
-    ┌   goose-configure
+    ┌   daisy-configure
     │
     ◇  What would you like to configure?
-    │  Goose Settings
+    │  Daisy Settings
     │
     ◆  What setting would you like to configure?
-    │  ○ Goose Mode 
+    │  ○ Daisy Mode 
     // highlight-start
     │  ● Router Tool Selection Strategy (Experimental: configure a strategy for auto selecting tools to use)
     // highlight-end
     │  ○ Tool Permission 
     │  ○ Tool Output 
     │  ○ Toggle Experiment 
-    │  ○ Goose recipe github repo 
+    │  ○ Daisy recipe github repo 
     └ 
     ```
 
     4. Choose whether to enable smart tool routing:
     ```sh
-   ┌   goose-configure 
+   ┌   daisy-configure 
    │
    ◇  What would you like to configure?
-   │  Goose Settings 
+   │  Daisy Settings 
    │
    ◇  What setting would you like to configure?
    │  Router Tool Selection Strategy 
@@ -126,10 +126,10 @@ When enabled, Goose uses LLM intelligence to analyze your query and select only 
 
     This example output shows that the router was enabled:
     ```
-    ┌   goose-configure
+    ┌   daisy-configure
     │
     ◇  What would you like to configure?
-    │  Goose Settings
+    │  Daisy Settings
     │
     ◇  What setting would you like to configure?
     │  Router Tool Selection Strategy
@@ -140,7 +140,7 @@ When enabled, Goose uses LLM intelligence to analyze your query and select only 
     └  Router enabled - using LLM-based intelligence for tool selection
     ```
 
-    When the router is enabled, Goose CLI displays a message indicating when the `llm_search` strategy is in use.
+    When the router is enabled, Daisy CLI displays a message indicating when the `llm_search` strategy is in use.
 
   </TabItem>
 </Tabs>
@@ -151,13 +151,13 @@ You can also configure tool selection using environment variables or in your [co
 
 ```bash
 # Enable LLM-based tool selection
-export GOOSE_ENABLE_ROUTER=true
+export DAISY_ENABLE_ROUTER=true
 
 # Disable (use default behavior)
-export GOOSE_ENABLE_ROUTER=false
+export DAISY_ENABLE_ROUTER=false
 ```
 
 Or in your `config.yaml` file:
 ```yaml
-GOOSE_ENABLE_ROUTER: 'true'
+DAISY_ENABLE_ROUTER: 'true'
 ```

@@ -66,7 +66,7 @@ export default function ExtensionsView({
               <h1 className="text-4xl font-light">Extensions</h1>
             </div>
             <p className="text-sm text-text-muted mb-6">
-              These extensions use the Model Context Protocol (MCP). They can expand Goose's
+              These extensions use the Model Context Protocol (MCP). They can expand Daisy's
               capabilities using three main components: Prompts, Resources, and Tools.
             </p>
 
@@ -84,7 +84,7 @@ export default function ExtensionsView({
                 className="flex items-center gap-2 justify-center"
                 variant="secondary"
                 onClick={() =>
-                  window.open('https://block.github.io/goose/v1/extensions/', '_blank')
+                  window.open('https://block.github.io/daisy/v1/extensions/', '_blank')
                 }
               >
                 <GPSIcon size={12} />

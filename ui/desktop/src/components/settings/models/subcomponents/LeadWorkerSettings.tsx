@@ -42,11 +42,11 @@ export function LeadWorkerSettings({ isOpen, onClose }: LeadWorkerSettingsProps)
           failureThresholdConfig,
           fallbackTurnsConfig,
         ] = await Promise.all([
-          read('GOOSE_LEAD_MODEL', false),
-          read('GOOSE_LEAD_PROVIDER', false),
-          read('GOOSE_LEAD_TURNS', false),
-          read('GOOSE_LEAD_FAILURE_THRESHOLD', false),
-          read('GOOSE_LEAD_FALLBACK_TURNS', false),
+          read('DAISY_LEAD_MODEL', false),
+          read('DAISY_LEAD_PROVIDER', false),
+          read('DAISY_LEAD_TURNS', false),
+          read('DAISY_LEAD_FAILURE_THRESHOLD', false),
+          read('DAISY_LEAD_FALLBACK_TURNS', false),
         ]);
 
         if (leadModelConfig) {
@@ -66,7 +66,7 @@ export function LeadWorkerSettings({ isOpen, onClose }: LeadWorkerSettingsProps)
         else setFallbackTurns(2);
 
         // Set worker model to current model or from config
-        const workerModelConfig = await read('GOOSE_MODEL', false);
+        const workerModelConfig = await read('DAISY_MODEL', false);
         if (workerModelConfig) {
           setWorkerModel(workerModelConfig as string);
         } else if (currentModel) {
@@ -75,7 +75,7 @@ export function LeadWorkerSettings({ isOpen, onClose }: LeadWorkerSettingsProps)
           setWorkerModel('');
         }
 
-        const workerProviderConfig = await read('GOOSE_PROVIDER', false);
+        const workerProviderConfig = await read('DAISY_PROVIDER', false);
         if (workerProviderConfig) {
           setWorkerProvider(workerProviderConfig as string);
         } else {
@@ -129,22 +129,22 @@ export function LeadWorkerSettings({ isOpen, onClose }: LeadWorkerSettingsProps)
       if (isEnabled && leadModel && workerModel) {
         // Save lead/worker configuration
         await Promise.all([
-          upsert('GOOSE_LEAD_MODEL', leadModel, false),
-          leadProvider && upsert('GOOSE_LEAD_PROVIDER', leadProvider, false),
-          upsert('GOOSE_MODEL', workerModel, false),
-          workerProvider && upsert('GOOSE_PROVIDER', workerProvider, false),
-          upsert('GOOSE_LEAD_TURNS', leadTurns, false),
-          upsert('GOOSE_LEAD_FAILURE_THRESHOLD', failureThreshold, false),
-          upsert('GOOSE_LEAD_FALLBACK_TURNS', fallbackTurns, false),
+          upsert('DAISY_LEAD_MODEL', leadModel, false),
+          leadProvider && upsert('DAISY_LEAD_PROVIDER', leadProvider, false),
+          upsert('DAISY_MODEL', workerModel, false),
+          workerProvider && upsert('DAISY_PROVIDER', workerProvider, false),
+          upsert('DAISY_LEAD_TURNS', leadTurns, false),
+          upsert('DAISY_LEAD_FAILURE_THRESHOLD', failureThreshold, false),
+          upsert('DAISY_LEAD_FALLBACK_TURNS', fallbackTurns, false),
         ]);
       } else {
         // Remove lead/worker configuration
         await Promise.all([
-          remove('GOOSE_LEAD_MODEL', false),
-          remove('GOOSE_LEAD_PROVIDER', false),
-          remove('GOOSE_LEAD_TURNS', false),
-          remove('GOOSE_LEAD_FAILURE_THRESHOLD', false),
-          remove('GOOSE_LEAD_FALLBACK_TURNS', false),
+          remove('DAISY_LEAD_MODEL', false),
+          remove('DAISY_LEAD_PROVIDER', false),
+          remove('DAISY_LEAD_TURNS', false),
+          remove('DAISY_LEAD_FAILURE_THRESHOLD', false),
+          remove('DAISY_LEAD_FALLBACK_TURNS', false),
         ]);
       }
       onClose();

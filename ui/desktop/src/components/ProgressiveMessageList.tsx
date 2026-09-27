@@ -16,12 +16,12 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Message } from '../types/message';
-import GooseMessage from './GooseMessage';
+import DaisyMessage from './DaisyMessage';
 import UserMessage from './UserMessage';
 import { CompactionMarker } from './context_management/CompactionMarker';
 import { useContextManager } from './context_management/ContextManager';
 import { NotificationEvent } from '../hooks/useMessageStream';
-import LoadingGoose from './LoadingGoose';
+import LoadingDaisy from './LoadingDaisy';
 import { ChatType } from '../types/chat';
 
 interface ProgressiveMessageListProps {
@@ -208,7 +208,7 @@ export default function ProgressiveMessageList({
                 {hasCompactionMarker && hasCompactionMarker(message) ? (
                   <CompactionMarker message={message} />
                 ) : (
-                  <GooseMessage
+                  <DaisyMessage
                     sessionId={chat.sessionId}
                     messageHistoryIndex={chat.messageHistoryIndex}
                     message={message}
@@ -251,7 +251,7 @@ export default function ProgressiveMessageList({
       {/* Loading indicator when progressively rendering */}
       {isLoading && (
         <div className="flex flex-col items-center justify-center py-8">
-          <LoadingGoose message={`Loading messages... (${renderedCount}/${messages.length})`} />
+          <LoadingDaisy message={`Loading messages... (${renderedCount}/${messages.length})`} />
           <div className="text-xs text-text-muted mt-2">
             Press Cmd/Ctrl+F to load all messages immediately for search
           </div>

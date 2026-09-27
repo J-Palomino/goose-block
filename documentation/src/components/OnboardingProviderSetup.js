@@ -18,12 +18,12 @@ export const OnboardingProviderSetup = () => {
               </h5>
             </div>
             <div className="admonition-content" style={{paddingBottom: '1rem'}}>
-              <p style={{marginBottom: '0'}}>You'll receive $10 in free credits the first time you automatically authenticate with Tetrate through Goose. This offer is available to both new and existing Tetrate users and is valid through October 2, 2025.</p>
+              <p style={{marginBottom: '0'}}>You'll receive $10 in free credits the first time you automatically authenticate with Tetrate through Daisy. This offer is available to both new and existing Tetrate users and is valid through October 2, 2025.</p>
             </div>
           </div>
         </li>
         <li><strong>OpenRouter</strong> - One-click OAuth authentication provides instant access to multiple AI models with built-in rate limiting.</li>
-        <li><strong>Other Providers</strong> - Choose from <a href="/goose/docs/getting-started/providers">~20 supported providers</a> including OpenAI, Anthropic, Google Gemini, and others through manual configuration. Be ready to provide your API key.</li>
+        <li><strong>Other Providers</strong> - Choose from <a href="/daisy/docs/getting-started/providers">~20 supported providers</a> including OpenAI, Anthropic, Google Gemini, and others through manual configuration. Be ready to provide your API key.</li>
       </ul>
     </>
   );

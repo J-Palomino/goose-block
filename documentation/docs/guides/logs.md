@@ -1,40 +1,40 @@
 ---
-title: Goose Logging System
+title: Daisy Logging System
 sidebar_label: Logging System
 sidebar_position: 9
 ---
 
 
-Goose uses a unified storage system for conversations and interactions. All conversations and interactions (both CLI and Desktop) are stored **locally** in the following locations:
+Daisy uses a unified storage system for conversations and interactions. All conversations and interactions (both CLI and Desktop) are stored **locally** in the following locations:
 
 | **Type**            | **Unix-like (macOS, Linux)**              | **Windows**                              |
 |---------------------|----------------------------------------|---------------------------------------------|
-| **Command History** | `~/.config/goose/history.txt`          | `%APPDATA%\Block\goose\data\history.txt`    |
-| **Session Records** | `~/.local/share/goose/sessions/`       | `%APPDATA%\Block\goose\data\sessions\`      |
-| **System Logs**     | `~/.local/state/goose/logs/`           | `%APPDATA%\Block\goose\data\logs\`          |
+| **Command History** | `~/.config/daisy/history.txt`          | `%APPDATA%\Block\daisy\data\history.txt`    |
+| **Session Records** | `~/.local/share/daisy/sessions/`       | `%APPDATA%\Block\daisy\data\sessions\`      |
+| **System Logs**     | `~/.local/state/daisy/logs/`           | `%APPDATA%\Block\daisy\data\logs\`          |
 
 :::info Privacy
-Goose is a local application and all log files are stored locally. These logs are never sent to external servers or third parties, ensuring that all data remains private and under your control.
+Daisy is a local application and all log files are stored locally. These logs are never sent to external servers or third parties, ensuring that all data remains private and under your control.
 :::
 
 ## Command History
 
-Goose stores command history persistently across chat sessions, allowing Goose to recall previous commands.
+Daisy stores command history persistently across chat sessions, allowing Daisy to recall previous commands.
 
 Command history logs are stored in:
 
-* Unix-like: ` ~/.config/goose/history.txt`
-* Windows: `%APPDATA%\Block\goose\data\history.txt`
+* Unix-like: ` ~/.config/daisy/history.txt`
+* Windows: `%APPDATA%\Block\daisy\data\history.txt`
 
 ## Session Records
 
-Goose maintains session records in `~/.local/share/goose/sessions/` that track the conversation history and interactions for each session. These files use the `.jsonl` format (JSON Lines), where each line is a valid JSON object representing a message or interaction.
+Daisy maintains session records in `~/.local/share/daisy/sessions/` that track the conversation history and interactions for each session. These files use the `.jsonl` format (JSON Lines), where each line is a valid JSON object representing a message or interaction.
 
 Session files are named with the pattern `[session-id].jsonl` where the session ID matches the identifier used in the corresponding log files. For example, `ccK9OTmS.jsonl` corresponds to log files like `20250211_133920-ccK9OTmS.log`.
 
 Each session file contains a chronological record of:
 - User messages and commands  (commands are also stored persistently in `history.txt`)
-- Assistant (Goose) responses
+- Assistant (Daisy) responses
 - Tool requests and their results
 - Timestamps for all interactions
 - Role information (user/assistant)
@@ -59,8 +59,8 @@ Each line in a session file is a JSON object with the following key fields:
 ### Main System Log
 
 The main system log locations:
-* Unix-like: `~/.local/state/goose/logs/goose.log`
-* Windows: `%APPDATA%\Block\goose\data\logs\goose.log`
+* Unix-like: `~/.local/state/daisy/logs/daisy.log`
+* Windows: `%APPDATA%\Block\daisy\data\logs\daisy.log`
 
 This log contains general application-level logging including:
 * Session file locations
@@ -71,16 +71,16 @@ This log contains general application-level logging including:
 ### Desktop Application Log
 
 The desktop application maintains its own logs:
-* macOS: `~/Library/Application Support/Goose/logs/main.log`
-* Windows: `%APPDATA%\Block\goose\logs\main.log`
+* macOS: `~/Library/Application Support/Daisy/logs/main.log`
+* Windows: `%APPDATA%\Block\daisy\logs\main.log`
 
-The Desktop application follows platform conventions for its own operational logs and state data, but uses the standard Goose [session records](#session-records) for actual conversations and interactions. This means your conversation history is consistent regardless of which interface you use to interact with Goose.
+The Desktop application follows platform conventions for its own operational logs and state data, but uses the standard Daisy [session records](#session-records) for actual conversations and interactions. This means your conversation history is consistent regardless of which interface you use to interact with Daisy.
 
 ### CLI Logs 
 
 CLI logs are stored in:
-* Unix-like: `~/.local/state/goose/logs/cli/`
-* Windows: `%APPDATA%\Block\goose\data\logs\cli\`
+* Unix-like: `~/.local/state/daisy/logs/cli/`
+* Windows: `%APPDATA%\Block\daisy\data\logs\cli\`
 
 CLI session logs contain:
 * Tool invocations and responses
@@ -100,10 +100,10 @@ Extension logs contain:
 ### Server Logs
 
 Server logs are stored in:
-* Unix-like: `~/.local/state/goose/logs/server/`
-* Windows: `%APPDATA%\Block\goose\data\logs\server\`
+* Unix-like: `~/.local/state/daisy/logs/server/`
+* Windows: `%APPDATA%\Block\daisy\data\logs\server\`
 
-The Server logs contain information about the Goose daemon (`goosed`), which is a local server process that runs on your computer. This server component manages communication between the CLI, extensions, and LLMs. 
+The Server logs contain information about the Daisy daemon (`daisyd`), which is a local server process that runs on your computer. This server component manages communication between the CLI, extensions, and LLMs. 
 
 Server logs include:
 * Server initialization details

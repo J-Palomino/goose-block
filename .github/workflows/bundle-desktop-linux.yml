@@ -111,7 +111,7 @@ jobs:
           ./build.sh
           echo "temporal-service built successfully"
 
-      - name: Build goosed binary
+      - name: Build daisyd binary
         env:
           CROSS_NO_WARNINGS: 0
           RUST_LOG: debug
@@ -121,16 +121,16 @@ jobs:
           source ./bin/activate-hermit
           export TARGET="x86_64-unknown-linux-gnu"
           rustup target add "${TARGET}"
-          cross build --release --target ${TARGET} -p goose-server
+          cross build --release --target ${TARGET} -p daisy-server
 
       - name: Copy binaries into Electron folder
         run: |
           echo "Copying binaries to ui/desktop/src/bin/"
           export TARGET="x86_64-unknown-linux-gnu"
           mkdir -p ui/desktop/src/bin
-          cp target/$TARGET/release/goosed ui/desktop/src/bin/
+          cp target/$TARGET/release/daisyd ui/desktop/src/bin/
           cp temporal-service/temporal-service ui/desktop/src/bin/
-          chmod +x ui/desktop/src/bin/goosed
+          chmod +x ui/desktop/src/bin/daisyd
           chmod +x ui/desktop/src/bin/temporal-service
           ls -la ui/desktop/src/bin/
 
@@ -179,21 +179,21 @@ jobs:
       - name: Upload .deb package
         uses: actions/upload-artifact@v4
         with:
-          name: Goose-linux-x64-deb
+          name: Daisy-linux-x64-deb
           path: ui/desktop/out/make/deb/x64/*.deb
           if-no-files-found: error
 
       - name: Upload .rpm package
         uses: actions/upload-artifact@v4
         with:
-          name: Goose-linux-x64-rpm
+          name: Daisy-linux-x64-rpm
           path: ui/desktop/out/make/rpm/x64/*.rpm
           if-no-files-found: error
 
       - name: Upload combined Linux packages
         uses: actions/upload-artifact@v4
         with:
-          name: Goose-linux-x64
+          name: Daisy-linux-x64
           path: |
             ui/desktop/out/make/deb/x64/*.deb
             ui/desktop/out/make/rpm/x64/*.rpm

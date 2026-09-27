@@ -9,11 +9,11 @@ import styles from '@site/src/components/Card/styles.module.css';
 
 <h1 className={styles.pageTitle}>Experimental</h1>
 <p className={styles.pageDescription}>
-  Goose is an open source project that is constantly being improved and expanded upon. These experimental features and projects are still in development and may not be fully stable or ready for production use, but they showcase exciting possibilities for the future of AI automation.
+  Daisy is an open source project that is constantly being improved and expanded upon. These experimental features and projects are still in development and may not be fully stable or ready for production use, but they showcase exciting possibilities for the future of AI automation.
 </p>
 
 :::note
-The list of experimental features may change as Goose development progresses. Some features may be promoted to stable features, while others might be modified or removed. This section will be updated with specific experimental features as they become available.
+The list of experimental features may change as Daisy development progresses. Some features may be promoted to stable features, while others might be modified or removed. This section will be updated with specific experimental features as they become available.
 :::
 
 <div className={styles.categorySection}>
@@ -30,13 +30,13 @@ The list of experimental features may change as Goose development progresses. So
       link="/docs/experimental/ollama"
     />
     <Card 
-      title="Goose Mobile"
+      title="Daisy Mobile"
       description="An experimental Android automation app that acts as an open agent running on your phone, providing maximal automation of everyday tasks."
-      link="/docs/experimental/goose-mobile"
+      link="/docs/experimental/daisy-mobile"
     />
     <Card 
       title="VS Code Extension"
-      description="An experimental extension enabling Goose to work within VS Code."
+      description="An experimental extension enabling Daisy to work within VS Code."
       link="/docs/experimental/vs-code-extension"
     />
   </div>
@@ -51,14 +51,14 @@ The list of experimental features may change as Goose development progresses. So
       link="/blog/2025/04/11/finetuning-toolshim"
     />
     <Card 
-      title="AI, But Make It Local With Goose and Ollama"
-      description="Learn how to integrate Goose with Ollama for a fully local AI experience, including structured outputs and tool calling capabilities."
-      link="/blog/2025/03/14/goose-ollama"
+      title="AI, But Make It Local With Daisy and Ollama"
+      description="Learn how to integrate Daisy with Ollama for a fully local AI experience, including structured outputs and tool calling capabilities."
+      link="/blog/2025/03/14/daisy-ollama"
     />
     <Card 
-      title="Community-Inspired Benchmarking: The Goose Vibe Check"
-      description="See how open source AI models measure up in our first Goose agent benchmark tests, including toolshim performance analysis."
-      link="/blog/2025/03/31/goose-benchmark"
+      title="Community-Inspired Benchmarking: The Daisy Vibe Check"
+      description="See how open source AI models measure up in our first Daisy agent benchmark tests, including toolshim performance analysis."
+      link="/blog/2025/03/31/daisy-benchmark"
     />
   </div>
 </div>
@@ -69,7 +69,7 @@ The list of experimental features may change as Goose development progresses. So
     <Card 
       title="GitHub Issues"
       description="Report bugs, request features, or contribute to the development of experimental features."
-      link="https://github.com/block/goose/issues"
+      link="https://github.com/block/daisy/issues"
     />
     <Card 
       title="Discord Community"

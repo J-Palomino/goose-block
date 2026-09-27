@@ -4,26 +4,26 @@ title: Running Tasks
 sidebar_label: Run Tasks
 ---
 
-When working with the Goose CLI, you can pass files and instructions to the `goose run` command to execute tasks and workflows. This could be a simple one-liner command or a complex set of instructions stored in a file.
+When working with the Daisy CLI, you can pass files and instructions to the `daisy run` command to execute tasks and workflows. This could be a simple one-liner command or a complex set of instructions stored in a file.
 
 ## Basic Usage
 
-The `goose run` command starts a new session, begins executing using any arguments provided and exits the session automatically once the task is complete. 
+The `daisy run` command starts a new session, begins executing using any arguments provided and exits the session automatically once the task is complete. 
 
-There are multiple ways to run tasks with Goose; check out the [list of options](/docs/guides/goose-cli-commands.md#run-options).
+There are multiple ways to run tasks with Daisy; check out the [list of options](/docs/guides/daisy-cli-commands.md#run-options).
 
 ### Text in the command
 ```bash
-goose run -t "your instructions here"
+daisy run -t "your instructions here"
 ```
 
-Using the `-t` flag, one is able to pass a text instruction directly to the command. This is great for quick, one-off commands where you do not need an interactive session with Goose. The instructions will be executed, and the session will end. An example usage could be using in a CI/CD pipeline or running alongside other scripts.
+Using the `-t` flag, one is able to pass a text instruction directly to the command. This is great for quick, one-off commands where you do not need an interactive session with Daisy. The instructions will be executed, and the session will end. An example usage could be using in a CI/CD pipeline or running alongside other scripts.
 
 ### Using an instruction file
-If you have a complex set of instructions or a workflow that you want to automate, you can store them in a file and pass it to the `goose run` command:
+If you have a complex set of instructions or a workflow that you want to automate, you can store them in a file and pass it to the `daisy run` command:
 
 ```bash
-goose run -i instructions.md
+daisy run -i instructions.md
 ```
 
 Here's an example of an instruction file that runs a security audit on project dependencies:
@@ -50,17 +50,17 @@ Save findings in 'security_audit.md' with severity levels highlighted.
 ```
 
 ### With stdin
-You can also pass instructions to Goose using standard input via `-i -`. This is useful when you want to pipe commands from another tool or script into Goose.
+You can also pass instructions to Daisy using standard input via `-i -`. This is useful when you want to pipe commands from another tool or script into Daisy.
 
 #### Simple echo pipe
 
 ```bash
-echo "What is 2+2?" | goose run -i -
+echo "What is 2+2?" | daisy run -i -
 ```
 
 #### Multi-line instructions
 ```bash
-cat << EOF | goose run -i -
+cat << EOF | daisy run -i -
 Please help me with these tasks:
 1. Calculate 15% of 85
 2. Convert 32°C to Fahrenheit
@@ -71,13 +71,13 @@ EOF
 
 ### Interactive Mode
 
-If you don't want Goose to exit at the end of the task, you can pass the `-s` or `--interactive` flag to start an interactive session after processing your initial commands:
+If you don't want Daisy to exit at the end of the task, you can pass the `-s` or `--interactive` flag to start an interactive session after processing your initial commands:
 
 ```bash
-goose run -i instructions.txt -s
+daisy run -i instructions.txt -s
 ```
 
-This is useful when you want to continue working with Goose after your initial commands are processed.
+This is useful when you want to continue working with Daisy after your initial commands are processed.
 
 ### Session Management
 
@@ -85,23 +85,23 @@ You can name and manage your sessions:
 
 ```bash
 # Start a new named session
-goose run -n my-project -t "initial instructions"
+daisy run -n my-project -t "initial instructions"
 
 # Resume a previous session
-goose run -n my-project -r
+daisy run -n my-project -r
 ```
 
 You can also run commands without creating or storing a session file by using the `--no-session` flag. This is useful for automated scripts, or one-off tasks where you don't need to maintain the conversation history or state. This flag routes the session output to a temporary null path (`/dev/null` on Unix or `NUL` on Windows), and discards it when complete.
 
 ```bash
 # Run a command without creating a session file
-goose run --no-session -t "your command here"
+daisy run --no-session -t "your command here"
 ```
 ### Set Provider and Model
-You can run Goose sessions with a specific provider and model, which overrides the provider and model settings in your [environment variables](/docs/guides/environment-variables.md).
+You can run Daisy sessions with a specific provider and model, which overrides the provider and model settings in your [environment variables](/docs/guides/environment-variables.md).
 
 ```bash
-goose run --provider anthropic --model claude-4-sonnet -t "initial prompt"
+daisy run --provider anthropic --model claude-4-sonnet -t "initial prompt"
 ```
 
 ### Working with Extensions
@@ -111,25 +111,25 @@ If you want to ensure specific extensions are available when running your task, 
 - Using built-in extensions e.g developer and computercontroller extensions
 
 ```bash
-goose run --with-builtin "developer,computercontroller" -t "your instructions"
+daisy run --with-builtin "developer,computercontroller" -t "your instructions"
 ```
 
 - Using custom extensions
 
 ```bash
-goose run --with-extension "ENV1=value1 custom-extension-args" -t "your instructions"
+daisy run --with-extension "ENV1=value1 custom-extension-args" -t "your instructions"
 ```
 
 - Using remote SSE extensions
 
 ```bash
-goose run --with-remote-extension "url" -t "your instructions"
+daisy run --with-remote-extension "url" -t "your instructions"
 ```
 
 - Using streamable HTTP extensions
 
 ```bash
-goose run --with-streamable-http-extension "https://example.com/streamable" -t "your instructions"
+daisy run --with-streamable-http-extension "https://example.com/streamable" -t "your instructions"
 ```
 
 ### Debug Mode
@@ -147,10 +147,10 @@ Debug mode can be useful when:
 
 ```bash
 # Run a task with debug output enabled
-goose run --debug -t "your instructions"
+daisy run --debug -t "your instructions"
 
 # Debug a recipe execution
-goose run --debug --recipe recipe.yaml
+daisy run --debug --recipe recipe.yaml
 ```
 
 ## Common Use Cases
@@ -166,21 +166,21 @@ Build the documentation
 
 Then run it:
 ```bash
-goose run -i build-script.txt
+daisy run -i build-script.txt
 ```
 
 ### Quick Commands
 
 For one-off commands, use the text option:
 ```bash
-goose run -t "Create a CHANGELOG.md entry comparing current git branch with main"
+daisy run -t "Create a CHANGELOG.md entry comparing current git branch with main"
 ```
 
 ### Development Workflows
 
 Start a session with specific extensions:
 ```bash
-goose run --with-builtin "developer,git" -n dev-session -s
+daisy run --with-builtin "developer,git" -n dev-session -s
 ```
 
 ### Combining Options
@@ -189,7 +189,7 @@ You can combine multiple options to create powerful workflows:
 
 ```bash
 # Complex example combining multiple options
-goose run \
+daisy run \
   --with-builtin "developer,git" \
   --with-extension "API_KEY=xyz123 custom-tool" \
   -n project-setup \

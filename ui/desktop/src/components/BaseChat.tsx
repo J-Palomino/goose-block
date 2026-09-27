@@ -2,7 +2,7 @@
  * BaseChat Component
  *
  * BaseChat is the foundational chat component that provides the core conversational interface
- * for the Goose Desktop application. It serves as the shared base for both Hub and Pair components,
+ * for the Daisy Desktop application. It serves as the shared base for both Hub and Pair components,
  * offering a flexible and extensible chat experience.
  *
  * Key Responsibilities:
@@ -46,7 +46,7 @@ import { useLocation } from 'react-router-dom';
 import { SearchView } from './conversation/SearchView';
 import { AgentHeader } from './AgentHeader';
 import LayingEggLoader from './LayingEggLoader';
-import LoadingGoose from './LoadingGoose';
+import LoadingDaisy from './LoadingDaisy';
 import RecipeActivities from './recipes/RecipeActivities';
 import PopularChatTopics from './PopularChatTopics';
 import ProgressiveMessageList from './ProgressiveMessageList';
@@ -74,7 +74,7 @@ interface BaseChatProps {
   chat: ChatType;
   setChat: (chat: ChatType) => void;
   setView: (view: View, viewOptions?: ViewOptions) => void;
-  setIsGoosehintsModalOpen?: (isOpen: boolean) => void;
+  setIsDaisyhintsModalOpen?: (isOpen: boolean) => void;
   onMessageStreamFinish?: () => void;
   onMessageSubmit?: (message: string) => void;
   renderHeader?: () => React.ReactNode;
@@ -94,7 +94,7 @@ function BaseChatContent({
   chat,
   setChat,
   setView,
-  setIsGoosehintsModalOpen,
+  setIsDaisyhintsModalOpen,
   onMessageStreamFinish,
   onMessageSubmit,
   renderHeader,
@@ -171,7 +171,7 @@ function BaseChatContent({
     setMessages,
     input,
     handleSubmit: engineHandleSubmit,
-    onStopGoose,
+    onStopDaisy,
     sessionTokenCount,
     sessionInputTokens,
     sessionOutputTokens,
@@ -431,7 +431,7 @@ function BaseChatContent({
                     <>
                       <div className="flex flex-col items-center justify-center p-4">
                         <div className="text-red-700 dark:text-red-300 bg-red-400/50 p-3 rounded-lg mb-2">
-                          {error.message || 'Honk! Goose experienced an error while responding'}
+                          {error.message || 'Honk! Daisy experienced an error while responding'}
                         </div>
 
                         {/* Action buttons for all errors including token limit errors */}
@@ -481,12 +481,12 @@ function BaseChatContent({
           {/* Fixed loading indicator at bottom left of chat container */}
           {(chatState !== ChatState.Idle || loadingChat || isCompacting) && (
             <div className="absolute bottom-1 left-4 z-20 pointer-events-none">
-              <LoadingGoose
+              <LoadingDaisy
                 message={
                   loadingChat
                     ? 'loading conversation...'
                     : isCompacting
-                      ? 'goose is compacting the conversation...'
+                      ? 'daisy is compacting the conversation...'
                       : undefined
                 }
                 chatState={chatState}
@@ -502,7 +502,7 @@ function BaseChatContent({
             sessionId={chat.sessionId}
             handleSubmit={handleSubmit}
             chatState={chatState}
-            onStop={onStopGoose}
+            onStop={onStopDaisy}
             commandHistory={commandHistory}
             initialValue={input || ''}
             setView={setView}
@@ -515,7 +515,7 @@ function BaseChatContent({
             setMessages={setMessages}
             disableAnimation={disableAnimation}
             sessionCosts={sessionCosts}
-            setIsGoosehintsModalOpen={setIsGoosehintsModalOpen}
+            setIsDaisyhintsModalOpen={setIsDaisyhintsModalOpen}
             recipeConfig={recipeConfig}
             recipeAccepted={recipeAccepted}
             initialPrompt={initialPrompt}

@@ -1,23 +1,23 @@
 ---
 title: Playwright Extension
-description: Add Playwright MCP Server as a Goose Extension for Modern Web Testing
+description: Add Playwright MCP Server as a Daisy Extension for Modern Web Testing
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import YouTubeShortEmbed from '@site/src/components/YouTubeShortEmbed';
-import GooseDesktopInstaller from '@site/src/components/GooseDesktopInstaller';
+import DaisyDesktopInstaller from '@site/src/components/DaisyDesktopInstaller';
 
 <YouTubeShortEmbed videoUrl="https://www.youtube.com/embed/iAxiFMlTE1Q" />
 
-This tutorial covers how to add the Playwright MCP Server as a Goose extension, to enable cross-browser testing and web automation across Chromium and Webkit.
+This tutorial covers how to add the Playwright MCP Server as a Daisy extension, to enable cross-browser testing and web automation across Chromium and Webkit.
 
 :::tip TLDR
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-  [Launch the installer](goose://extension?cmd=npx&arg=-y&arg=@playwright/mcp@latest&id=playwright&name=Playwright&description=Modern%20web%20testing%20and%20automation)
+  <TabItem value="ui" label="Daisy Desktop" default>
+  [Launch the installer](daisy://extension?cmd=npx&arg=-y&arg=@playwright/mcp@latest&id=playwright&name=Playwright&description=Modern%20web%20testing%20and%20automation)
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
   **Command**
   ```sh
   npx -y @playwright/mcp@latest
@@ -33,8 +33,8 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 :::
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-  <GooseDesktopInstaller
+  <TabItem value="ui" label="Daisy Desktop" default>
+  <DaisyDesktopInstaller
     extensionId="playwright"
     extensionName="Playwright"
     description="Modern web testing and automation"
@@ -42,15 +42,15 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
     args={["-y", "@playwright/mcp@latest"]}
   />
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
   1. Run the `configure` command:
   ```sh
-  goose configure
+  daisy configure
   ```
 
   2. Choose to add a `Command-line Extension`
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -67,7 +67,7 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 
   3. Give your extension a name
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -82,7 +82,7 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 
   4. Enter the command
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -98,9 +98,9 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
     └ 
   ```
 
-  5. Enter the number of seconds Goose should wait for actions to complete before timing out. Default is 300s
+  5. Enter the number of seconds Daisy should wait for actions to complete before timing out. Default is 300s
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -121,7 +121,7 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 
   6. Choose to add a description. If you select "Yes" here, you will be prompted to enter a description for the extension.
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -145,7 +145,7 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 
   7. Choose No when asked to add environment variables
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -175,7 +175,7 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 
 ## Example Usage
 
-Let's use Goose with the Playwright extension to create a cross-browser testing suite. In this example, we'll demonstrate how Goose can help you:
+Let's use Daisy with the Playwright extension to create a cross-browser testing suite. In this example, we'll demonstrate how Daisy can help you:
 
 1. Test a web application across multiple browsers
 2. Generate maintainable test code
@@ -185,7 +185,7 @@ Let's use Goose with the Playwright extension to create a cross-browser testing 
 Anthropic's Claude 4 Sonnet was used for this task.
 :::
 
-### Goose Prompt
+### Daisy Prompt
 ```
 Test the random redesign generator app (https://blackgirlbytes.github.io/random-redesign-picker/) 
 in Chromium and WebKit. For each browser:
@@ -196,7 +196,7 @@ in Chromium and WebKit. For each browser:
 Then generate a Playwright test that works across all browsers.
 ```
 
-### Goose Output
+### Daisy Output
 ```
 Let's start with Chromium:
 

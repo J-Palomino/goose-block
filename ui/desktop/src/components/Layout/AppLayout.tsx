@@ -1,17 +1,17 @@
 import React from 'react';
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
-import AppSidebar from '../GooseSidebar/AppSidebar';
+import AppSidebar from '../DaisySidebar/AppSidebar';
 import { View, ViewOptions } from '../../utils/navigationUtils';
 import { AppWindowMac, AppWindow } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Sidebar, SidebarInset, SidebarProvider, SidebarTrigger, useSidebar } from '../ui/sidebar';
 
 interface AppLayoutProps {
-  setIsGoosehintsModalOpen?: (isOpen: boolean) => void;
+  setIsDaisyhintsModalOpen?: (isOpen: boolean) => void;
 }
 
 // Inner component that uses useSidebar within SidebarProvider context
-const AppLayoutContent: React.FC<AppLayoutProps> = ({ setIsGoosehintsModalOpen }) => {
+const AppLayoutContent: React.FC<AppLayoutProps> = ({ setIsDaisyhintsModalOpen }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const safeIsMacOS = (window?.electron?.platform || 'darwin') === 'darwin';
@@ -76,7 +76,7 @@ const AppLayoutContent: React.FC<AppLayoutProps> = ({ setIsGoosehintsModalOpen }
   const handleNewWindow = () => {
     window.electron.createChatWindow(
       undefined,
-      window.appConfig.get('GOOSE_WORKING_DIR') as string | undefined
+      window.appConfig.get('DAISY_WORKING_DIR') as string | undefined
     );
   };
 
@@ -102,7 +102,7 @@ const AppLayoutContent: React.FC<AppLayoutProps> = ({ setIsGoosehintsModalOpen }
         <AppSidebar
           onSelectSession={handleSelectSession}
           setView={setView}
-          setIsGoosehintsModalOpen={setIsGoosehintsModalOpen}
+          setIsDaisyhintsModalOpen={setIsDaisyhintsModalOpen}
           currentPath={location.pathname}
         />
       </Sidebar>
@@ -113,10 +113,10 @@ const AppLayoutContent: React.FC<AppLayoutProps> = ({ setIsGoosehintsModalOpen }
   );
 };
 
-export const AppLayout: React.FC<AppLayoutProps> = ({ setIsGoosehintsModalOpen }) => {
+export const AppLayout: React.FC<AppLayoutProps> = ({ setIsDaisyhintsModalOpen }) => {
   return (
     <SidebarProvider>
-      <AppLayoutContent setIsGoosehintsModalOpen={setIsGoosehintsModalOpen} />
+      <AppLayoutContent setIsDaisyhintsModalOpen={setIsDaisyhintsModalOpen} />
     </SidebarProvider>
   );
 };

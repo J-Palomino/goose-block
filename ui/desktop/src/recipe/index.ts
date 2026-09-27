@@ -24,7 +24,7 @@ export type Recipe = import('../api').Recipe & {
   // TODO: Separate these from the raw recipe type
   // Legacy frontend properties (not in OpenAPI schema)
   profile?: string;
-  goosehints?: string;
+  daisyhints?: string;
   mcps?: number;
 };
 
@@ -153,5 +153,5 @@ export async function scanRecipe(recipe: Recipe): Promise<{ has_security_warning
 
 export async function generateDeepLink(recipe: Recipe): Promise<string> {
   const encoded = await encodeRecipe(recipe);
-  return `goose://recipe?config=${encoded}`;
+  return `daisy://recipe?config=${encoded}`;
 }

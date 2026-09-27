@@ -555,7 +555,7 @@ p > code.bg-inline-code {
   scrollbar-width: thin;
 }
 
-.assistant:has(+ .user) .goose-message {
+.assistant:has(+ .user) .daisy-message {
   padding-bottom: 24px;
 }
 
@@ -600,8 +600,8 @@ p > code.bg-inline-code {
   contain: layout style paint;
 }
 
-/* Goose icon animation to replace framer-motion */
-@keyframes goose-icon-entrance {
+/* Daisy icon animation to replace framer-motion */
+@keyframes daisy-icon-entrance {
   from {
     opacity: 0;
     transform: scale(0.25) translate(-5px, 5px) rotate(-20deg);
@@ -612,8 +612,8 @@ p > code.bg-inline-code {
   }
 }
 
-.goose-icon-animation {
-  animation: goose-icon-entrance 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+.daisy-icon-animation {
+  animation: daisy-icon-entrance 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   transform-origin: bottom left;
 }
 

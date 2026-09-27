@@ -1,16 +1,16 @@
 ---
 title: Pieces for Developers Extension
-description: Add Pieces for Developers MCP Server as a Goose Extension
+description: Add Pieces for Developers MCP Server as a Daisy Extension
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import YouTubeShortEmbed from '@site/src/components/YouTubeShortEmbed';
-import GooseDesktopInstaller from '@site/src/components/GooseDesktopInstaller';
+import DaisyDesktopInstaller from '@site/src/components/DaisyDesktopInstaller';
 
 <YouTubeShortEmbed videoUrl="https://www.youtube.com/embed/V8zp9m9__t4" />
 
-This tutorial covers how to add the [Pieces for Developers MCP Server](https://docs.pieces.app/products/mcp/get-started?utm_source=goose&utm_medium=collab&utm_campaign=mcp) as a Goose extension to enable interaction with your Pieces Long-Term Memory.
+This tutorial covers how to add the [Pieces for Developers MCP Server](https://docs.pieces.app/products/mcp/get-started?utm_source=daisy&utm_medium=collab&utm_campaign=mcp) as a Daisy extension to enable interaction with your Pieces Long-Term Memory.
 
 ## Configuration
 
@@ -33,25 +33,25 @@ http://localhost:39300/model_context_protocol/2024-11-05/sse
 ### Add Pieces MCP Server
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-  <GooseDesktopInstaller
+  <TabItem value="ui" label="Daisy Desktop" default>
+  <DaisyDesktopInstaller
     extensionId="pieces"
     extensionName="Pieces for Developers"
     description="Provides access to your Pieces Long-Term Memory. You need to have Pieces installed to use this."
     url="http://localhost:39300/model_context_protocol/2024-11-05/sse"
   />
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
   1. Run the `configure` command:
 
       ```sh
-      goose configure
+      daisy configure
       ```
 
   2. Choose to add a `Remote Extension`
 
       ```sh
-        ┌   goose-configure 
+        ┌   daisy-configure 
         │
         ◇  What would you like to configure?
         │  Add Extension (Connect to a new extension) 
@@ -70,7 +70,7 @@ http://localhost:39300/model_context_protocol/2024-11-05/sse
   3. Give your extension a name
   
       ```sh
-        ┌   goose-configure 
+        ┌   daisy-configure 
         │
         ◇  What would you like to configure?
         │  Add Extension (Connect to a new extension) 
@@ -92,7 +92,7 @@ http://localhost:39300/model_context_protocol/2024-11-05/sse
       :::
 
       ```sh
-        ┌   goose-configure 
+        ┌   daisy-configure 
         │
         ◇  What would you like to configure?
         │  Add Extension (Connect to a new extension) 
@@ -110,10 +110,10 @@ http://localhost:39300/model_context_protocol/2024-11-05/sse
         └ 
       ```  
 
-  5. Enter the number of seconds Goose should wait for actions to complete before timing out. Default is 300s
+  5. Enter the number of seconds Daisy should wait for actions to complete before timing out. Default is 300s
 
       ```sh
-        ┌   goose-configure 
+        ┌   daisy-configure 
         │
         ◇  What would you like to configure?
         │  Add Extension (Connect to a new extension) 
@@ -137,7 +137,7 @@ http://localhost:39300/model_context_protocol/2024-11-05/sse
   6. Add a description if you want, otherwise to leave the description blank select No.
 
       ```sh
-        ┌   goose-configure 
+        ┌   daisy-configure 
         │
         ◇  What would you like to configure?
         │  Add Extension (Connect to a new extension) 
@@ -165,7 +165,7 @@ http://localhost:39300/model_context_protocol/2024-11-05/sse
   7. No environment variables are needed, so select No.
 
       ```sh
-        ┌   goose-configure 
+        ┌   daisy-configure 
         │
         ◇  What would you like to configure?
         │  Add Extension (Connect to a new extension) 
@@ -199,25 +199,25 @@ http://localhost:39300/model_context_protocol/2024-11-05/sse
 
 Let's use the Pieces for Developers MCP server to generate a status update for a standup meeting based on your activities on the previous day.
 
-### Goose Prompt
+### Daisy Prompt
 
 ```
 I need a status update for what I was using yesterday. Create a report with 5 bullet points based off the most important activities, and give each one a brief description.
 ```
 
-### Goose Output
+### Daisy Output
 
 ```
 Here's a report summarizing your key activities from yesterday, based on the most important interactions and applications you were using:
 
-1. Code Development with Goose:
+1. Code Development with Daisy:
 
-    Activity: You worked on integrating SSE MCP servers into the Goose CLI, making enhancements to handle extensions via schema URLs.
-    Description: This task involved modifying code and testing new integrations to support advanced functionalities. It also included interactions with the Goose community on Discord for feedback and troubleshooting.
+    Activity: You worked on integrating SSE MCP servers into the Daisy CLI, making enhancements to handle extensions via schema URLs.
+    Description: This task involved modifying code and testing new integrations to support advanced functionalities. It also included interactions with the Daisy community on Discord for feedback and troubleshooting.
 
 2. Documentation Updates:
 
-    Activity: You updated and managed documentation related to the Goose project and MCP integrations.
+    Activity: You updated and managed documentation related to the Daisy project and MCP integrations.
     Description: This involved preparing documentation for new features, including usage guidelines and technical details, aiding in the improvement of user experience and technical instructions.
 
 3. Community Interaction on Discord:
@@ -227,7 +227,7 @@ Here's a report summarizing your key activities from yesterday, based on the mos
 
 4. Managing and Testing Extensions:
 
-    Activity: You focused on testing and managing various extensions through the Goose platform.
+    Activity: You focused on testing and managing various extensions through the Daisy platform.
     Description: This included configuring and validating different extensions, ensuring their compatibility and functionality, and incorporating feedback from testing.
 
 5. Content and Integration Planning:
@@ -240,5 +240,5 @@ These activities demonstrate a productive day with a focus on development, colla
 
 
 :::tip
-For more examples of prompts you can use with the Pieces for Developers MCP Server, see the [Pieces MCP prompting guide](https://docs.pieces.app/products/mcp/prompting?utm_source=goose&utm_medium=collab&utm_campaign=mcp).
+For more examples of prompts you can use with the Pieces for Developers MCP Server, see the [Pieces MCP prompting guide](https://docs.pieces.app/products/mcp/prompting?utm_source=daisy&utm_medium=collab&utm_campaign=mcp).
 :::

@@ -8,11 +8,11 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import { PanelLeft, Bot } from 'lucide-react';
 
-This guide covers storing, organizing, and finding Goose recipes when you need to access them again later. 
+This guide covers storing, organizing, and finding Daisy recipes when you need to access them again later. 
 
 :::info Desktop UI vs CLI
-- **Goose Desktop** has a visual Recipe Library for browsing and managing saved recipes
-- **Goose CLI** stores recipes as files that you find using file paths or environment variables
+- **Daisy Desktop** has a visual Recipe Library for browsing and managing saved recipes
+- **Daisy CLI** stores recipes as files that you find using file paths or environment variables
 :::
 
 ## Understanding Recipe Storage
@@ -23,8 +23,8 @@ Before saving recipes, it's important to understand where they can be stored and
 
 | Type | Location | Availability | Best For |
 |------|----------|-------------|----------|
-| **Global** | `~/.config/goose/recipes/` | All projects and sessions | Personal workflows, general-purpose recipes |
-| **Local** | `YOUR_WORKING_DIRECTORY/.goose/recipes/` | Only when working in that project | Project-specific workflows, team recipes |
+| **Global** | `~/.config/daisy/recipes/` | All projects and sessions | Personal workflows, general-purpose recipes |
+| **Local** | `YOUR_WORKING_DIRECTORY/.daisy/recipes/` | Only when working in that project | Project-specific workflows, team recipes |
 
 **Choose Global Storage When:**
 - You want the recipe available across all projects
@@ -40,7 +40,7 @@ Before saving recipes, it's important to understand where they can be stored and
 ## Storing Recipes
 
 <Tabs groupId="interface">
-  <TabItem value="desktop" label="Goose Desktop" default>
+  <TabItem value="desktop" label="Daisy Desktop" default>
 
 **Save New Recipe:**
 
@@ -69,13 +69,13 @@ You can import a [shared recipe](/docs/guides/recipes/session-recipes#share-reci
 5. Click **Import Recipe**
 
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
 
     When you [create a recipe](/docs/guides/recipes/recipe-reference), it gets saved to:
 
     * Your working directory by default: `./recipe.yaml`
     * Any path you specify: `/recipe /path/to/my-recipe.yaml`  
-    * Local project recipes: `/recipe .goose/recipes/my-recipe.yaml`
+    * Local project recipes: `/recipe .daisy/recipes/my-recipe.yaml`
 
   </TabItem>
 </Tabs>
@@ -84,7 +84,7 @@ You can import a [shared recipe](/docs/guides/recipes/session-recipes#share-reci
 ## Finding Your Recipes
 
 <Tabs groupId="interface">
-  <TabItem value="desktop" label="Goose Desktop" default>
+  <TabItem value="desktop" label="Daisy Desktop" default>
 
 **Access Recipe Library:**
 1. Click the <PanelLeft className="inline" size={16} /> button in the top-left to open the sidebar
@@ -93,17 +93,17 @@ You can import a [shared recipe](/docs/guides/recipes/session-recipes#share-reci
 4. Each recipe shows its title, description, and whether it's global or local
 
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
 
 To find and configure your saved recipes:
 
 **Browse recipe directories:**
 ```bash
 # List recipes in default global location
-ls ~/.config/goose/recipes/
+ls ~/.config/daisy/recipes/
 
 # List recipes in current project
-ls .goose/recipes/
+ls .daisy/recipes/
 
 # Search for all recipe files
 find . -name "*.md" -path "*/recipes/*"
@@ -119,7 +119,7 @@ Set up [custom recipe paths](/docs/guides/recipes/session-recipes#configure-reci
 ## Using Saved Recipes
 
 <Tabs groupId="interface">
-  <TabItem value="desktop" label="Goose Desktop" default>
+  <TabItem value="desktop" label="Daisy Desktop" default>
 
 1. Click the <PanelLeft className="inline" size={16} /> button in the top-left to open the sidebar
 2. Click `Recipes`
@@ -129,12 +129,12 @@ Set up [custom recipe paths](/docs/guides/recipes/session-recipes#configure-reci
    - Click `Preview` to see the recipe details first, then click **Load Recipe** to run it
 
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
 
 Once you've located your recipe file, [run the recipe](/docs/guides/recipes/session-recipes#run-a-recipe).
 
 :::tip Format Compatibility
-The CLI can run recipes saved from Goose Desktop without any conversion. Both CLI-created and Desktop-saved recipes work with all recipe commands.
+The CLI can run recipes saved from Daisy Desktop without any conversion. Both CLI-created and Desktop-saved recipes work with all recipe commands.
 :::
 
   </TabItem>

@@ -205,7 +205,7 @@ export function registerUpdateIpcHandlers() {
           type: 'info',
           title: 'Update Downloaded',
           message: 'The update has been downloaded to your Downloads folder.',
-          detail: `Please extract the zip file and move the Goose app to your Applications folder to complete the update.`,
+          detail: `Please extract the zip file and move the Daisy app to your Applications folder to complete the update.`,
           buttons: ['Open Downloads', 'Cancel'],
           defaultId: 0,
           cancelId: 1,
@@ -258,7 +258,7 @@ export function setupAutoUpdater(tray?: Tray) {
   const feedConfig = {
     provider: 'github' as const,
     owner: 'block',
-    repo: 'goose',
+    repo: 'daisy',
     releaseType: 'release' as const,
   };
 
@@ -480,7 +480,7 @@ function updateTrayIcon(hasUpdate: boolean) {
     } else {
       iconPath = path.join(process.resourcesPath, 'images', 'iconTemplateUpdate.png');
     }
-    trayRef.setToolTip('Goose - Update Available');
+    trayRef.setToolTip('Daisy - Update Available');
   } else {
     // Use normal icon
     if (isDev) {
@@ -488,7 +488,7 @@ function updateTrayIcon(hasUpdate: boolean) {
     } else {
       iconPath = path.join(process.resourcesPath, 'images', 'iconTemplate.png');
     }
-    trayRef.setToolTip('Goose');
+    trayRef.setToolTip('Daisy');
   }
 
   const icon = nativeImage.createFromPath(iconPath);

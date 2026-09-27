@@ -1,24 +1,24 @@
 ---
 title: Cloudinary Asset Management Extension
-description: Add Cloudinary Asset Management MCP Server as a Goose Extension
+description: Add Cloudinary Asset Management MCP Server as a Daisy Extension
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import GooseDesktopInstaller from '@site/src/components/GooseDesktopInstaller';
+import DaisyDesktopInstaller from '@site/src/components/DaisyDesktopInstaller';
 import YouTubeShortEmbed from '@site/src/components/YouTubeShortEmbed';
 
 <YouTubeShortEmbed videoUrl="https://www.youtube.com/embed/4diEvoRFVrQ" />
 
-This tutorial covers how to add the [Cloudinary Asset Management MCP Server](https://github.com/cloudinary/asset-management-js) as a Goose extension to automate complex image processing workflows that would typically require specialized design software or manual editing.
+This tutorial covers how to add the [Cloudinary Asset Management MCP Server](https://github.com/cloudinary/asset-management-js) as a Daisy extension to automate complex image processing workflows that would typically require specialized design software or manual editing.
 
 :::tip TLDR
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-  [Launch the installer](goose://extension?cmd=npx&arg=-y&arg=--package&arg=@cloudinary/asset-management&arg=--&arg=mcp&arg=start&id=cloudinary&name=Cloudinary%20Asset%20Management&description=Powerful%20media%20processing%20and%20transformation&env=CLOUDINARY_URL%3DCloudinary%20URL)
+  <TabItem value="ui" label="Daisy Desktop" default>
+  [Launch the installer](daisy://extension?cmd=npx&arg=-y&arg=--package&arg=@cloudinary/asset-management&arg=--&arg=mcp&arg=start&id=cloudinary&name=Cloudinary%20Asset%20Management&description=Powerful%20media%20processing%20and%20transformation&env=CLOUDINARY_URL%3DCloudinary%20URL)
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
   **Command**
   ```sh
   npx -y --package @cloudinary/asset-management -- mcp start
@@ -38,8 +38,8 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 :::
 
 <Tabs groupId="interface">
-  <TabItem value="ui" label="Goose Desktop" default>
-  <GooseDesktopInstaller
+  <TabItem value="ui" label="Daisy Desktop" default>
+  <DaisyDesktopInstaller
     extensionId="cloudinary"
     extensionName="Cloudinary Asset Management"
     description="Powerful media processing and transformation"
@@ -50,15 +50,15 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
     apiKeyLinkText="Get your Cloudinary URL"
   />
   </TabItem>
-  <TabItem value="cli" label="Goose CLI">
+  <TabItem value="cli" label="Daisy CLI">
   1. Run the `configure` command:
   ```sh
-  goose configure
+  daisy configure
   ```
 
   2. Choose to add a `Command-line Extension`
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -75,7 +75,7 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 
   3. Give your extension a name
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -92,7 +92,7 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 
   4. Enter the command
   ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -110,9 +110,9 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
     └ 
   ```  
 
-  5. Enter the number of seconds Goose should wait for actions to complete before timing out. Default is 300s
+  5. Enter the number of seconds Daisy should wait for actions to complete before timing out. Default is 300s
    ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -135,7 +135,7 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 
   6. Choose to add a description. If you select "Yes" here, you will be prompted to enter a description for the extension.
    ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -163,7 +163,7 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
   7. Obtain your [Cloudinary URL](https://console.cloudinary.com/settings/api-keys) from your dashboard and paste it in.
 
    ```sh
-    ┌   goose-configure 
+    ┌   daisy-configure 
     │
     ◇  What would you like to configure?
     │  Add Extension (Connect to a new extension) 
@@ -204,7 +204,7 @@ Note that you'll need [Node.js](https://nodejs.org/) installed on your system to
 
 ## Example Usage
 
-Let's use the Cloudinary extension to find and transform product images with advanced visual effects. In this example, we'll demonstrate how Goose can help you:
+Let's use the Cloudinary extension to find and transform product images with advanced visual effects. In this example, we'll demonstrate how Daisy can help you:
 
 1. Search for specific images in your media library
 2. Apply complex transformations including background removal
@@ -214,7 +214,7 @@ Let's use the Cloudinary extension to find and transform product images with adv
 Anthropic's Claude 4 Sonnet was used for this task.
 :::
 
-### Goose Prompt
+### Daisy Prompt
 ```
 1. find shoe images in my Cloudinary samples that have 'shoe' in the filename or public ID.
 2. Let's transform the first result and only extract just the shoes
@@ -222,7 +222,7 @@ Anthropic's Claude 4 Sonnet was used for this task.
 4. Add a background to the image. It should be black
 ```
 
-### Goose Output
+### Daisy Output
 ```
 I'll help you find shoe images in your Cloudinary samples and apply the transformations you've requested. Let me start by searching for images with 'shoe' in the filename or public ID.
 

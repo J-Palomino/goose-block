@@ -2651,7 +2651,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "goose"
+name = "daisy"
 version = "1.8.0"
 dependencies = [
  "ahash",
@@ -2725,7 +2725,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "goose-bench"
+name = "daisy-bench"
 version = "1.8.0"
 dependencies = [
  "anyhow",
@@ -2733,7 +2733,7 @@ dependencies = [
  "chrono",
  "ctor",
  "dotenvy",
- "goose",
+ "daisy",
  "include_dir",
  "once_cell",
  "paste",
@@ -2748,7 +2748,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "goose-cli"
+name = "daisy-cli"
 version = "1.8.0"
 dependencies = [
  "agent-client-protocol",
@@ -2765,9 +2765,9 @@ dependencies = [
  "dotenvy",
  "etcetera",
  "futures",
- "goose",
- "goose-bench",
- "goose-mcp",
+ "daisy",
+ "daisy-bench",
+ "daisy-mcp",
  "http 1.2.0",
  "indicatif",
  "is-terminal",
@@ -2802,7 +2802,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "goose-mcp"
+name = "daisy-mcp"
 version = "1.8.0"
 dependencies = [
  "anyhow",
@@ -2866,7 +2866,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "goose-server"
+name = "daisy-server"
 version = "1.8.0"
 dependencies = [
  "anyhow",
@@ -2879,8 +2879,8 @@ dependencies = [
  "config",
  "etcetera",
  "futures",
- "goose",
- "goose-mcp",
+ "daisy",
+ "daisy-mcp",
  "http 1.2.0",
  "mcp-core",
  "mcp-server",
@@ -2905,7 +2905,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "goose-test"
+name = "daisy-test"
 version = "1.8.0"
 dependencies = [
  "clap",

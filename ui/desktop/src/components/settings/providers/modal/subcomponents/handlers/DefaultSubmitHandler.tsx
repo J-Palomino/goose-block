@@ -24,7 +24,7 @@ export const DefaultSubmitHandler = async (
     const configKey = `${provider.name}_configured`;
     await upsertFn(configKey, true, false);
 
-    await upsertFn('GOOSE_PROVIDER', provider.name, false);
+    await upsertFn('DAISY_PROVIDER', provider.name, false);
     return;
   }
 

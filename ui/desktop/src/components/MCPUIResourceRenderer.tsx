@@ -407,7 +407,7 @@ export default function MCPUIResourceRenderer({
               // iframeRenderData allows us to pass data down to MCP-UIs
               // MPC-UIs might find stuff like host and theme for conditional rendering
               // usage of this is experimental, leaving in place for demos
-              host: 'goose',
+              host: 'daisy',
               theme: currentThemeValue,
             },
           }}

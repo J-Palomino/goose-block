@@ -92,7 +92,7 @@ make_api_call "unpause" "hourly-check"
 
 # Example 7: Run a job immediately
 echo "7. Running daily-report job immediately..."
-echo "Note: This will fail without goose-scheduler-executor binary"
+echo "Note: This will fail without daisy-scheduler-executor binary"
 make_api_call "run_now" "daily-report"
 
 # Example 8: Delete jobs

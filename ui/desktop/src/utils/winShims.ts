@@ -5,8 +5,8 @@ import { spawn } from 'child_process';
 import log from './logger';
 
 /**
- * Ensures Windows shims are available in %LOCALAPPDATA%\Goose\bin
- * This allows the bundled executables to be found via PATH regardless of where Goose is installed
+ * Ensures Windows shims are available in %LOCALAPPDATA%\Daisy\bin
+ * This allows the bundled executables to be found via PATH regardless of where Daisy is installed
  */
 export async function ensureWinShims(): Promise<void> {
   if (process.platform !== 'win32') return;
@@ -14,14 +14,14 @@ export async function ensureWinShims(): Promise<void> {
   const srcDir = path.join(process.resourcesPath, 'bin'); // existing dir
   const tgtDir = path.join(
     process.env.LOCALAPPDATA ?? path.join(os.homedir(), 'AppData', 'Local'),
-    'Goose',
+    'Daisy',
     'bin'
   );
 
   try {
     await fs.promises.mkdir(tgtDir, { recursive: true });
 
-    // Only copy the command-line tools, NOT goosed.exe (which should always be used locally)
+    // Only copy the command-line tools, NOT daisyd.exe (which should always be used locally)
     const shims = ['uvx.exe', 'npx.cmd', 'install-node.cmd'];
 
     await Promise.all(
@@ -66,7 +66,7 @@ export async function ensureWinShims(): Promise<void> {
 }
 
 /**
- * Persist the Goose bin directory to the user's PATH environment variable.
+ * Persist the Daisy bin directory to the user's PATH environment variable.
  * Uses only user PATH to avoid overwriting with system PATH and respects setx 1024 char limit.
  */
 async function persistPathForUser(binDir: string): Promise<void> {
@@ -91,11 +91,11 @@ async function persistPathForUser(binDir: string): Promise<void> {
         }
         
         setx PATH $newUserPath >$null
-        Write-Host "Added Goose bin directory to beginning of user PATH"
+        Write-Host "Added Daisy bin directory to beginning of user PATH"
         Write-Host "New user PATH length: $($newUserPath.Length) chars"
       } else {
         if ($pathParts[0] -ieq $bin) {
-          Write-Host "Goose bin directory already at beginning of user PATH"
+          Write-Host "Daisy bin directory already at beginning of user PATH"
         } else {
           $filteredParts = $pathParts | Where-Object { $_ -ine $bin }
           $newUserPath = @($bin) + $filteredParts -join ';'
@@ -106,7 +106,7 @@ async function persistPathForUser(binDir: string): Promise<void> {
           }
           
           setx PATH $newUserPath >$null
-          Write-Host "Moved Goose bin directory to beginning of user PATH"
+          Write-Host "Moved Daisy bin directory to beginning of user PATH"
           Write-Host "New user PATH length: $($newUserPath.Length) chars"
         }
       }
@@ -117,7 +117,7 @@ async function persistPathForUser(binDir: string): Promise<void> {
       shell: false,
     });
 
-    log.info('Attempted to persist Goose bin directory to user PATH');
+    log.info('Attempted to persist Daisy bin directory to user PATH');
   } catch (error) {
     log.warn('Failed to persist PATH for user (non-critical):', error);
   }
