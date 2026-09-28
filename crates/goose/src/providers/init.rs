@@ -10,7 +10,6 @@ use super::sagemaker_tgi::SageMakerTgiProvider;
 use super::{
     amp_acp::AmpAcpProvider,
     avian::AvianProvider,
-    daisy::DaisyProvider,
     azure::AzureProvider,
     base::{Provider, ProviderMetadata},
     chatgpt_codex::ChatGptCodexProvider,
@@ -20,6 +19,7 @@ use super::{
     codex_acp::CodexAcpProvider,
     copilot_acp::CopilotAcpProvider,
     cursor_agent::CursorAgentProvider,
+    daisy::DaisyProvider,
     gcpvertexai::GcpVertexAIProvider,
     gemini_cli::GeminiCliProvider,
     gemini_oauth::GeminiOAuthProvider,
@@ -107,8 +107,12 @@ async fn init_registry() -> RwLock<ProviderRegistry> {
             Some(registrations::refresh_only().with_configured(|| {
                 let config = crate::config::Config::global();
                 std::env::var("DAISY_API_KEY").is_ok()
-                    || config.get_secret::<serde_json::Value>("DAISY_API_KEY").is_ok()
-                    || config.get_param::<serde_json::Value>("DAISY_API_KEY").is_ok()
+                    || config
+                        .get_secret::<serde_json::Value>("DAISY_API_KEY")
+                        .is_ok()
+                    || config
+                        .get_param::<serde_json::Value>("DAISY_API_KEY")
+                        .is_ok()
                     || crate::config::get_all_extensions()
                         .into_iter()
                         .any(|entry| {

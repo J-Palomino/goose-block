@@ -85,10 +85,7 @@ impl DaisyProvider {
         }
 
         let agencies = self.fetch_agencies_from_api().await?;
-        let map: HashMap<String, String> = agencies
-            .into_iter()
-            .map(|a| (a.name, a.id))
-            .collect();
+        let map: HashMap<String, String> = agencies.into_iter().map(|a| (a.name, a.id)).collect();
 
         let id = map
             .get(name)
