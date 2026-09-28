@@ -10,6 +10,7 @@ use super::sagemaker_tgi::SageMakerTgiProvider;
 use super::{
     amp_acp::AmpAcpProvider,
     avian::AvianProvider,
+    daisy::DaisyProvider,
     azure::AzureProvider,
     base::{Provider, ProviderMetadata},
     chatgpt_codex::ChatGptCodexProvider,
@@ -100,6 +101,25 @@ async fn init_registry() -> RwLock<ProviderRegistry> {
         registry.register_with_inventory::<CursorAgentProvider>(
             false,
             Some(registrations::refresh_only()),
+        );
+        registry.register_with_inventory::<DaisyProvider>(
+            false,
+            Some(registrations::refresh_only().with_configured(|| {
+                let config = crate::config::Config::global();
+                std::env::var("DAISY_API_KEY").is_ok()
+                    || config.get_secret::<serde_json::Value>("DAISY_API_KEY").is_ok()
+                    || config.get_param::<serde_json::Value>("DAISY_API_KEY").is_ok()
+                    || crate::config::get_all_extensions()
+                        .into_iter()
+                        .any(|entry| {
+                            entry.enabled
+                                && matches!(
+                                    &entry.config,
+                                    crate::config::ExtensionConfig::Stdio { name, .. }
+                                        if name.to_lowercase() == "daisy"
+                                )
+                        })
+            })),
         );
         registry.register_with_inventory::<DatabricksProviderDef>(
             true,
