@@ -125,7 +125,17 @@ impl ProviderDef for DaisyProvider {
             let mut api_url = None;
             let mut api_key = None;
 
-            for ext in &extensions {
+            // Search both the passed session extensions and the global config extensions
+            let all_extensions: Vec<ExtensionConfig> = extensions
+                .into_iter()
+                .chain(
+                    crate::config::get_all_extensions()
+                        .into_iter()
+                        .map(|e| e.config),
+                )
+                .collect();
+
+            for ext in &all_extensions {
                 if let ExtensionConfig::Stdio { name, envs, .. } = ext {
                     if name.to_lowercase() == "daisy" {
                         let env = envs.get_env();
