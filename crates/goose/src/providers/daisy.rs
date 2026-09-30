@@ -23,8 +23,6 @@ const DAISY_DEFAULT_HOST: &str = "https://daisy.plus";
 struct Agency {
     id: String,
     name: String,
-    #[serde(default)]
-    deployed: bool,
 }
 
 #[derive(Debug, Deserialize)]
@@ -175,15 +173,10 @@ impl Provider for DaisyProvider {
         let mut cache = self.agency_cache.lock().await;
         let map: HashMap<String, String> = agencies
             .iter()
-            .filter(|a| a.deployed)
             .map(|a| (a.name.clone(), a.id.clone()))
             .collect();
         *cache = Some(map);
-        Ok(agencies
-            .into_iter()
-            .filter(|a| a.deployed)
-            .map(|a| a.name)
-            .collect())
+        Ok(agencies.into_iter().map(|a| a.name).collect())
     }
 
     async fn stream(
