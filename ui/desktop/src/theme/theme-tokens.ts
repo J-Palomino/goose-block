@@ -265,11 +265,68 @@ const auraFontTokens: Partial<Pick<ThemeTokens, BaseTokenKey>> = {
 };
 
 // ---------------------------------------------------------------------------
+// Daisy theme — near-black surfaces, bright yellow (#ffd600) accent
+// ---------------------------------------------------------------------------
+const daisyColorTokens: ColorTokens = {
+  // Backgrounds
+  '--color-background-primary': '#0f0f0f',
+  '--color-background-secondary': '#1a1a1a',
+  '--color-background-tertiary': '#252525',
+  '--color-background-inverse': '#ffd600',
+  '--color-background-ghost': 'transparent',
+  '--color-background-info': '#7cacff',
+  '--color-background-danger': '#ff6b6b',
+  '--color-background-success': '#a3d795',
+  '--color-background-warning': '#ffd600',
+  '--color-background-disabled': '#252525',
+
+  // Text
+  '--color-text-primary': '#ffffff',
+  '--color-text-secondary': '#999999',
+  '--color-text-tertiary': '#555555',
+  '--color-text-inverse': '#0f0f0f',
+  '--color-text-ghost': '#666666',
+  '--color-text-info': '#7cacff',
+  '--color-text-danger': '#ff6b6b',
+  '--color-text-success': '#a3d795',
+  '--color-text-warning': '#ffd600',
+  '--color-text-disabled': '#444444',
+
+  // Borders
+  '--color-border-primary': '#2a2a2a',
+  '--color-border-secondary': '#333333',
+  '--color-border-tertiary': '#2a2a2a',
+  '--color-border-inverse': '#ffd600',
+  '--color-border-ghost': 'transparent',
+  '--color-border-info': '#7cacff',
+  '--color-border-danger': '#ff6b6b',
+  '--color-border-success': '#a3d795',
+  '--color-border-warning': '#ffd600',
+  '--color-border-disabled': '#2a2a2a',
+
+  // Rings
+  '--color-ring-primary': '#ffd600',
+  '--color-ring-secondary': '#333333',
+  '--color-ring-inverse': '#0f0f0f',
+  '--color-ring-info': '#7cacff',
+  '--color-ring-danger': '#ff6b6b',
+  '--color-ring-success': '#a3d795',
+  '--color-ring-warning': '#ffd600',
+
+  // Shadows
+  '--shadow-hairline': '0 0 0 1px rgba(255, 214, 0, 0.12)',
+  '--shadow-sm': '0 1px 2px 0 rgba(0, 0, 0, 0.4)',
+  '--shadow-md': '0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -2px rgba(0, 0, 0, 0.4)',
+  '--shadow-lg': '0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -4px rgba(0, 0, 0, 0.4)',
+};
+
+// ---------------------------------------------------------------------------
 // Merged token maps — used by applyThemeTokens() and buildMcpHostStyles()
 // ---------------------------------------------------------------------------
 export const lightTokens: ThemeTokens = { ...baseTokens, ...lightColorTokens };
 export const darkTokens: ThemeTokens = { ...baseTokens, ...darkColorTokens };
 export const auraTokens: ThemeTokens = { ...baseTokens, ...auraFontTokens, ...auraColorTokens };
+export const daisyTokens: ThemeTokens = { ...baseTokens, ...daisyColorTokens };
 
 // ---------------------------------------------------------------------------
 // Theme registry — the set of selectable named themes.
@@ -277,7 +334,7 @@ export const auraTokens: ThemeTokens = { ...baseTokens, ...auraFontTokens, ...au
 // the token system; `tokens` is the map applied to :root. Adding a future theme
 // is a single entry here plus its token map above.
 // ---------------------------------------------------------------------------
-export type ThemeId = 'light' | 'dark' | 'aura';
+export type ThemeId = 'light' | 'dark' | 'aura' | 'daisy';
 export type ThemeVariant = 'light' | 'dark';
 
 interface ThemeDefinition {
@@ -289,6 +346,7 @@ export const themes: Record<ThemeId, ThemeDefinition> = {
   light: { variant: 'light', tokens: lightTokens },
   dark: { variant: 'dark', tokens: darkTokens },
   aura: { variant: 'dark', tokens: auraTokens },
+  daisy: { variant: 'dark', tokens: daisyTokens },
 };
 
 // ---------------------------------------------------------------------------
@@ -334,7 +392,10 @@ export function getResolvedTheme(): ThemeId {
   }
   const stored = localStorage.getItem('theme');
   if (stored === 'aura') return 'aura';
-  return stored === 'dark' ? 'dark' : 'light';
+  if (stored === 'daisy') return 'daisy';
+  if (stored === 'dark') return 'dark';
+  if (stored === 'light') return 'light';
+  return 'daisy';
 }
 
 /**

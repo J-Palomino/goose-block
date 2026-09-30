@@ -22,7 +22,7 @@ function parseLocalStorageValue<K extends SettingKey>(
   try {
     switch (key) {
       case 'theme':
-        return (rawValue === 'dark' || rawValue === 'light' ? rawValue : null) as Settings[K];
+        return (rawValue === 'dark' || rawValue === 'light' || rawValue === 'aura' || rawValue === 'daisy' ? rawValue : null) as Settings[K];
       case 'useSystemTheme':
         return (rawValue === 'true') as unknown as Settings[K];
       case 'responseStyle':

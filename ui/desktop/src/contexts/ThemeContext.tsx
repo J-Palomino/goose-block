@@ -1,9 +1,9 @@
-import React, { createContext, useContext, useEffect, useState, useCallback, useMemo } from 'react';
+﻿import React, { createContext, useContext, useEffect, useState, useCallback, useMemo } from 'react';
 import { applyThemeTokens, buildMcpHostStyles, themes } from '../theme/theme-tokens';
 import type { ThemeId, ThemeVariant } from '../theme/theme-tokens';
 import type { McpUiHostStyles } from '@modelcontextprotocol/ext-apps/app-bridge';
 
-type ThemePreference = 'light' | 'dark' | 'aura' | 'system';
+type ThemePreference = 'light' | 'dark' | 'aura' | 'daisy' | 'system';
 type ResolvedTheme = ThemeVariant;
 
 interface ThemeContextValue {
@@ -41,9 +41,9 @@ interface ThemeProviderProps {
 }
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
-  // Start with light theme to avoid flash, will update once settings load
-  const [userThemePreference, setUserThemePreferenceState] = useState<ThemePreference>('light');
-  const [resolvedThemeId, setResolvedThemeId] = useState<ThemeId>('light');
+  // Default to daisy until settings load
+  const [userThemePreference, setUserThemePreferenceState] = useState<ThemePreference>('daisy');
+  const [resolvedThemeId, setResolvedThemeId] = useState<ThemeId>('daisy');
   const resolvedTheme = themes[resolvedThemeId].variant;
   const mcpHostStyles = useMemo(() => buildMcpHostStyles(resolvedThemeId), [resolvedThemeId]);
 
@@ -55,7 +55,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
           window.electron.getSetting('theme'),
         ]);
 
-        const preference: ThemePreference = useSystemTheme ? 'system' : savedTheme;
+        const preference: ThemePreference = useSystemTheme ? 'system' : ((savedTheme as ThemePreference) || 'daisy');
 
         setUserThemePreferenceState(preference);
         setResolvedThemeId(resolveThemeId(preference));

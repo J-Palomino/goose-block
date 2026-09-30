@@ -48,7 +48,7 @@ export interface Settings {
   keyboardShortcuts: KeyboardShortcuts;
 
   // UI preferences (migrated from localStorage)
-  theme: 'dark' | 'light' | 'aura';
+  theme: 'dark' | 'light' | 'aura' | 'daisy';
   useSystemTheme: boolean;
   language: LanguageSetting;
   responseStyle: string;
@@ -90,8 +90,8 @@ export const defaultSettings: Settings = {
   },
 
   // UI preferences
-  theme: 'light',
-  useSystemTheme: true,
+  theme: 'daisy',
+  useSystemTheme: false,
   language: 'system',
   responseStyle: 'concise',
   showPricing: true,
