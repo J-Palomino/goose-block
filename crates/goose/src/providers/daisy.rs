@@ -43,7 +43,10 @@ impl DaisyProvider {
         Self {
             base_url: base_url.trim_end_matches('/').to_string(),
             api_key,
-            http: reqwest::Client::new(),
+            http: reqwest::Client::builder()
+                .timeout(std::time::Duration::from_secs(120))
+                .build()
+                .unwrap_or_default(),
             agency_cache: Mutex::new(None),
         }
     }
