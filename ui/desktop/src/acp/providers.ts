@@ -173,14 +173,17 @@ export async function acpRefreshProviderDetails(
     };
   }
 
-  const readiness = await client.goose.providersReadinessCheck_unstable({ providerId });
-  throwIfAborted(signal);
-  if (!readiness.ready) {
-    return {
-      provider: providerEntryToDetails(entry),
-      connectionChecked: true,
-      readinessError: readiness.error ?? 'Provider is not ready',
-    };
+  // Readiness check is only supported for ACP providers; non-ACP providers skip straight to refresh
+  if (entry.acp) {
+    const readiness = await client.goose.providersReadinessCheck_unstable({ providerId });
+    throwIfAborted(signal);
+    if (!readiness.ready) {
+      return {
+        provider: providerEntryToDetails(entry),
+        connectionChecked: true,
+        readinessError: readiness.error ?? 'Provider is not ready',
+      };
+    }
   }
 
   if (entry.supportsRefresh) {
@@ -200,8 +203,20 @@ export async function acpRefreshProviderDetails(
 
 export async function acpListProviderModels(providerId: string) {
   const client = await getAcpClient();
-  const { entries } = await client.goose.providersList_unstable({ providerIds: [providerId] });
-  return entries.find((e) => e.providerId === providerId)?.models ?? [];
+  let { entries } = await client.goose.providersList_unstable({ providerIds: [providerId] });
+  let entry = entries.find((e) => e.providerId === providerId);
+
+  // If models have not been fetched yet for a refresh-capable provider, trigger a refresh now
+  if (entry?.supportsRefresh && entry.configured && !entry.refreshing && entry.models.length === 0) {
+    const refresh = await client.goose.providersInventoryRefresh_unstable({
+      providerIds: [providerId],
+    });
+    await waitForProviderInventoryRefresh(client, providerId, refresh);
+    ({ entries } = await client.goose.providersList_unstable({ providerIds: [providerId] }));
+    entry = entries.find((e) => e.providerId === providerId);
+  }
+
+  return entry?.models ?? [];
 }
 
 export async function acpListProviderCatalogEntries(
