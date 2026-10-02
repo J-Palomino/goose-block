@@ -208,12 +208,15 @@ export async function acpListProviderModels(providerId: string) {
 
   // If models have not been fetched yet for a refresh-capable provider, trigger a refresh now
   if (entry?.supportsRefresh && entry.configured && !entry.refreshing && entry.models.length === 0) {
-    const refresh = await client.goose.providersInventoryRefresh_unstable({
-      providerIds: [providerId],
-    });
-    await waitForProviderInventoryRefresh(client, providerId, refresh);
-    ({ entries } = await client.goose.providersList_unstable({ providerIds: [providerId] }));
-    entry = entries.find((e) => e.providerId === providerId);
+    await client.goose.providersInventoryRefresh_unstable({ providerIds: [providerId] });
+    // Poll until refresh finishes (backend fetches the model list from the provider API)
+    const deadline = Date.now() + INVENTORY_REFRESH_TIMEOUT_MS;
+    while (Date.now() < deadline) {
+      await new Promise<void>((resolve) => setTimeout(resolve, 500));
+      ({ entries } = await client.goose.providersList_unstable({ providerIds: [providerId] }));
+      entry = entries.find((e) => e.providerId === providerId);
+      if (!entry?.refreshing) break;
+    }
   }
 
   return entry?.models ?? [];
