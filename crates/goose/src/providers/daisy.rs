@@ -142,6 +142,9 @@ impl ProviderDef for DaisyProvider {
                         let env = envs.get_env();
                         api_url = env.get("DAISY_API_URL").cloned();
                         api_key = env.get("DAISY_API_KEY").cloned();
+                        if api_key.is_none() {
+                            tracing::warn!("daisy: extension found but DAISY_API_KEY not in its envs");
+                        }
                         break;
                     }
                 }
@@ -154,7 +157,10 @@ impl ProviderDef for DaisyProvider {
             let api_key = api_key
                 .or_else(|| config.get_secret("DAISY_API_KEY").ok())
                 .or_else(|| config.get_param("DAISY_API_KEY").ok())
-                .unwrap_or_default();
+                .unwrap_or_else(|| {
+                    tracing::error!("daisy: DAISY_API_KEY not found in extension envs or config - requests will fail with 401");
+                    String::new()
+                });
 
             Ok(DaisyProvider::new(api_url, api_key))
         })
